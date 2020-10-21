@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 92dfbc81289bf724c8b49f4723860d8a
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - InventorySlot: {fileID: 694833768526558753, guid: 3f795c0b0f919a44e86ea7b891de8664, type: 3}
+  - borderhighlight: {fileID: 1038910998966766464, guid: 426a2e5df0fbe8343a1011268410cfbf, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
