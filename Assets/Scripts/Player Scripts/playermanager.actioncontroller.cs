@@ -37,7 +37,7 @@ public partial class playermanager : MonoBehaviour
       }
     }
 
-    
+
 
     foreach(KeyValuePair<string,List<KeyCode>> direction in directions)
     {
@@ -68,7 +68,6 @@ public partial class playermanager : MonoBehaviour
         break;
       case ContextActions.Cycle:
         Player.GetComponent<player>().Cycle_Item();
-        Debug.Log("Shoulda Cycled!");
         break;
     }
   }

@@ -35,8 +35,11 @@ public class itemmanager : MonoBehaviour
     {
       if(Input.GetKeyDown(KeyCode.P))
       {
-        Give_Item(0);
         Spawn_On_Tile(0, gridmanager.GetComponent<gridmanager>().Find_Empty_Square());
+      }
+      if(Input.GetKeyDown(KeyCode.O))
+      {
+        Spawn_On_Tile(1, gridmanager.GetComponent<gridmanager>().Find_Empty_Square());
       }
     }
 
@@ -75,28 +78,28 @@ public class itemmanager : MonoBehaviour
       //if not we check for the first empty slot
 
 
-      for(int i = 0; i < inventory.GetLength(0); i++)
-      for(int j = 0; j < inventory.GetLength(1); j++)
+      for(int i = 0; i < inventory.GetLength(1); i++)
+      for(int j = 0; j < inventory.GetLength(0); j++)
       {
-        if(inventory[i,j] == null) continue;
-        if(inventory[i,j].is_stackable && item.id == inventory[i,j].id)
+        if(inventory[j,i] == null) continue;
+        if(inventory[j,i].is_stackable && item.id == inventory[j,i].id)
         {
 
           //Inventory display will handle the item game objects now.
-          inventory[i,j].count += 1;
+          inventory[j,i].count += 1;
 
           GameObject.FindWithTag("Player").GetComponent<player>().Send_Inv_Data();
           return true;
         }
       }
 
-      for(int i = 0; i < inventory.GetLength(0); i++)
-      for(int j = 0; j < inventory.GetLength(1); j++)
+      for(int i = 0; i < inventory.GetLength(1); i++)
+      for(int j = 0; j < inventory.GetLength(0); j++)
       {
-        if(inventory[i,j] == null)
+        if(inventory[j,i] == null)
         {
-          inventory[i,j] = item;
-          if(item != null) inventory[i,j].count += 1;
+          inventory[j,i] = item;
+          if(item != null) inventory[j,i].count += 1;
           GameObject.FindWithTag("Player").GetComponent<player>().Send_Inv_Data();
           return true;
         }
@@ -172,7 +175,6 @@ public class itemmanager : MonoBehaviour
 
     public bool Push_Item(Item item, Vector3 direction)
     {
-      Debug.Log("uh oh im neing bushed:(");
       int x = (int)(item.grid_pos + direction).x;
       int y = (int)(item.grid_pos + direction).y;
 

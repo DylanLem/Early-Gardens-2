@@ -7,8 +7,8 @@ public class inventory_display : MonoBehaviour
 
     public GameObject InventorySlot;
     public GameObject borderhighlight;
-    private GameObject[,] inventory_slots;
-
+    public GameObject[,] inventory_slots;
+    public Item[,] inventory;
 
     void Awake()
     {
@@ -16,7 +16,10 @@ public class inventory_display : MonoBehaviour
       Create_Inventory_Slots();
     }
 
+    void Update()
+    {
 
+    }
 
     public void Create_Inventory_Slots()
     {
@@ -27,10 +30,13 @@ public class inventory_display : MonoBehaviour
 
       int slot_gob_counter = 0;
 
-      for(int i = 0; i < 6; i++)
-        for(int j = 0; j < 4; j++)
+      for(int j = 0; j < 4; j++)
+        for(int i = 0; i < 6; i++)
         {
           inventory_slots[i,j] = slot_Gobs[slot_gob_counter];
+
+          slot_Gobs[slot_gob_counter].GetComponent<inventory_slot>().inv_x = i;
+          slot_Gobs[slot_gob_counter].GetComponent<inventory_slot>().inv_y = j;
 
           GameObject b_highlight = Instantiate(borderhighlight,inventory_slots[i,j].transform.parent);
           b_highlight.transform.position = inventory_slots[i,j].transform.position;
@@ -50,6 +56,10 @@ public class inventory_display : MonoBehaviour
 
           Item item = inventory[i,j];
 
+          if(inventory_slots[i,j].transform.Find("Slot Border(Clone)").gameObject.GetComponent<SpriteRenderer>().sprite == Resources.Load<Sprite>("UI/borderhighlight"))
+          {
+            inventory_slots[i,j].transform.Find("Slot Border(Clone)").gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("UI/bordernorm");
+          }
 
           //break out of this loop if the item is null
           if(item == null) continue;
@@ -59,6 +69,19 @@ public class inventory_display : MonoBehaviour
 
           inventory[i,j].phys_rep.transform.parent = inventory_slots[i,j].transform;
         }
+    }
 
+    public void Send_Slot_Pos(GameObject inv_slot)
+    {
+      for(int j = 0; j < 4; j++)
+        for(int i = 0; i < 6; i++)
+        {
+          if(inventory_slots[i,j] == inv_slot)
+          {
+            GameObject.FindWithTag("Player").GetComponent<player>().held_index = new Vector3(i,j);
+          }
+
+        }
+        Display_Inventory(inventory);
     }
 }

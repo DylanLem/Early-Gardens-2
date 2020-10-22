@@ -7,6 +7,9 @@ public class inventory_slot : MonoBehaviour
 
     public Item child_item;
     private GameObject border;
+
+    public int inv_x, inv_y;
+
     void Start()
     {
        border = transform.Find("Slot Border(Clone)").gameObject;
@@ -14,12 +17,20 @@ public class inventory_slot : MonoBehaviour
 
     void OnMouseEnter()
     {
-      border.GetComponent<border_logic>().Highlight_Border();
+
+      GameObject.FindWithTag("Inventory Display").GetComponent<inventory_display>().Send_Slot_Pos(gameObject);
+      Highlight_Border();
     }
 
     void OnMouseExit()
     {
-      border.GetComponent<border_logic>().Un_Highlight_Border();
+      Un_Highlight_Border();
+    }
+
+    void OnMouseDown()
+    {
+      GameObject.FindWithTag("Player").GetComponent<player>().Get_From_Inventory(inv_x,inv_y);
+
     }
 
     public void Add_To_Slot(Item item, GameObject phys_rep)
@@ -39,10 +50,14 @@ public class inventory_slot : MonoBehaviour
       child_item = item;
     }
 
-    void OnMouseDown()
+    public void Highlight_Border()
     {
-
+      border.GetComponent<border_logic>().Highlight_Border();
     }
 
+    public void Un_Highlight_Border()
+    {
+      border.GetComponent<border_logic>().Un_Highlight_Border();
+    }
 
 }

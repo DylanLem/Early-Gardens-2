@@ -132,7 +132,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 694833768526558753, guid: 3f795c0b0f919a44e86ea7b891de8664, type: 3}
       propertyPath: m_Name
-      value: Inventory Slot
+      value: Inventory Slot 00
       objectReference: {fileID: 0}
     - target: {fileID: 1391578724920089368, guid: 3f795c0b0f919a44e86ea7b891de8664, type: 3}
       propertyPath: m_LocalPosition.x
@@ -386,7 +386,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 694833768526558753, guid: 3f795c0b0f919a44e86ea7b891de8664, type: 3}
       propertyPath: m_Name
-      value: Inventory Slot (19)
+      value: Inventory Slot 31
       objectReference: {fileID: 0}
     - target: {fileID: 1391578724920089368, guid: 3f795c0b0f919a44e86ea7b891de8664, type: 3}
       propertyPath: m_LocalPosition.x
@@ -498,7 +498,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 694833768526558753, guid: 3f795c0b0f919a44e86ea7b891de8664, type: 3}
       propertyPath: m_Name
-      value: Inventory Slot (4)
+      value: Inventory Slot 04
       objectReference: {fileID: 0}
     - target: {fileID: 1391578724920089368, guid: 3f795c0b0f919a44e86ea7b891de8664, type: 3}
       propertyPath: m_LocalPosition.x
@@ -696,7 +696,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 694833768526558753, guid: 3f795c0b0f919a44e86ea7b891de8664, type: 3}
       propertyPath: m_Name
-      value: Inventory Slot (11)
+      value: Inventory Slot 15
       objectReference: {fileID: 0}
     - target: {fileID: 1391578724920089368, guid: 3f795c0b0f919a44e86ea7b891de8664, type: 3}
       propertyPath: m_LocalPosition.x
@@ -803,7 +803,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 694833768526558753, guid: 3f795c0b0f919a44e86ea7b891de8664, type: 3}
       propertyPath: m_Name
-      value: Inventory Slot (18)
+      value: Inventory Slot 30
       objectReference: {fileID: 0}
     - target: {fileID: 1391578724920089368, guid: 3f795c0b0f919a44e86ea7b891de8664, type: 3}
       propertyPath: m_LocalPosition.x
@@ -975,7 +975,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 694833768526558753, guid: 3f795c0b0f919a44e86ea7b891de8664, type: 3}
       propertyPath: m_Name
-      value: Inventory Slot (23)
+      value: Inventory Slot 35
       objectReference: {fileID: 0}
     - target: {fileID: 1391578724920089368, guid: 3f795c0b0f919a44e86ea7b891de8664, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1194,7 +1194,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 694833768526558753, guid: 3f795c0b0f919a44e86ea7b891de8664, type: 3}
       propertyPath: m_Name
-      value: Inventory Slot (12)
+      value: Inventory Slot 20
       objectReference: {fileID: 0}
     - target: {fileID: 1391578724920089368, guid: 3f795c0b0f919a44e86ea7b891de8664, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1499,7 +1499,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 694833768526558753, guid: 3f795c0b0f919a44e86ea7b891de8664, type: 3}
       propertyPath: m_Name
-      value: Inventory Slot (6)
+      value: Inventory Slot 10
       objectReference: {fileID: 0}
     - target: {fileID: 1391578724920089368, guid: 3f795c0b0f919a44e86ea7b891de8664, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1596,7 +1596,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 694833768526558753, guid: 3f795c0b0f919a44e86ea7b891de8664, type: 3}
       propertyPath: m_Name
-      value: Inventory Slot (22)
+      value: Inventory Slot 34
       objectReference: {fileID: 0}
     - target: {fileID: 1391578724920089368, guid: 3f795c0b0f919a44e86ea7b891de8664, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1775,7 +1775,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 694833768526558753, guid: 3f795c0b0f919a44e86ea7b891de8664, type: 3}
       propertyPath: m_Name
-      value: Inventory Slot (3)
+      value: Inventory Slot 03
       objectReference: {fileID: 0}
     - target: {fileID: 1391578724920089368, guid: 3f795c0b0f919a44e86ea7b891de8664, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1961,7 +1961,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 694833768526558753, guid: 3f795c0b0f919a44e86ea7b891de8664, type: 3}
       propertyPath: m_Name
-      value: Inventory Slot (2)
+      value: Inventory Slot 02
       objectReference: {fileID: 0}
     - target: {fileID: 1391578724920089368, guid: 3f795c0b0f919a44e86ea7b891de8664, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2139,7 +2139,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 694833768526558753, guid: 3f795c0b0f919a44e86ea7b891de8664, type: 3}
       propertyPath: m_Name
-      value: Inventory Slot (7)
+      value: Inventory Slot 11
       objectReference: {fileID: 0}
     - target: {fileID: 1391578724920089368, guid: 3f795c0b0f919a44e86ea7b891de8664, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2236,7 +2236,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 694833768526558753, guid: 3f795c0b0f919a44e86ea7b891de8664, type: 3}
       propertyPath: m_Name
-      value: Inventory Slot (13)
+      value: Inventory Slot 21
       objectReference: {fileID: 0}
     - target: {fileID: 1391578724920089368, guid: 3f795c0b0f919a44e86ea7b891de8664, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2333,7 +2333,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 694833768526558753, guid: 3f795c0b0f919a44e86ea7b891de8664, type: 3}
       propertyPath: m_Name
-      value: Inventory Slot (14)
+      value: Inventory Slot 22
       objectReference: {fileID: 0}
     - target: {fileID: 1391578724920089368, guid: 3f795c0b0f919a44e86ea7b891de8664, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2440,7 +2440,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 694833768526558753, guid: 3f795c0b0f919a44e86ea7b891de8664, type: 3}
       propertyPath: m_Name
-      value: Inventory Slot (20)
+      value: Inventory Slot 32
       objectReference: {fileID: 0}
     - target: {fileID: 1391578724920089368, guid: 3f795c0b0f919a44e86ea7b891de8664, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2542,7 +2542,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 694833768526558753, guid: 3f795c0b0f919a44e86ea7b891de8664, type: 3}
       propertyPath: m_Name
-      value: Inventory Slot (15)
+      value: Inventory Slot 23
       objectReference: {fileID: 0}
     - target: {fileID: 1391578724920089368, guid: 3f795c0b0f919a44e86ea7b891de8664, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2639,7 +2639,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 694833768526558753, guid: 3f795c0b0f919a44e86ea7b891de8664, type: 3}
       propertyPath: m_Name
-      value: Inventory Slot (16)
+      value: Inventory Slot 24
       objectReference: {fileID: 0}
     - target: {fileID: 1391578724920089368, guid: 3f795c0b0f919a44e86ea7b891de8664, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2736,7 +2736,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 694833768526558753, guid: 3f795c0b0f919a44e86ea7b891de8664, type: 3}
       propertyPath: m_Name
-      value: Inventory Slot (9)
+      value: Inventory Slot 13
       objectReference: {fileID: 0}
     - target: {fileID: 1391578724920089368, guid: 3f795c0b0f919a44e86ea7b891de8664, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3085,7 +3085,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 694833768526558753, guid: 3f795c0b0f919a44e86ea7b891de8664, type: 3}
       propertyPath: m_Name
-      value: Inventory Slot (8)
+      value: Inventory Slot 12
       objectReference: {fileID: 0}
     - target: {fileID: 1391578724920089368, guid: 3f795c0b0f919a44e86ea7b891de8664, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3187,7 +3187,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 694833768526558753, guid: 3f795c0b0f919a44e86ea7b891de8664, type: 3}
       propertyPath: m_Name
-      value: Inventory Slot (5)
+      value: Inventory Slot 05
       objectReference: {fileID: 0}
     - target: {fileID: 1391578724920089368, guid: 3f795c0b0f919a44e86ea7b891de8664, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3284,7 +3284,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 694833768526558753, guid: 3f795c0b0f919a44e86ea7b891de8664, type: 3}
       propertyPath: m_Name
-      value: Inventory Slot (21)
+      value: Inventory Slot 33
       objectReference: {fileID: 0}
     - target: {fileID: 1391578724920089368, guid: 3f795c0b0f919a44e86ea7b891de8664, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3381,7 +3381,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 694833768526558753, guid: 3f795c0b0f919a44e86ea7b891de8664, type: 3}
       propertyPath: m_Name
-      value: Inventory Slot (10)
+      value: Inventory Slot 14
       objectReference: {fileID: 0}
     - target: {fileID: 1391578724920089368, guid: 3f795c0b0f919a44e86ea7b891de8664, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3478,7 +3478,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 694833768526558753, guid: 3f795c0b0f919a44e86ea7b891de8664, type: 3}
       propertyPath: m_Name
-      value: Inventory Slot (1)
+      value: Inventory Slot 01
       objectReference: {fileID: 0}
     - target: {fileID: 1391578724920089368, guid: 3f795c0b0f919a44e86ea7b891de8664, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3733,7 +3733,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 694833768526558753, guid: 3f795c0b0f919a44e86ea7b891de8664, type: 3}
       propertyPath: m_Name
-      value: Inventory Slot (17)
+      value: Inventory Slot 25
       objectReference: {fileID: 0}
     - target: {fileID: 1391578724920089368, guid: 3f795c0b0f919a44e86ea7b891de8664, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3966,4 +3966,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Gridmanager: {fileID: 0}
   Earl: {fileID: 4690589798623711505, guid: 310e04ea751ed77488938024845c8dd4, type: 3}
+  max_earls: 0
+  earl_count: 0
   grid_pos: {x: 0, y: 0, z: 0}

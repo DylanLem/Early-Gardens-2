@@ -18,7 +18,8 @@ public class Itemdatabase
   {
     item_database = new List<Type>()
     {
-      typeof(CFood)
+      typeof(CFood),
+      typeof(Apple)
     };
   }
 
