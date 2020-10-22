@@ -113,7 +113,7 @@ public partial class playermanager : MonoBehaviour
             {
               Gridmanager.GetComponent<gridmanager>().grid[(int)items_on_grid[i,j].grid_pos.x,(int)items_on_grid[i,j].grid_pos.y].
                 GetComponent<tilebehavior>().Remove_From_Tile();
-
+              items_on_grid[i,j].is_placed = false;
               items_on_grid[i,j] = null;
             }
           }
@@ -124,7 +124,7 @@ public partial class playermanager : MonoBehaviour
 
             Gridmanager.GetComponent<gridmanager>().grid[(int)items_on_grid[i,j].grid_pos.x,(int)items_on_grid[i,j].grid_pos.y].
               GetComponent<tilebehavior>().Remove_From_Tile();
-
+            items_on_grid[i,j].is_placed = false;
             items_on_grid[i,j] = null;
 
             Player.GetComponent<player>().Display_Carried_Item();
@@ -153,6 +153,7 @@ public partial class playermanager : MonoBehaviour
        if(Player.GetComponent<player>().carried_object != null)
        {
          Itemmanager.GetComponent<itemmanager>().Spawn_On_Tile(Player.GetComponent<player>().carried_object, Gridmanager.GetComponent<gridmanager>().grid[(int)(grid_pos + move).x, (int)(grid_pos + move).y]);
+         Player.GetComponent<player>().carried_object.is_placed = true;
          Player.GetComponent<player>().carried_object = null;
        }
        move_timer = 0;

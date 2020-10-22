@@ -34,15 +34,13 @@ public partial class earlbrain : MonoBehaviour
     private bool is_running = false;
     private Item target;
     /* *** NOTES ***
-    earlbrain describes an earl's properties, and the actions it may do
-    earlbrain does NOT handle actually making the earl do things.
+    earls are smart and stupid. figure it outs
     */
 
     // Start is called before the first frame update
     void Start()
     {
-      color = new Color(Random.Range(0,1.0f),Random.Range(0,1.0f),Random.Range(0,1.0f));
-      GetComponent<SpriteRenderer>().color = color;
+      
       Gridmanager = GameObject.FindWithTag("Grid");
       Itemmanager = GameObject.FindWithTag("Item Manager");
 

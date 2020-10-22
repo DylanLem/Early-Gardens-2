@@ -39,7 +39,7 @@ public class itemmanager : MonoBehaviour
       }
       if(Input.GetKeyDown(KeyCode.O))
       {
-        Spawn_On_Tile(1, gridmanager.GetComponent<gridmanager>().Find_Empty_Square());
+        Spawn_On_Tile(2, gridmanager.GetComponent<gridmanager>().Find_Empty_Square());
       }
     }
 
@@ -120,6 +120,7 @@ public class itemmanager : MonoBehaviour
 
 
       item.grid_pos = tile.GetComponent<tilebehavior>().grid_pos;
+      item.is_placed = true;
 
       items_on_grid[(int)item.grid_pos.x,(int)item.grid_pos.y] = item;
 
@@ -134,6 +135,7 @@ public class itemmanager : MonoBehaviour
 
 
       item.grid_pos = tile.GetComponent<tilebehavior>().grid_pos;
+      item.is_placed = true;
 
       items_on_grid[(int)item.grid_pos.x,(int)item.grid_pos.y] = item;
 
