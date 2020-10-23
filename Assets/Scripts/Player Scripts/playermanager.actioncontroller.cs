@@ -167,7 +167,7 @@ public partial class playermanager : MonoBehaviour
     if(e == null) return false;
 
     //time to toss earl
-    Place_Object(direction);
+    if(Place_Object(direction) == false) return false;
 
 
     //he's gonna go however many squares.

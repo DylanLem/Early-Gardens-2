@@ -50,7 +50,7 @@ public partial class playermanager : MonoBehaviour
             var item = item_grid[i,j];
             if(item == null) continue;
 
-            if(item.grid_pos == grid_pos + move)
+            if(item.grid_pos == grid_pos + move && item.is_pushable)
             {
               if(Itemmanager.GetComponent<itemmanager>().Push_Item(item,move)) goto ContinueMove;
             }
