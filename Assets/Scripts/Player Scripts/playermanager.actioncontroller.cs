@@ -16,7 +16,7 @@ public partial class playermanager : MonoBehaviour
     None,
     Grab,
     Throw,
-    Cycle
+    Build
   }
 
   // defining the variable to check our currently toggled action
@@ -65,9 +65,6 @@ public partial class playermanager : MonoBehaviour
         break;
       case ContextActions.Throw:
         Throw_Earl(direction);
-        break;
-      case ContextActions.Cycle:
-        Player.GetComponent<player>().Cycle_Item();
         break;
     }
   }

@@ -6,8 +6,9 @@ using UnityEngine.UI;
 
 public class earldisplay : MonoBehaviour
 {
+    private GameObject mouth_rep, eyes_rep,bod_rep;
     [SerializeField]private Sprite empty_earl;
-    [SerializeField]private Image earl_image = null;
+    [SerializeField]private GameObject earl_image = null;
     [SerializeField]private Text tEarl_name = null;
     [SerializeField]private Text tEarl_mood = null;
     [SerializeField]private Text tEarl_health = null;
@@ -16,6 +17,33 @@ public class earldisplay : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+      bod_rep = new GameObject();
+      bod_rep.AddComponent<SpriteRenderer>();
+      bod_rep.transform.parent = earl_image.transform;
+      bod_rep.transform.position = earl_image.transform.position;
+      bod_rep.transform.localScale *= 2;
+      bod_rep.GetComponent<SpriteRenderer>().sortingLayerName = "UI";
+      bod_rep.GetComponent<SpriteRenderer>().sortingOrder = 1;
+
+      mouth_rep = new GameObject();
+      mouth_rep.AddComponent<SpriteRenderer>();
+      mouth_rep.transform.parent = earl_image.transform;
+      mouth_rep.transform.position = earl_image.transform.position;
+      mouth_rep.transform.localScale *= 2;
+      mouth_rep.GetComponent<SpriteRenderer>().sortingLayerName = "UI";
+      mouth_rep.GetComponent<SpriteRenderer>().sortingOrder = 2;
+
+      eyes_rep = new GameObject();
+      eyes_rep.AddComponent<SpriteRenderer>();
+      eyes_rep.transform.parent = earl_image.transform;
+      eyes_rep.transform.position = earl_image.transform.position;
+      eyes_rep.transform.localScale *= 2;
+      eyes_rep.GetComponent<SpriteRenderer>().sortingLayerName = "UI";
+      eyes_rep.GetComponent<SpriteRenderer>().sortingOrder = 3;
+
+
+
       empty_earl = Resources.Load<Sprite>("UI/hud_inventory_slot");
       Clear_Info();
     }
@@ -30,7 +58,9 @@ public class earldisplay : MonoBehaviour
     public void Display_Info(Dictionary<string,dynamic> earl_data)
     {
       //either enables or disables the earl display
+      earl_image.SetActive(true);
       Parse_Earl_Data(earl_data);
+
 
       tEarl_name.enabled = true;
       tEarl_mood.enabled = true;
@@ -41,18 +71,22 @@ public class earldisplay : MonoBehaviour
     private void Parse_Earl_Data(Dictionary<string,dynamic> earl_data)
     {
       //earl data is packed and sent from an earl in a specialized dictionary
+
       tEarl_name.text = earl_data["name"];
       tEarl_mood.text = "Current Mood: " + "\n" + earl_data["mood"];
       tEarl_health.text = "Health: " + earl_data["health"];
       tEarl_satiety.text = "satiety: " + earl_data["satiety"];
-      earl_image.sprite = earl_data["sprite"];
-      earl_image.color = earl_data["color"];
+
+      bod_rep.GetComponent<SpriteRenderer>().sprite = earl_data["sprite"];
+      eyes_rep.GetComponent<SpriteRenderer>().sprite = earl_data["eyes"];
+      mouth_rep.GetComponent<SpriteRenderer>().sprite = earl_data["mouth"];
+
+      bod_rep.GetComponent<SpriteRenderer>().color = earl_data["color"];
     }
 
     public void Clear_Info()
     {
-      earl_image.sprite = empty_earl;
-      earl_image.color = Color.white;
+      earl_image.SetActive(false);
       tEarl_name.enabled = false;
       tEarl_mood.enabled = false;
       tEarl_health.enabled = false;

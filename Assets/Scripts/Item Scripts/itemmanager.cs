@@ -39,7 +39,7 @@ public class itemmanager : MonoBehaviour
       }
       if(Input.GetKeyDown(KeyCode.O))
       {
-        Spawn_On_Tile(2, gridmanager.GetComponent<gridmanager>().Find_Empty_Square());
+        Give_Item(2);
       }
     }
 

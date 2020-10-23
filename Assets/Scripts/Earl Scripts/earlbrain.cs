@@ -6,6 +6,8 @@ using System.Linq;
 public partial class earlbrain : MonoBehaviour
 {
 
+    public GameObject eyes, mouth;
+
     private Vector3 grid_pos;
     private GameObject Gridmanager;
     private GameObject Itemmanager;
@@ -40,7 +42,7 @@ public partial class earlbrain : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-      
+
       Gridmanager = GameObject.FindWithTag("Grid");
       Itemmanager = GameObject.FindWithTag("Item Manager");
 
@@ -146,7 +148,9 @@ public partial class earlbrain : MonoBehaviour
         {"mood", attitude_text},
         {"satiety", ((int)satiety).ToString()},
         {"sprite", GetComponent<SpriteRenderer>().sprite},
-        {"color", color}
+        {"eyes", eyes.GetComponent<SpriteRenderer>().sprite},
+        {"mouth", mouth.GetComponent<SpriteRenderer>().sprite},
+        {"color", GetComponent<SpriteRenderer>().color}
       };
 
       GameObject.Find("Earl Display").GetComponent<earldisplay>().Display_Info(earl_data);
@@ -157,8 +161,8 @@ public partial class earlbrain : MonoBehaviour
       name = input;
     }
 
-    private void Stats_To_Strings()
+    public void Set_Eyes(string eye_sprite)
     {
-
+      eyes.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Earls/Eyes/" + eye_sprite);
     }
 }

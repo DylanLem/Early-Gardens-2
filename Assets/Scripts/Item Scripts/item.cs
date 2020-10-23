@@ -14,7 +14,9 @@ public string description {get;protected set;}
 
 public int value{get;protected set;}
 public int count{get;set;}
+
 public bool is_stackable = false;
+public bool is_pushable = true;
 public bool is_placed;
 
   public Vector3 grid_pos{get;set;}
@@ -31,7 +33,6 @@ public bool is_placed;
           name
           id
           tag
-          is_stackable
           Sprites[]
 
     Another MUST is calling Set_Phys_Rep() in the item's initializer
