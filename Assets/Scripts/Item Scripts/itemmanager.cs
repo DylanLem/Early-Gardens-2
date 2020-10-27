@@ -35,7 +35,7 @@ public class itemmanager : MonoBehaviour
     {
       if(Input.GetKeyDown(KeyCode.P))
       {
-        Spawn_On_Tile(0, gridmanager.GetComponent<gridmanager>().Find_Empty_Square());
+        Give_Item(3);
       }
       if(Input.GetKeyDown(KeyCode.O))
       {

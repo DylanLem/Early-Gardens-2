@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class Food: Item
+public abstract class Food: Item
 {
 
   public Dictionary<string,int> gains {get;protected set;}

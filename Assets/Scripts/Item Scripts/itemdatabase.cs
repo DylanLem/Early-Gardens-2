@@ -20,7 +20,8 @@ public class Itemdatabase
     {
       typeof(CFood),
       typeof(Apple),
-      typeof(Earl_Egg)
+      typeof(Earl_Egg),
+      typeof(Seeds)
     };
   }
 
