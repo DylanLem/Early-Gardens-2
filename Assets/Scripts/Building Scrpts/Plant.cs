@@ -48,10 +48,9 @@ public class Plant : Building
     description = "If they ain't eatin' this, they're eatin' you!";
     tag = "Plant";
     sprites = new Sprite[]
-    {Resources.Load<Sprite>("items/cfruit_3"),
-     Resources.Load<Sprite>("items/cfruit_2"),
-     Resources.Load<Sprite>("items/cfruit_1"),
-     Resources.Load<Sprite>("items/cfruit_0")};
+    {Resources.Load<Sprite>("buildings/tree_0"),
+     Resources.Load<Sprite>("buildings/tree_1"),
+     Resources.Load<Sprite>("buildings/tree_2")};
 
     Set_Phys_Rep();
 
@@ -78,7 +77,7 @@ public class Plant : Building
 
     if(neighbours == null) Set_Neighbours();
 
-    if (life_stage <= growth_stages)
+    if (life_stage < growth_stages)
     {
 
       age += Time.deltaTime;
@@ -106,7 +105,7 @@ public class Plant : Building
     if(fertility_cycle >= fertility)
     {
       GameObject selected_tile = neighbours[UnityEngine.Random.Range(0,neighbours.Count)];
-      
+
       if(GameObject.FindWithTag("Item Manager").GetComponent<itemmanager>().Spawn_On_Tile(fruit_id,selected_tile))
       {
         Debug.Log("AY");

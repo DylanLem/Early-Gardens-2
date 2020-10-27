@@ -2948,7 +2948,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Early Gardens 0.03 - Every Earl is Special
+  m_Text: Early Gardens 0.04 - Plants and Buildings
 --- !u!222 &1668175176
 CanvasRenderer:
   m_ObjectHideFlags: 0

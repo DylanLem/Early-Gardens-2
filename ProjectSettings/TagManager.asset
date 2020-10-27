@@ -12,6 +12,9 @@ TagManager:
   - Inventory Slot
   - Inventory Display
   - Egg
+  - Building Item
+  - Building
+  - Plant
   layers:
   - Default
   - TransparentFX
