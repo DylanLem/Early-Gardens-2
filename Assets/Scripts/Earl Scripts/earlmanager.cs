@@ -23,9 +23,20 @@ public class earlmanager : MonoBehaviour
     {
       "earl_eyes_0","earl_eyes_1","earl_eyes_2","earl_eyes_3",
       "earl_eyes_4","earl_eyes_5","earl_eyes_6","earl_eyes_7",
-      "earl_eyes_8"
+      "earl_eyes_8", "earl_eyes_9", "earl_eyes_10", "earl_eyes_cutesy", "earl_eyes_cutesy_1",
+      "earl_eyes_cutesy_2","earl_eyes_cutesy_3","earl_eyes_cutesy_4",
+      "earl_eyes_cutesy_5"
     };
-
+  private List<string> mouth_database = new List<string>()
+    {
+      "earl_mouth_0","earl_mouth_1","earl_mouth_2","earl_mouth_3",
+      "earl_mouth_4", "earl_mouth_5", "earl_mouth_6"
+    };
+  private List<string> fur_database = new List<string>()
+    {
+      "earl_fur_0","earl_fur_1","earl_fur_2","earl_fur_3",
+      "earl_fur_4", "earl_fur_5", "earl_fur_6"
+    };
     // Start is called before the first frame update
     void Start()
     {
@@ -82,7 +93,9 @@ public class earlmanager : MonoBehaviour
       new_earl.GetComponent<earlbrain>().eyes.transform.position = new_earl.transform.position;
       new_earl.GetComponent<earlbrain>().mouth.transform.position = new_earl.transform.position;
 
-      new_earl.GetComponent<earlbrain>().Set_Eyes(eye_database[UnityEngine.Random.Range(0,eye_database.Count - 1)]);
+      new_earl.GetComponent<earlbrain>().Set_Eyes(eye_database[UnityEngine.Random.Range(0,eye_database.Count)]);
+      new_earl.GetComponent<earlbrain>().Set_Mouth(mouth_database[UnityEngine.Random.Range(0,mouth_database.Count)]);
+      new_earl.GetComponent<earlbrain>().Set_Fur(fur_database[UnityEngine.Random.Range(0,fur_database.Count)]);
 
       new_earl.GetComponent<earlbrain>().Set_Grid_Pos(birth_square.GetComponent<tilebehavior>().grid_pos);
       Gridmanager.GetComponent<gridmanager>().Update_Square(birth_square.GetComponent<tilebehavior>().Get_Grid_Pos(),"add", new_earl);

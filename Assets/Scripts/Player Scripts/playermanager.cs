@@ -38,7 +38,8 @@ public partial class playermanager : MonoBehaviour
     Dictionary<ContextActions,KeyCode> actions = new Dictionary<ContextActions,KeyCode>()
     {
         {ContextActions.Grab, KeyCode.G},
-        {ContextActions.Throw, KeyCode.T}        
+        {ContextActions.Throw, KeyCode.T},
+        {ContextActions.Build, KeyCode.B}        
     };
 
 

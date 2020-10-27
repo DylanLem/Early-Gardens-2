@@ -6,7 +6,10 @@ using System.Linq;
 public partial class earlbrain : MonoBehaviour
 {
 
-    public GameObject eyes, mouth;
+
+
+    // Due to lack of foresight, the fur sprite is just the sprite for the game object itself
+    public GameObject eyes, mouth, ears;
 
     private Vector3 grid_pos;
     private GameObject Gridmanager;
@@ -37,6 +40,10 @@ public partial class earlbrain : MonoBehaviour
     private Item target;
     /* *** NOTES ***
     earls are smart and stupid. figure it outs
+
+    If you ever need to SPAWN an EARL in any way, please please DON'T
+    Instantiate(Earl), cause he won't have eyes, mouth, or ears right off
+    the bat. and earls are quite self conscious. USE earlmanager's Birth_Earl().
     */
 
     // Start is called before the first frame update
@@ -90,6 +97,7 @@ public partial class earlbrain : MonoBehaviour
       Display_Earl_Data();
     }
 
+    //when i set him down gently....
     public void Become_Placed(Vector3 new_pos)
     {
       act_timer = 0;
@@ -106,9 +114,11 @@ public partial class earlbrain : MonoBehaviour
       GameObject.Find("Earl Display").GetComponent<earldisplay>().Clear_Info();
     }
 
+    //lawd he's hungry watch out
     public void Eat()
     {
       //if earl gets picked up or pushed, he should not be given the pleasure of dinner.
+      //we make him confirm his target before munchtime.
       target = Find_Food();
 
       if(target == null || Vector3.Distance(target.grid_pos,grid_pos) > 1.44f)
@@ -116,6 +126,8 @@ public partial class earlbrain : MonoBehaviour
         mood = Moods.Idle;
         return;
       }
+
+
       Vector3 tile_pos = target.grid_pos;
       Food food_item = (Food)Itemmanager.GetComponent<itemmanager>().items_on_grid[(int)tile_pos.x,(int)tile_pos.y];
 
@@ -143,6 +155,9 @@ public partial class earlbrain : MonoBehaviour
 
       Dictionary<string,dynamic> earl_data = new Dictionary<string,dynamic>()
       {
+        // We're just making a big dictionary of all earl's properties in case we need them.
+        // if any EARLs ask tell them its for a family tree.
+
         {"name" , name},
         {"health" , ((int)health).ToString()},
         {"mood", attitude_text},
@@ -164,5 +179,20 @@ public partial class earlbrain : MonoBehaviour
     public void Set_Eyes(string eye_sprite)
     {
       eyes.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Earls/Eyes/" + eye_sprite);
+    }
+
+    public void Set_Mouth(string mouth_sprite)
+    {
+      mouth.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Earls/Mouths/" + mouth_sprite);
+    }
+
+    public void Set_Fur(string fur_sprite)
+    {
+      GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Earls/Fur/" + fur_sprite);
+    }
+
+    public void Set_Ears(string ear_sprite)
+    {
+      GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Earls/Ears/" + ear_sprite);
     }
 }

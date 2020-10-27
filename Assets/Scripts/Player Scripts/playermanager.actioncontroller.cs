@@ -66,6 +66,9 @@ public partial class playermanager : MonoBehaviour
       case ContextActions.Throw:
         Throw_Earl(direction);
         break;
+      case ContextActions.Build:
+        Build_Object(direction);
+        break;
     }
   }
 
@@ -141,10 +144,9 @@ public partial class playermanager : MonoBehaviour
 
        if(Player.GetComponent<player>().carried_earl != null)
        {
-         GameObject Object = Player.GetComponent<player>().carried_earl;
-         Player.GetComponent<player>().carried_earl = null;
 
-         Object.BroadcastMessage("Become_Placed",(grid_pos + move));
+        Player.GetComponent<player>().carried_earl.GetComponent<earlbrain>().Become_Placed(grid_pos + move);
+         Player.GetComponent<player>().carried_earl = null;
        }
 
        if(Player.GetComponent<player>().carried_object != null)
@@ -180,7 +182,20 @@ public partial class playermanager : MonoBehaviour
     return true;
   }
 
+  public bool Build_Object(string direction)
+  {
+    Vector3 move = direction_to_vector[direction];
 
+    if(Player.GetComponent<player>().carried_object == null || Player.GetComponent<player>().carried_object.GetType() != typeof(Building_Item)) return false;
+    
+    var i = (Building_Item)Player.GetComponent<player>().carried_object;
+
+    i.Build();
+    Place_Object(direction);
+
+
+    return true;
+  }
 
 
 
