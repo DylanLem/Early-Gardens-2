@@ -41,6 +41,18 @@ public class itemmanager : MonoBehaviour
       {
         Give_Item(2);
       }
+
+      for(int i = 0; i < items_on_grid.GetLength(0) - 1; i++)
+      for(int j = 0; j < items_on_grid.GetLength(1) - 1; j++)
+      {
+        var temp_item = items_on_grid[i,j];
+
+        if(temp_item != null && temp_item.is_building)
+        {
+          Building item = (Building)temp_item;
+          item.Update();
+        }
+      }
     }
 
     //Give_Item() contains an override for if you wanna add many items
@@ -110,27 +122,31 @@ public class itemmanager : MonoBehaviour
     }
 
 
-    private void Spawn_On_Tile(int id, GameObject tile)
+    public bool Spawn_On_Tile(int id, GameObject tile)
     {
 
-     if(! tile.GetComponent<tilebehavior>().is_empty == true) return;
-
-      Item item = item_database.Get_Item(id);
 
 
+     if(tile == null || ! tile.GetComponent<tilebehavior>().is_empty == true) return false;
 
+     Item item = item_database.Get_Item(id);
+
+
+      Debug.Log(tile.GetComponent<tilebehavior>().grid_pos);
       item.grid_pos = tile.GetComponent<tilebehavior>().grid_pos;
       item.is_placed = true;
 
       items_on_grid[(int)item.grid_pos.x,(int)item.grid_pos.y] = item;
 
       tile.GetComponent<tilebehavior>().Add_To_Tile(item.phys_rep);
+
+      return true;
     }
 
-    public void Spawn_On_Tile(Item item, GameObject tile)
+    public bool Spawn_On_Tile(Item item, GameObject tile)
     {
 
-     if(! tile.GetComponent<tilebehavior>().is_empty == true) return;
+     if(tile == null || ! tile.GetComponent<tilebehavior>().is_empty == true) return false;
 
 
 
@@ -140,6 +156,8 @@ public class itemmanager : MonoBehaviour
       items_on_grid[(int)item.grid_pos.x,(int)item.grid_pos.y] = item;
 
       tile.GetComponent<tilebehavior>().Add_To_Tile(item.phys_rep);
+
+      return true;
     }
 
     public List<Item> Find_Items_By_Tag(string t)

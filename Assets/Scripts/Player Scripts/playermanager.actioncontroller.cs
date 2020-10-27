@@ -100,7 +100,7 @@ public partial class playermanager : MonoBehaviour
     for(int i = 0; i < items_on_grid.GetLength(0); i++)
     for(int j = 0; j < items_on_grid.GetLength(1); j++)
     {
-      if(items_on_grid[i,j] != null)
+      if(items_on_grid[i,j] != null && ! items_on_grid[i,j].is_building)
       {
 
         if(items_on_grid[i,j].grid_pos == grid_pos + move)
@@ -186,12 +186,14 @@ public partial class playermanager : MonoBehaviour
   {
     Vector3 move = direction_to_vector[direction];
 
-    if(Player.GetComponent<player>().carried_object == null || Player.GetComponent<player>().carried_object.GetType() != typeof(Building_Item)) return false;
-    
+    if(Player.GetComponent<player>().carried_object == null || ! Player.GetComponent<player>().carried_object.is_building) return false;
+
     var i = (Building_Item)Player.GetComponent<player>().carried_object;
 
-    i.Build();
+
     Place_Object(direction);
+    i.Build();
+    move_timer = 0;
 
 
     return true;

@@ -140,6 +140,10 @@ public class gridmanager : MonoBehaviour
     //pulls the tile at whatever grid location we desire :)
     public GameObject Get_Tile(Vector3 pos)
     {
+      int x = (int)pos.x;
+      int y = (int)pos.y;
+
+      if(x < 0 || x > grid.GetLength(0) - 1 || y < 0 || y > grid.GetLength(1) - 1) return null;
       return grid[(int)pos.x,(int)pos.y];
     }
 
