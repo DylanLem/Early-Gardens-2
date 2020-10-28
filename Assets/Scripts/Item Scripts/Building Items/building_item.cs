@@ -12,15 +12,15 @@ public abstract class Building_Item: Item
 
   public Building_Item()
   {
-  is_building = true;
+
   }
 
   public void Build()
   {
-    GameObject temp_tile = phys_rep.transform.parent.gameObject;
+    GameObject target_tile = phys_rep.transform.parent.gameObject;
     Delete();
-    
-    GameObject.FindWithTag("Item Manager").GetComponent<itemmanager>().Spawn_On_Tile(building_id,temp_tile);
+
+    GameObject.FindWithTag("Item Manager").GetComponent<itemmanager>().Spawn_On_Tile(building_id,target_tile);
 
   }
 

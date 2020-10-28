@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -29,8 +30,7 @@ public class Plant : Building
   //how long it takes for each stage
   public float grow_time;
 
-  //the neighbouring tiles
-  public List<GameObject> neighbours;
+
 
   public Plant()
   {
@@ -57,20 +57,7 @@ public class Plant : Building
 
   }
 
-  protected void Set_Neighbours()
-  {
-    neighbours = new List<GameObject>();
-    var gridmanager = GameObject.FindWithTag("Grid");
 
-    for(int row = (int)grid_pos.y - 1; row <= grid_pos.y + 1; row++)
-      for(int column = (int)grid_pos.x - 1; column <= grid_pos.x + 1;  column++)
-      {
-
-        if(gridmanager.GetComponent<gridmanager>().Get_Tile(new Vector3(column,row)) == null) continue;
-
-        neighbours.Add(gridmanager.GetComponent<gridmanager>().Get_Tile(new Vector3(column,row)));
-      }
-  }
 
   public override void Update()
   {
@@ -104,7 +91,7 @@ public class Plant : Building
 
     if(fertility_cycle >= fertility)
     {
-      GameObject selected_tile = neighbours[UnityEngine.Random.Range(0,neighbours.Count)];
+      GameObject selected_tile = neighbours.ElementAt(UnityEngine.Random.Range(0,neighbours.Count)).Value;
 
       if(GameObject.FindWithTag("Item Manager").GetComponent<itemmanager>().Spawn_On_Tile(fruit_id,selected_tile))
       {

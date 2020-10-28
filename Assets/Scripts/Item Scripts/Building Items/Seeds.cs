@@ -10,11 +10,11 @@ public class Seeds: Building_Item
   public Seeds()
   {
     building_id = 4;
-    
+
     id = 3;
     name = "C-eed Packet";
     description = "Affordable. Renewable. Essential. The perfect start for an EARL Rancher.";
-    tag = "Food";
+    tag = "Building Item";
     sprites = new Sprite[]
     {Resources.Load<Sprite>("items/item_sack")};
     initial_sprite = sprites[0];

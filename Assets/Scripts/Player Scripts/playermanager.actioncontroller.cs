@@ -64,7 +64,7 @@ public partial class playermanager : MonoBehaviour
         Grab_Object(direction);
         break;
       case ContextActions.Throw:
-        Throw_Earl(direction);
+        Throw_Object(direction);
         break;
       case ContextActions.Build:
         Build_Object(direction);
@@ -161,12 +161,13 @@ public partial class playermanager : MonoBehaviour
     return false;
   }
 
-  public bool Throw_Earl(string direction)
+  public bool Throw_Object(string direction)
   {
     Vector3 move = direction_to_vector[direction];
     var e = Player.GetComponent<player>().carried_earl;
+    var o = Player.GetComponent<player>().carried_object;
 
-    if(e == null) return false;
+    if(e == null && o == null) return false;
 
     //time to toss earl
     if(Place_Object(direction) == false) return false;
@@ -177,7 +178,10 @@ public partial class playermanager : MonoBehaviour
     {
       //gives it that throwfeel
       //technically its a push
-      Push_Earl(e,direction);
+      if(e != null)
+        Push_Earl(e,direction);
+      if(o != null)
+        Itemmanager.GetComponent<itemmanager>().Push_Item(o,move);
     }
     return true;
   }
@@ -186,7 +190,9 @@ public partial class playermanager : MonoBehaviour
   {
     Vector3 move = direction_to_vector[direction];
 
-    if(Player.GetComponent<player>().carried_object == null || ! Player.GetComponent<player>().carried_object.is_building) return false;
+    var carried_obj = Player.GetComponent<player>().carried_object;
+
+    if(carried_obj == null || ! carried_obj.GetType().IsSubclassOf(typeof(Building_Item))) return false;
 
     var i = (Building_Item)Player.GetComponent<player>().carried_object;
 
