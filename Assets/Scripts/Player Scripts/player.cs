@@ -73,14 +73,16 @@ public partial class player : MonoBehaviour
       GetComponent<inventory_slot>().Highlight_Border();
     }
 
-    public void Get_From_Inventory(int x, int y)
+    public bool Get_From_Inventory(int x, int y)
     {
+      if(carried_earl != null) return false;
 
       Item temp = carried_object;
       carried_object = inventory[x,y];
-      Debug.Log("x " + x + " y " + y);
       inventory[x,y] = temp;
       Display_Carried_Item();
       Send_Inv_Data();
+
+      return true;
     }
 }

@@ -29,7 +29,7 @@ public class Fence : Building
     Set_Phys_Rep();
   }
 
-  public void Update()
+  public override void Update()
   {
 
   }

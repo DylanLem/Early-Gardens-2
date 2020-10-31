@@ -196,13 +196,15 @@ public partial class playermanager : MonoBehaviour
 
     var i = (Building_Item)Player.GetComponent<player>().carried_object;
 
-
-    Place_Object(direction);
-    i.Build();
     move_timer = 0;
 
+    if(Place_Object(direction))
+    {
+      i.Build();
+      return true;
+    }
 
-    return true;
+    return false;
   }
 
 

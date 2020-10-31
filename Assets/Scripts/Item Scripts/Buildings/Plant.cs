@@ -32,7 +32,7 @@ public class Plant : Building
 
 
 
-  public Plant()
+  public Plant() : base()
   {
     id = 4;
     age = 0f;
@@ -43,6 +43,7 @@ public class Plant : Building
     grow_time = 2f;
 
     fruit_id = 0;
+    neighbours = null;
 
     name = "Clant";
     description = "If they ain't eatin' this, they're eatin' you!";
@@ -53,17 +54,20 @@ public class Plant : Building
      Resources.Load<Sprite>("buildings/tree_2")};
 
     Set_Phys_Rep();
-
-
   }
 
 
 
   public override void Update()
   {
+    
+    if(neighbours == null)
+    {
+      Set_Neighbours();
+      //Set_Dirt_Tile();
+    }
 
-    if(neighbours == null) Set_Neighbours();
-
+    Debug.Log("Hye");
     if (life_stage < growth_stages)
     {
 
@@ -95,11 +99,16 @@ public class Plant : Building
 
       if(GameObject.FindWithTag("Item Manager").GetComponent<itemmanager>().Spawn_On_Tile(fruit_id,selected_tile))
       {
-        Debug.Log("AY");
         fertility_cycle = 0;
         return;
       }
     }
+  }
+
+  public void Set_Dirt_Tile()
+  {
+    var gridmanager = GameObject.FindWithTag("Grid");
+    gridmanager.GetComponent<gridmanager>().Get_Tile(grid_pos).GetComponent<tilebehavior>().Set_Sprite(Resources.Load<Sprite>("Environment/dirt_dark"));
   }
 
   public void Die()

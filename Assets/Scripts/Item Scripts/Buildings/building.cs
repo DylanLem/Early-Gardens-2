@@ -17,6 +17,8 @@ public abstract class Building : Item
   {
     is_building = true;
     is_pushable = false;
+
+
   }
 
 
@@ -44,13 +46,15 @@ public abstract class Building : Item
     for(int row = (int)grid_pos.y - 1; row <= grid_pos.y + 1; row++)
       for(int column = (int)grid_pos.x - 1; column <= grid_pos.x + 1;  column++)
       {
-
-        if(new Vector3(row,column) == grid_pos) continue;
+        Debug.Log("Hey");
+        //skips the tile the building is on
+        if(new Vector3(column,row) == grid_pos) continue;
 
         dict_indexer += 1;
 
-        if(gridmanager.GetComponent<gridmanager>().Get_Tile(new Vector3(column,row)) == null) continue;
+        var neighbour = gridmanager.GetComponent<gridmanager>().Get_Tile(new Vector3(column,row));
 
+        if(neighbour == null) continue;
         neighbours[neighbours.ElementAt(dict_indexer).Key] = gridmanager.GetComponent<gridmanager>().Get_Tile(new Vector3(column,row));
 
       }

@@ -41,9 +41,13 @@ public class itemmanager : MonoBehaviour
       {
         Give_Item(2);
       }
+      if(Input.GetKeyDown(KeyCode.I))
+      {
+        Give_Item(5);
+      }
 
-      for(int i = 0; i < items_on_grid.GetLength(0) - 1; i++)
-      for(int j = 0; j < items_on_grid.GetLength(1) - 1; j++)
+      for(int i = 0; i < items_on_grid.GetLength(0); i++)
+      for(int j = 0; j < items_on_grid.GetLength(1); j++)
       {
         var temp_item = items_on_grid[i,j];
 
@@ -132,7 +136,6 @@ public class itemmanager : MonoBehaviour
      Item item = item_database.Get_Item(id);
 
 
-      Debug.Log(tile.GetComponent<tilebehavior>().grid_pos);
       item.grid_pos = tile.GetComponent<tilebehavior>().grid_pos;
       item.is_placed = true;
 

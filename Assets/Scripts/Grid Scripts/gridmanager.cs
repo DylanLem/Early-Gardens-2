@@ -44,7 +44,7 @@ public class gridmanager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+      Set_Empty_Squares();
     }
 
     private void Populate_Grid()
@@ -58,6 +58,7 @@ public class gridmanager : MonoBehaviour
           var tile = Instantiate(Tile,new Vector3(x + anchor_x, y + anchor_y),Quaternion.identity);
           tile.name = ("TILE " + x.ToString() + "," + y.ToString());
           tile.GetComponent<tilebehavior>().grid_pos = new Vector3(x,y);
+          tile.GetComponent<tilebehavior>().Set_Sprite(tile_sprite);
           grid[x,y] = tile;
 
 
@@ -144,7 +145,8 @@ public class gridmanager : MonoBehaviour
       int y = (int)pos.y;
 
       if(x < 0 || x > grid.GetLength(0) - 1 || y < 0 || y > grid.GetLength(1) - 1) return null;
-      return grid[(int)pos.x,(int)pos.y];
+
+      return grid[x,y];
     }
 
 

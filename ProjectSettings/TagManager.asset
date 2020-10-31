@@ -15,6 +15,7 @@ TagManager:
   - Building Item
   - Building
   - Plant
+  - Wall
   layers:
   - Default
   - TransparentFX

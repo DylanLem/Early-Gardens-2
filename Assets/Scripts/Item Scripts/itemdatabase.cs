@@ -22,7 +22,9 @@ public class Itemdatabase
       typeof(Apple),
       typeof(Earl_Egg),
       typeof(Seeds),
-      typeof(Plant)
+      typeof(Plant),
+      typeof(Bricks),
+      typeof(Wall)
     };
   }
 

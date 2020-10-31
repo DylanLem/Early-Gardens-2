@@ -16,15 +16,9 @@ public class tilebehavior : MonoBehaviour
       is_empty = true;
     }
 
-    void Start()
+    public void Set_Sprite(Sprite s)
     {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+      gameObject.GetComponent<SpriteRenderer>().sprite = s;
     }
     //could've used a get/set property but u live and learn baby
     public bool Is_Empty()
@@ -62,7 +56,7 @@ public class tilebehavior : MonoBehaviour
 
     public GameObject Remove_From_Tile()
     {
-      //doing this to save probably 0.02 ms or less on the null case :)
+
       if(is_empty) return null;
 
       var obj = contains;

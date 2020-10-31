@@ -36,7 +36,6 @@ public partial class earlbrain : MonoBehaviour
     private float health = 100f;
     private float attitude = 100f;
     private float metabolism = 0.8f;
-    private bool is_running = false;
     private Item target;
     /* *** NOTES ***
     earls are smart and stupid. figure it outs
@@ -57,7 +56,7 @@ public partial class earlbrain : MonoBehaviour
       act_timer = 0.0f;
       //lower speed = faster
       speed = 0.8f;
-
+      gameObject.name = "EARL";
     }
 
     // Update is called once per frame
@@ -131,7 +130,6 @@ public partial class earlbrain : MonoBehaviour
       Vector3 tile_pos = target.grid_pos;
       Food food_item = (Food)Itemmanager.GetComponent<itemmanager>().items_on_grid[(int)tile_pos.x,(int)tile_pos.y];
 
-      Debug.Log(food_item);
       Dictionary<string,int> gains = food_item.Become_Eaten();
 
 

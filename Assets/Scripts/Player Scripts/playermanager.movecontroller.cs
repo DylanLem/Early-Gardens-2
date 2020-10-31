@@ -39,6 +39,7 @@ public partial class playermanager : MonoBehaviour
          {
            //if we can push the earl, move!
            if(Push_Earl(earl,direction)) goto ContinueMove;
+           return false;
          }
       }
 

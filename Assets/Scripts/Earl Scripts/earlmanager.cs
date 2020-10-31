@@ -30,7 +30,8 @@ public class earlmanager : MonoBehaviour
   private List<string> mouth_database = new List<string>()
     {
       "earl_mouth_0","earl_mouth_1","earl_mouth_2","earl_mouth_3",
-      "earl_mouth_4", "earl_mouth_5", "earl_mouth_6"
+      "earl_mouth_4", /*"earl_mouth_5",*/ "earl_mouth_6", "earl_mouth_7",
+      "earl_mouth_8", "Special Mouths/mouth_handlebar", "Special Mouths/mouth_stache"
     };
   private List<string> fur_database = new List<string>()
     {
@@ -57,7 +58,6 @@ public class earlmanager : MonoBehaviour
 
     private void Check_Earl_Eggs()
     {
-      Earl_Egg current_egg = null;
 
       foreach(Earl_Egg egg in egg_list)
       {
@@ -66,9 +66,7 @@ public class earlmanager : MonoBehaviour
         if(egg.birth_ready)
         {
           Birth_Earl(egg, egg.color);
-          Destroy(egg.phys_rep);
-          egg_list.Remove(egg);
-          egg.Delete();
+
           return;
         }
 
@@ -83,6 +81,9 @@ public class earlmanager : MonoBehaviour
       GameObject birth_square = Gridmanager.GetComponent<gridmanager>().Get_Tile(egg.grid_pos);
       if (birth_square == null) return;
 
+      Destroy(egg.phys_rep);
+      egg_list.Remove(egg);
+      egg.Delete();
 
       var new_earl = Instantiate(Earl, birth_square.transform.position, Quaternion.identity);
       new_earl.GetComponent<SpriteRenderer>().color = color;
@@ -100,6 +101,7 @@ public class earlmanager : MonoBehaviour
       new_earl.GetComponent<earlbrain>().Set_Grid_Pos(birth_square.GetComponent<tilebehavior>().grid_pos);
       Gridmanager.GetComponent<gridmanager>().Update_Square(birth_square.GetComponent<tilebehavior>().Get_Grid_Pos(),"add", new_earl);
 
+      Debug.Log(new_earl.GetComponent<earlbrain>().mouth.GetComponent<SpriteRenderer>().sprite);
       earl_list.Add(new_earl);
     }
 
