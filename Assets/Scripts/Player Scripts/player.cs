@@ -33,6 +33,8 @@ public partial class player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+      //The only reason we dont check for this in playermanager
+      //is cause i fucked it with the keyboard event system :(
       if(Input.GetKeyDown(KeyCode.Tab))
       {
         Cycle_Item();
@@ -84,5 +86,25 @@ public partial class player : MonoBehaviour
       Send_Inv_Data();
 
       return true;
+    }
+
+
+    public Dictionary<string,dynamic> Pack_Data()
+    {
+      Dictionary<string,dynamic> player_data = new Dictionary<string,dynamic>();
+
+      List<dynamic> inv_data = new List<dynamic>();
+
+      for(int i = 0; i < inventory.GetLength(0); i++)
+        for(int j = 0; j < inventory.GetLength(1); j++)
+          {
+            if(inventory[i,j] != null)
+              inv_data.Add(inventory[i,j].Pack_Data());
+
+            else
+              inv_data.Add(null);
+          }
+
+      return player_data;
     }
 }

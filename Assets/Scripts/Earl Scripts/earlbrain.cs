@@ -16,6 +16,7 @@ public partial class earlbrain : MonoBehaviour
     private GameObject Itemmanager;
 
     private Moods mood;
+
     public enum Moods
     {
       Idle,
@@ -54,8 +55,8 @@ public partial class earlbrain : MonoBehaviour
 
       mood = Moods.Idle;
       act_timer = 0.0f;
-      //lower speed = faster
       speed = 0.8f;
+
       gameObject.name = "EARL";
     }
 
@@ -136,20 +137,9 @@ public partial class earlbrain : MonoBehaviour
 
     }
 
-    private void Display_Earl_Data()
+    public Dictionary<string,dynamic> Pack_Earl_Data()
     {
-      string attitude_text = "null";
 
-      switch(attitude)
-      {
-        case 100f:
-          attitude_text = "Happy";
-          break;
-
-        case float n when n < 100f:
-          attitude_text = "pissed";
-          break;
-      }
 
       Dictionary<string,dynamic> earl_data = new Dictionary<string,dynamic>()
       {
@@ -158,15 +148,36 @@ public partial class earlbrain : MonoBehaviour
 
         {"name" , name},
         {"health" , ((int)health).ToString()},
-        {"mood", attitude_text},
+        {"mood", "Pissed"},
         {"satiety", ((int)satiety).ToString()},
+        {"grid_pos", grid_pos},
+        {"speed", speed.ToString()},
+
         {"sprite", GetComponent<SpriteRenderer>().sprite},
         {"eyes", eyes.GetComponent<SpriteRenderer>().sprite},
         {"mouth", mouth.GetComponent<SpriteRenderer>().sprite},
         {"color", GetComponent<SpriteRenderer>().color}
       };
 
-      GameObject.Find("Earl Display").GetComponent<earldisplay>().Display_Info(earl_data);
+      return earl_data;
+    }
+
+    public void Load_Earl_Data(Dictionary<string,dynamic> earl_data)
+    {
+
+      Update_Name(earl_data["name"]);
+      Set_Eyes(earl_data["eyes"]);
+      Set_Mouth(earl_data["mouth"]);
+      Set_Fur(earl_data["sprite"]);
+
+      satiety = (int)earl_data["satiety"];
+      health = (int)earl_data["health"];
+      grid_pos = earl_data["grid_pos"];
+    }
+
+    public void Display_Earl_Data()
+    {
+      GameObject.Find("Earl Display").GetComponent<earldisplay>().Display_Info(Pack_Earl_Data());
     }
 
     public void Update_Name(string input)

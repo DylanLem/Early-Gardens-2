@@ -48,12 +48,6 @@ public class earldisplay : MonoBehaviour
       Clear_Info();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
 
     public void Display_Info(Dictionary<string,dynamic> earl_data)
     {
