@@ -163,6 +163,30 @@ public class itemmanager : MonoBehaviour
       return true;
     }
 
+    public bool Load_On_Level(Dictionary<string,dynamic> item_data)
+    {
+      Item item = item_database.Get_Item(item_data["id"]);
+
+      item.Load_Data(item_data);
+
+      GameObject target_tile = gridmanager.GetComponent<gridmanager>().Get_Tile(item.grid_pos);
+
+      Spawn_On_Tile(item,target_tile);
+
+      return true;
+    }
+
+    public bool Load_To_Inventory(Dictionary<string,dynamic> item_data)
+    {
+      Item item = item_database.Get_Item(item_data["id"]);
+
+      item.Load_Data(item_data);
+
+      Add_To_Inventory(item);
+
+      return true;
+    }
+
     public List<Item> Find_Items_By_Tag(string t)
     {
 

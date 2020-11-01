@@ -93,6 +93,28 @@ public abstract class Item
     phys_rep.GetComponent<SpriteRenderer>().sortingOrder = 3;
   }
 
+  public virtual Dictionary<string,dynamic> Pack_Data()
+  {
+    Dictionary<string,dynamic> item_data = new Dictionary<string,dynamic>()
+    {
+      {"id", id},
+      {"count", count},
+      {"current_sprite", current_sprite},
+      {"grid_pos", new int[3]{(int)grid_pos.x,(int)grid_pos.y,(int)grid_pos.z}},
+      {"inv_pos", new int[3]{(int)inv_pos.x,(int)inv_pos.y,(int)inv_pos.z}}
+    };
 
+    return item_data;
+  }
+
+  public void Load_Data(Dictionary<string,dynamic> item_data)
+  {
+    count = item_data["count"];
+    current_sprite = item_data["current_sprite"];
+    grid_pos = new Vector3(item_data["grid_pos"][0],item_data["grid_pos"][1],item_data["grid_pos"][2]);
+    inv_pos = new Vector3(item_data["inv_pos"][0],item_data["inv_pos"][1],item_data["inv_pos"][2]);
+
+    Update_Sprite(sprites[current_sprite]);
+  }
 
 }

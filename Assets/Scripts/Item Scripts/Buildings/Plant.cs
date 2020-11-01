@@ -60,14 +60,13 @@ public class Plant : Building
 
   public override void Update()
   {
-    
+
     if(neighbours == null)
     {
       Set_Neighbours();
       //Set_Dirt_Tile();
     }
 
-    Debug.Log("Hye");
     if (life_stage < growth_stages)
     {
 
