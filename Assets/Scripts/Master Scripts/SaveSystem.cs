@@ -48,7 +48,8 @@ public static class SaveSystem
   {
     BinaryFormatter formatter = new BinaryFormatter();
 
-    string path = Application.persistentDataPath + "/save.earl";
+    string path = Application.persistentDataPath + "/" + earl.GetComponent<earlbrain>().name +
+     "_save.earl";
 
     FileStream stream = new FileStream(path, FileMode.Create);
 
@@ -59,12 +60,44 @@ public static class SaveSystem
     stream.Close();
   }
 
+  public static List<dynamic> Load_Earls()
+  {
+    DirectoryInfo savedir = new DirectoryInfo(Application.persistentDataPath + "/");
+
+    FileInfo[] paths = savedir.GetFiles("*" + "_save.earl");
+
+    List<dynamic> earls_data = new List<dynamic>();
+
+    Debug.Log(paths.Length);
+
+    foreach(FileInfo path in paths)
+    {
+      string f = path.FullName;
+      Debug.Log(f);
+      if (File.Exists(f))
+        {
+          BinaryFormatter formatter = new BinaryFormatter();
+
+          FileStream stream = new FileStream(f, FileMode.Open);
+
+          var data = formatter.Deserialize(stream) as Dictionary<string,dynamic>;
+
+          stream.Close();
+
+          earls_data.Add(data);
+
+        }
+    }
+
+    return earls_data;
+  }
+
   public static void Save_Level_Grid(GameObject gridmanager)
   {
     BinaryFormatter formatter = new BinaryFormatter();
 
     string path = Application.persistentDataPath + "/" +
-     gridmanager.GetComponent<gridmanager>().grid_name + "save.level";
+     gridmanager.GetComponent<gridmanager>().grid_name + "_save.level";
 
     FileStream stream = new FileStream(path, FileMode.Create);
 
@@ -75,10 +108,10 @@ public static class SaveSystem
     stream.Close();
   }
 
-  public static Dictionary<string,dynamic> Load_Level_Grid(GameObject grid_target)
+  public static void Load_Level_Grid(GameObject grid_target)
   {
     string path = Application.persistentDataPath + "/" +
-     grid_target.GetComponent<gridmanager>().grid_name + "save.level";
+     grid_target.GetComponent<gridmanager>().grid_name + "_save.level";
 
     if (File.Exists(path))
     {
@@ -93,7 +126,6 @@ public static class SaveSystem
       stream.Close();
     }
 
-    return null;
   }
 
 }

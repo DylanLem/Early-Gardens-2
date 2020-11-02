@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7279800904878592532}
   m_Layer: 0
   m_Name: Earl Manager
-  m_TagString: Untagged
+  m_TagString: Earl Manager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -45,6 +45,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Gridmanager: {fileID: 0}
   Earl: {fileID: 4690589798623711505, guid: 310e04ea751ed77488938024845c8dd4, type: 3}
+  Earl_Eyes: {fileID: 0}
+  Earl_Mouth: {fileID: 0}
   max_earls: 0
   earl_count: 0
   grid_pos: {x: 0, y: 0, z: 0}

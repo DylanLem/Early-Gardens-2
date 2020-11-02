@@ -40,16 +40,23 @@ public class LevelController : MonoBehaviour
       {
         SaveSystem.Save_Level_Grid(Gridmanager);
         SaveSystem.Save_Player(Player);
+        Earlmanager.GetComponent<earlmanager>().Save_Earls();
         SceneManager.LoadScene("Gardens");
+
         SaveSystem.Load_Level_Grid(Gridmanager);
+
+        
       }
 
       if(Input.GetKeyDown(KeyCode.Alpha2) && SceneManager.GetActiveScene().name != "Marketplace")
       {
         SaveSystem.Save_Level_Grid(Gridmanager);
         SaveSystem.Save_Player(Player);
+        Earlmanager.GetComponent<earlmanager>().Save_Earls();
         SceneManager.LoadScene("Marketplace");
         SaveSystem.Load_Level_Grid(Gridmanager);
+
+
 
       }
     }

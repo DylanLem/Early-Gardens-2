@@ -46,8 +46,21 @@ public class earlmanager : MonoBehaviour
 
       max_earls = 0;
 
+      Load_Earls();
+
     }
 
+  private List<string> name_prefixes = new List<string>()
+  {
+    "stron", "umpl", "graan" , "anapa", "chiggi", "rondo", "groml",
+    "stans", "hibi", "wert", "stan", "gooog", "totot", "scrib", "nond"
+  };
+
+  private List<string> name_suffixes = new List<string>()
+  {
+    "esken", "arl", "stobby", "ly", "ooooooo", "ibum", "crek", "onk",
+    "'o", "bibi", "art", "vo", "lee", "pe", "iipi", "wert", "nem"
+  };
 
     // Update is called once per frame
     void Update()
@@ -55,6 +68,19 @@ public class earlmanager : MonoBehaviour
       Check_Earl_Eggs();
 
         Update_Earl_Pos_List();
+    }
+
+    public bool Set_Earl_Name(GameObject earl, string input_name)
+    {
+      foreach(GameObject e in earl_list)
+      {
+        if(e.GetComponent<earlbrain>().name == input_name)
+          return false;
+      }
+
+      earl.GetComponent<earlbrain>().Update_Name(input_name);
+
+      return true;
     }
 
     private void Check_Earl_Eggs()
@@ -89,7 +115,17 @@ public class earlmanager : MonoBehaviour
       var new_earl = Instantiate(Earl, birth_square.transform.position, Quaternion.identity);
       new_earl.GetComponent<SpriteRenderer>().color = color;
 
-      //Attach the face
+
+      string new_name = name_prefixes[UnityEngine.Random.Range(0,name_prefixes.Count)] +
+       name_suffixes[UnityEngine.Random.Range(0,name_suffixes.Count)];
+
+      while(! Set_Earl_Name(new_earl, new_name))
+      {
+        continue;
+      }
+
+      Debug.Log(new_name);
+            //Attach the face
       new_earl.GetComponent<earlbrain>().eyes = Instantiate(Earl_Eyes,new_earl.transform);
       new_earl.GetComponent<earlbrain>().mouth = Instantiate(Earl_Mouth,new_earl.transform);
       new_earl.GetComponent<earlbrain>().eyes.transform.position = new_earl.transform.position;
@@ -109,8 +145,7 @@ public class earlmanager : MonoBehaviour
     private void Load_Earl(Dictionary<string,dynamic> earl_data)
     {
 
-
-      GameObject target_square = Gridmanager.GetComponent<gridmanager>().Get_Tile(earl_data["grid_pos"]);
+      GameObject target_square = Gridmanager.GetComponent<gridmanager>().Find_Empty_Square();
       if (target_square == null || ! target_square.GetComponent<tilebehavior>().Is_Empty()) return;
 
       earl_count += 1;
@@ -129,6 +164,7 @@ public class earlmanager : MonoBehaviour
       new_earl.GetComponent<earlbrain>().Load_Data(earl_data);
 
 
+      new_earl.GetComponent<earlbrain>().Set_Grid_Pos(target_square.GetComponent<tilebehavior>().grid_pos);
       Gridmanager.GetComponent<gridmanager>().Update_Square(target_square.GetComponent<tilebehavior>().Get_Grid_Pos(),"add", new_earl);
 
       earl_list.Add(new_earl);
@@ -136,7 +172,20 @@ public class earlmanager : MonoBehaviour
 
     public void Save_Earls()
     {
+      foreach(GameObject earl in earl_list)
+      {
+        SaveSystem.Save_Earl(earl);
+      }
+    }
 
+    public void Load_Earls()
+    {
+      List<dynamic> earls_data = SaveSystem.Load_Earls();
+
+      foreach(Dictionary<string,dynamic> earl_data in earls_data)
+      {
+        Load_Earl(earl_data);
+      }
     }
 
     private void Update_Earl_Pos_List()

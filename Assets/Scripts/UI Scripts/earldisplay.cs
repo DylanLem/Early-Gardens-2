@@ -68,14 +68,14 @@ public class earldisplay : MonoBehaviour
 
       tEarl_name.text = earl_data["name"];
       tEarl_mood.text = "Current Mood: " + "\n" + earl_data["mood"];
-      tEarl_health.text = "Health: " + earl_data["health"];
-      tEarl_satiety.text = "satiety: " + earl_data["satiety"];
+      tEarl_health.text = "Health: " + (int)earl_data["health"];
+      tEarl_satiety.text = "satiety: " + (int)earl_data["satiety"];
 
-      bod_rep.GetComponent<SpriteRenderer>().sprite = earl_data["sprite"];
-      eyes_rep.GetComponent<SpriteRenderer>().sprite = earl_data["eyes"];
-      mouth_rep.GetComponent<SpriteRenderer>().sprite = earl_data["mouth"];
+      bod_rep.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Earls/Fur/" + earl_data["sprite"]);
+      eyes_rep.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Earls/Eyes/" + earl_data["eyes"]);
+      mouth_rep.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Earls/Mouths/" + earl_data["mouth"]);
 
-      bod_rep.GetComponent<SpriteRenderer>().color = earl_data["color"];
+      bod_rep.GetComponent<SpriteRenderer>().color = new Color(earl_data["color"][0],earl_data["color"][1],earl_data["color"][2]);
     }
 
     public void Clear_Info()

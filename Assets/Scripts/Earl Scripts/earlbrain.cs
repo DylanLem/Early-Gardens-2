@@ -57,7 +57,6 @@ public partial class earlbrain : MonoBehaviour
       act_timer = 0.0f;
       speed = 0.8f;
 
-      gameObject.name = "EARL";
     }
 
     // Update is called once per frame
@@ -147,16 +146,16 @@ public partial class earlbrain : MonoBehaviour
         // if any EARLs ask tell them its for a family tree.
 
         {"name" , name},
-        {"health" , ((int)health).ToString()},
+        {"health" , health},
         {"mood", "Pissed"},
-        {"satiety", ((int)satiety).ToString()},
-        {"grid_pos", grid_pos},
+        {"satiety", satiety},
+        {"grid_pos", new int[3]{(int)grid_pos.x,(int)grid_pos.y,(int)grid_pos.z}},
         {"speed", speed.ToString()},
 
-        {"sprite", GetComponent<SpriteRenderer>().sprite},
-        {"eyes", eyes.GetComponent<SpriteRenderer>().sprite},
-        {"mouth", mouth.GetComponent<SpriteRenderer>().sprite},
-        {"color", GetComponent<SpriteRenderer>().color}
+        {"sprite", GetComponent<SpriteRenderer>().sprite.name},
+        {"eyes", eyes.GetComponent<SpriteRenderer>().sprite.name},
+        {"mouth", mouth.GetComponent<SpriteRenderer>().sprite.name},
+        {"color", new float[3]{(float)GetComponent<SpriteRenderer>().color.r,(float)GetComponent<SpriteRenderer>().color.g,(float)GetComponent<SpriteRenderer>().color.b}}
       };
 
       return earl_data;
@@ -169,11 +168,10 @@ public partial class earlbrain : MonoBehaviour
       Set_Eyes(earl_data["eyes"]);
       Set_Mouth(earl_data["mouth"]);
       Set_Fur(earl_data["sprite"]);
-      GetComponent<SpriteRenderer>().color = earl_data["color"];
+      GetComponent<SpriteRenderer>().color = new Color(earl_data["color"][0],earl_data["color"][1],earl_data["color"][2]);
 
-      satiety = (int)earl_data["satiety"];
-      health = (int)earl_data["health"];
-      grid_pos = earl_data["grid_pos"];
+      satiety = earl_data["satiety"];
+      health = earl_data["health"];
     }
 
     public void Display_Earl_Data()
@@ -185,6 +183,8 @@ public partial class earlbrain : MonoBehaviour
     {
       name = input;
     }
+
+
 
     public void Set_Eyes(string eye_sprite)
     {
