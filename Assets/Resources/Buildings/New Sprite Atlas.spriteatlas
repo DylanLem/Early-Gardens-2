@@ -32,68 +32,38 @@ SpriteAtlas:
     packables:
     - {fileID: 2800000, guid: a5550762eb0f0b4489b3b8206aa86cbe, type: 3}
     - {fileID: 102900000, guid: c900428ad0e58764da5b0fd2f385d0f1, type: 3}
-    totalSpriteSurfaceArea: 30720
+    totalSpriteSurfaceArea: 15360
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
-  - {fileID: 21300000, guid: 4ca0a020bf3526a419c1d151073811c1, type: 3}
   - {fileID: 21300000, guid: d6e2c4e04f343f249ab69b866ed87038, type: 3}
-  - {fileID: 21300000, guid: f358eb51143e8e0459f1348b53d99857, type: 3}
-  - {fileID: 21300000, guid: 26bab4f1e21451c49af70dc37fa2ae89, type: 3}
   - {fileID: 21300000, guid: a5550762eb0f0b4489b3b8206aa86cbe, type: 3}
   - {fileID: 21300000, guid: 462145826d75d6c4eab233896b3eb43f, type: 3}
-  - {fileID: 21300000, guid: ac249fd2132b55545aac427ad05bfc1a, type: 3}
-  - {fileID: 21300000, guid: 4057abf231856c849b3d6ac878d2ab6a, type: 3}
-  - {fileID: 21300000, guid: aedea8440719ea349b6790a7ad277a96, type: 3}
-  - {fileID: 21300000, guid: 15e5d2550f7c97a4bb56d0be75ca0a06, type: 3}
   - {fileID: 21300000, guid: 5e27db962be07e345b63a2e556910a7d, type: 3}
   - {fileID: 21300000, guid: 25fb0bb8a18243d4db52267d85221dee, type: 3}
   - {fileID: 21300000, guid: 4e6fa9995be463e49900f0e57030cc2f, type: 3}
   - {fileID: 21300000, guid: 8f81a8b9d38c68443ad583d62684e493, type: 3}
   - {fileID: 21300000, guid: 5d29fa3aca0b5884f9fa180e24db840b, type: 3}
-  - {fileID: 21300000, guid: e950717a1f255074888c5dd19838cdf1, type: 3}
-  - {fileID: 21300000, guid: ce143caa7de9d784a8bd1a0f18caa587, type: 3}
-  - {fileID: 21300000, guid: 9b6d96fa1978a8e4fbf52843b36a48ff, type: 3}
   - {fileID: 21300000, guid: cb68916d374438d4885e49b1cd89df8e, type: 3}
-  - {fileID: 21300000, guid: b0b1e26d86b8f6a4aa53938b01cd752f, type: 3}
-  - {fileID: 21300000, guid: 5278f6bd6704d6344bd02c29db245eaf, type: 3}
-  - {fileID: 21300000, guid: 01b0290ea3dfc754a9950f807995a2b7, type: 3}
   - {fileID: 21300000, guid: 4f56071e67160be4d85175774aa79167, type: 3}
-  - {fileID: 21300000, guid: eb119d8eb09c58b43af100288a5dba9a, type: 3}
-  - {fileID: 21300000, guid: 1f27e9be235e1db4d917a3d08f07d422, type: 3}
   - {fileID: 21300000, guid: 837ae4de5e7f7104a90b615c1a405d09, type: 3}
   - {fileID: 21300000, guid: f442aa0f5f5ca3245814f95323ec3842, type: 3}
   - {fileID: 21300000, guid: a7c06b6fa0e19934ab8cf41449cf4e65, type: 3}
   - {fileID: 21300000, guid: 2fc79f9f3b887664f82a046963d49ef7, type: 3}
   - {fileID: 21300000, guid: 161132bf88a711d4cbd40c5b9e4b0289, type: 3}
   m_PackedSpriteNamesToIndex:
-  - fence_up
   - cardboardbox
-  - fence_horizontal
-  - fence_middle_top
   - bed_earl
   - bed_person
-  - fence_corner_top
-  - fence_vert_post_bottom
-  - fence_middle_side
-  - fence_vert_post_top
   - tree_2
   - tree_0
   - viny_plant_0
   - cardboardbox_overlay
   - some_plant
-  - fence_side
-  - fence_vertical
-  - fence_gate_horizontal
   - tree_1
-  - fence_middle_bottom
-  - fence_middle
-  - fence_corner_bottom
   - mirror_base
-  - fence_down
-  - fence_post
   - brick
   - mirror_overlay
   - dinnerplate

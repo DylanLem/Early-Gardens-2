@@ -16,6 +16,7 @@ TagManager:
   - Building
   - Plant
   - Wall
+  - Level Controller
   layers:
   - Default
   - TransparentFX

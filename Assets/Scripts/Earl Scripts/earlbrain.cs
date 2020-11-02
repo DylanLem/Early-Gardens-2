@@ -162,13 +162,14 @@ public partial class earlbrain : MonoBehaviour
       return earl_data;
     }
 
-    public void Load_Earl_Data(Dictionary<string,dynamic> earl_data)
+    public void Load_Data(Dictionary<string,dynamic> earl_data)
     {
 
       Update_Name(earl_data["name"]);
       Set_Eyes(earl_data["eyes"]);
       Set_Mouth(earl_data["mouth"]);
       Set_Fur(earl_data["sprite"]);
+      GetComponent<SpriteRenderer>().color = earl_data["color"];
 
       satiety = (int)earl_data["satiety"];
       health = (int)earl_data["health"];

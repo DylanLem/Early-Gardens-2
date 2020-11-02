@@ -39,13 +39,13 @@ public partial class playermanager : MonoBehaviour
     {
         {ContextActions.Grab, KeyCode.G},
         {ContextActions.Throw, KeyCode.T},
-        {ContextActions.Build, KeyCode.B}        
+        {ContextActions.Build, KeyCode.B}
     };
 
 
     void Start()
     {
-
+      Itemmanager =GameObject.FindWithTag("Item Manager");
       Gridmanager = GameObject.FindWithTag("Grid");
       Earlmanager = GameObject.Find("Earl Manager");
       camera_offset = new Vector3(0,0);
@@ -69,6 +69,8 @@ public partial class playermanager : MonoBehaviour
     {
       GameObject spawn_square = GameObject.FindWithTag("Grid").GetComponent<gridmanager>().Find_Empty_Square();
       Player = Instantiate(Player, spawn_square.transform.position, Quaternion.identity);
+
+      GameObject.FindWithTag("Level Controller").GetComponent<LevelController>().Set_Player(Player);
 
       grid_pos = spawn_square.GetComponent<tilebehavior>().Get_Grid_Pos();
 

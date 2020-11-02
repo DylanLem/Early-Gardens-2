@@ -18,12 +18,17 @@ public abstract class Food: Item
     //returns a dictionary of things/status effects the earl grants.
     //handling sprite stuff and logic
     if(current_sprite < sprites.GetLength(0) - 1)
+    {
       Update_Sprite(sprites[current_sprite + 1]);
+      current_sprite += 1;
+    }
     else
       Delete();
 
     return gains;
 
   }
+
+
 
 }

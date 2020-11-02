@@ -5,6 +5,8 @@ using UnityEngine;
 public class gridmanager : MonoBehaviour
 
 {
+  [SerializeField] public string grid_name;
+
   public GameObject Tile;
   public Item[,] item_grid;
   public Sprite tile_sprite;
@@ -22,6 +24,7 @@ public class gridmanager : MonoBehaviour
   // e.g. Place_Object(new Vector3(grid_pos.x + anchor_x, grid_pos.y + anchor_y))
   int anchor_x, anchor_y;
 
+  private GameObject Itemmanager;
 
     void Awake()
     {
@@ -33,6 +36,9 @@ public class gridmanager : MonoBehaviour
       anchor_y = (int)-(vertical/2);
 
       Populate_Grid();
+
+      GameObject.FindWithTag("Level Controller").GetComponent<LevelController>().Set_Grid(gameObject);
+      Itemmanager = GameObject.FindWithTag("Item Manager");
     }
       // Start is called before the first frame update
     void Start()
@@ -149,5 +155,29 @@ public class gridmanager : MonoBehaviour
       return grid[x,y];
     }
 
+    public List<dynamic> Pack_Level_Data()
+    {
+      List<dynamic> grid_data = new List<dynamic>();
+
+      item_grid = Itemmanager.GetComponent<itemmanager>().items_on_grid;
+
+      for(int i = 0; i < item_grid.GetLength(0); i++)
+        for(int j = 0; j < item_grid.GetLength(1); j++)
+          {
+            if(item_grid[i,j] != null)
+              grid_data.Add(item_grid[i,j].Pack_Data());
+          }
+
+      return grid_data;
+    }
+
+    public void Load_Level(List<dynamic> grid_data)
+    {
+
+      foreach(Dictionary<string,dynamic> item in grid_data)
+      {
+        Itemmanager.GetComponent<itemmanager>().Load_On_Level(item);
+      }
+    }
 
 }

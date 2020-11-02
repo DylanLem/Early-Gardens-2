@@ -50,7 +50,6 @@ public abstract class Item
   public void Update_Sprite(Sprite s)
   {
     phys_rep.GetComponent<SpriteRenderer>().sprite = s;
-    current_sprite += 1;
   }
 
 
@@ -101,16 +100,19 @@ public abstract class Item
       {"count", count},
       {"current_sprite", current_sprite},
       {"grid_pos", new int[3]{(int)grid_pos.x,(int)grid_pos.y,(int)grid_pos.z}},
-      {"inv_pos", new int[3]{(int)inv_pos.x,(int)inv_pos.y,(int)inv_pos.z}}
+      {"inv_pos", new int[3]{(int)inv_pos.x,(int)inv_pos.y,(int)inv_pos.z}},
+      {"color", new float[3]{(float)phys_rep.GetComponent<SpriteRenderer>().color.r,(float)phys_rep.GetComponent<SpriteRenderer>().color.g,(float)phys_rep.GetComponent<SpriteRenderer>().color.b}}
     };
 
     return item_data;
   }
 
-  public void Load_Data(Dictionary<string,dynamic> item_data)
+  public virtual void Load_Data(Dictionary<string,dynamic> item_data)
   {
     count = item_data["count"];
     current_sprite = item_data["current_sprite"];
+    phys_rep.GetComponent<SpriteRenderer>().color = new Color(item_data["color"][0],item_data["color"][1],item_data["color"][2]);
+
     grid_pos = new Vector3(item_data["grid_pos"][0],item_data["grid_pos"][1],item_data["grid_pos"][2]);
     inv_pos = new Vector3(item_data["inv_pos"][0],item_data["inv_pos"][1],item_data["inv_pos"][2]);
 

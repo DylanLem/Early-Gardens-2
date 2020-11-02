@@ -16,7 +16,10 @@ public class itemmanager : MonoBehaviour
 
     void Awake()
     {
-        item_database = new Itemdatabase();
+        item_database = GameObject.FindWithTag("Level Controller").GetComponent<LevelController>().itemDatabase;
+        gridmanager = GameObject.FindWithTag("Grid");
+
+
     }
 
     void Start()
@@ -24,10 +27,12 @@ public class itemmanager : MonoBehaviour
       gridmanager = GameObject.FindWithTag("Grid");
       //Setting the reference from here so we don't get a null reference error
       gridmanager.GetComponent<gridmanager>().item_grid = items_on_grid;
-
-      GameObject.FindWithTag("Player Manager").GetComponent<playermanager>().Itemmanager = gameObject;
       grid = gridmanager.GetComponent<gridmanager>().grid;
       items_on_grid = new Item[grid.GetLength(0),grid.GetLength(1)];
+
+
+
+      SaveSystem.Load_Level_Grid(gridmanager);
 
     }
     // Update is called once per frame
@@ -165,9 +170,16 @@ public class itemmanager : MonoBehaviour
 
     public bool Load_On_Level(Dictionary<string,dynamic> item_data)
     {
+
+
       Item item = item_database.Get_Item(item_data["id"]);
 
       item.Load_Data(item_data);
+
+      Debug.Log(item.grid_pos);
+
+      Debug.Log(gridmanager.name);
+      Debug.Log(items_on_grid);
 
       GameObject target_tile = gridmanager.GetComponent<gridmanager>().Get_Tile(item.grid_pos);
 
@@ -178,10 +190,11 @@ public class itemmanager : MonoBehaviour
 
     public bool Load_To_Inventory(Dictionary<string,dynamic> item_data)
     {
+      if(item_data == null) return false;
+
       Item item = item_database.Get_Item(item_data["id"]);
 
       item.Load_Data(item_data);
-
       Add_To_Inventory(item);
 
       return true;

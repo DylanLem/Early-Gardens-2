@@ -6,11 +6,13 @@ using UnityEngine;
 
 public class Itemdatabase
 {
-  List<Type> item_database;
+  public List<Type> item_database;
+  public int name;
 
   public Itemdatabase()
   {
     Build_Database();
+    name = UnityEngine.Random.Range(0,10);
   }
 
 

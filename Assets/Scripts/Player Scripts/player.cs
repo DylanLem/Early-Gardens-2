@@ -22,12 +22,16 @@ public partial class player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+
         held_index = Vector3.zero;
-        Itemmanager = Instantiate(Itemmanager);
+        Itemmanager = GameObject.FindWithTag("Item Manager");
 
         InventoryDisplay = GameObject.FindWithTag("Inventory Display");
         InventoryDisplay.GetComponent<inventory_display>().inventory = inventory;
         Send_Inv_Data();
+
+        SaveSystem.Load_Player(gameObject);
     }
 
     // Update is called once per frame
@@ -100,11 +104,24 @@ public partial class player : MonoBehaviour
           {
             if(inventory[i,j] != null)
               inv_data.Add(inventory[i,j].Pack_Data());
-
-            else
-              inv_data.Add(null);
           }
 
+      player_data["inv_data"] = inv_data;
+
+      if(carried_object != null)
+        player_data["carried_object"] = carried_object.Pack_Data();
+      else
+        player_data["carried_object"] = null;
+
       return player_data;
+    }
+
+    public void Load_Data(Dictionary<string,dynamic> player_data)
+    {
+      foreach(Dictionary<string,dynamic> item_data in player_data["inv_data"])
+      {
+        Itemmanager.GetComponent<itemmanager>().Load_To_Inventory(item_data);
+      }
+      Itemmanager.GetComponent<itemmanager>().Load_To_Inventory(player_data["carried_object"]);
     }
 }

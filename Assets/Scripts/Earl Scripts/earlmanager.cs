@@ -42,6 +42,7 @@ public class earlmanager : MonoBehaviour
     void Start()
     {
       Gridmanager = GameObject.FindWithTag("Grid");
+      GameObject.FindWithTag("Level Controller").GetComponent<LevelController>().Set_Earlmanager(gameObject);
 
       max_earls = 0;
 
@@ -105,6 +106,38 @@ public class earlmanager : MonoBehaviour
       earl_list.Add(new_earl);
     }
 
+    private void Load_Earl(Dictionary<string,dynamic> earl_data)
+    {
+
+
+      GameObject target_square = Gridmanager.GetComponent<gridmanager>().Get_Tile(earl_data["grid_pos"]);
+      if (target_square == null || ! target_square.GetComponent<tilebehavior>().Is_Empty()) return;
+
+      earl_count += 1;
+
+
+
+      var new_earl = Instantiate(Earl, target_square.transform.position, Quaternion.identity);
+
+
+      //Attach the face
+      new_earl.GetComponent<earlbrain>().eyes = Instantiate(Earl_Eyes,new_earl.transform);
+      new_earl.GetComponent<earlbrain>().mouth = Instantiate(Earl_Mouth,new_earl.transform);
+      new_earl.GetComponent<earlbrain>().eyes.transform.position = new_earl.transform.position;
+      new_earl.GetComponent<earlbrain>().mouth.transform.position = new_earl.transform.position;
+
+      new_earl.GetComponent<earlbrain>().Load_Data(earl_data);
+
+
+      Gridmanager.GetComponent<gridmanager>().Update_Square(target_square.GetComponent<tilebehavior>().Get_Grid_Pos(),"add", new_earl);
+
+      earl_list.Add(new_earl);
+    }
+
+    public void Save_Earls()
+    {
+
+    }
 
     private void Update_Earl_Pos_List()
     {
