@@ -1,3 +1,4 @@
+using System;
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -28,23 +29,24 @@ public class inventory_display : MonoBehaviour
       //our array of inventory slot game objects (slot gobs)
       GameObject[] slot_Gobs = GameObject.FindGameObjectsWithTag("Inventory Slot");
 
-      int slot_gob_counter = 0;
 
-      for(int j = 0; j < 4; j++)
-        for(int i = 0; i < 6; i++)
-        {
-          inventory_slots[i,j] = slot_Gobs[slot_gob_counter];
-
-          slot_Gobs[slot_gob_counter].GetComponent<inventory_slot>().inv_x = i;
-          slot_Gobs[slot_gob_counter].GetComponent<inventory_slot>().inv_y = j;
-
-          GameObject b_highlight = Instantiate(borderhighlight,inventory_slots[i,j].transform.parent);
-          b_highlight.transform.position = inventory_slots[i,j].transform.position;
-          b_highlight.transform.parent = inventory_slots[i,j].transform;
+      foreach(GameObject slot in slot_Gobs)
+      {
+        int x = (int)Char.GetNumericValue(slot.name[slot.name.Length -1]);
+        int y = (int)Char.GetNumericValue(slot.name[slot.name.Length -2]);
 
 
-          slot_gob_counter += 1;
-        }
+        inventory_slots[x,y] = slot;
+
+        slot.GetComponent<inventory_slot>().inv_x = x;
+        slot.GetComponent<inventory_slot>().inv_y = y;
+
+
+
+        GameObject b_highlight = Instantiate(borderhighlight,inventory_slots[x,y].transform.parent);
+        b_highlight.transform.position = inventory_slots[x,y].transform.position;
+        b_highlight.transform.parent = inventory_slots[x,y].transform;
+      }
     }
 
     public void Display_Inventory(Item[,] inventory)

@@ -74,7 +74,6 @@ public partial class player : MonoBehaviour
       else
         held_index.x += 1;
 
-
       InventoryDisplay.GetComponent<inventory_display>().inventory_slots[(int)held_index.x,(int)held_index.y].
       GetComponent<inventory_slot>().Highlight_Border();
     }

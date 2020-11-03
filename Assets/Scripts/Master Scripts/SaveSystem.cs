@@ -68,12 +68,12 @@ public static class SaveSystem
 
     List<dynamic> earls_data = new List<dynamic>();
 
-    Debug.Log(paths.Length);
+
 
     foreach(FileInfo path in paths)
     {
       string f = path.FullName;
-      Debug.Log(f);
+
       if (File.Exists(f))
         {
           BinaryFormatter formatter = new BinaryFormatter();

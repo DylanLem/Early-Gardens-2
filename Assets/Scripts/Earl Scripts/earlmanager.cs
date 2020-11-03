@@ -31,7 +31,7 @@ public class earlmanager : MonoBehaviour
     {
       "earl_mouth_0","earl_mouth_1","earl_mouth_2","earl_mouth_3",
       "earl_mouth_4", /*"earl_mouth_5",*/ "earl_mouth_6", "earl_mouth_7",
-      "earl_mouth_8", "Special Mouths/mouth_handlebar", "Special Mouths/mouth_stache"
+      "earl_mouth_8", "mouth_handlebar", "mouth_stache"
     };
   private List<string> fur_database = new List<string>()
     {
