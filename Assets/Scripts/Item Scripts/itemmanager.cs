@@ -176,10 +176,6 @@ public class itemmanager : MonoBehaviour
 
       item.Load_Data(item_data);
 
-      Debug.Log(item.grid_pos);
-
-      Debug.Log(gridmanager.name);
-      Debug.Log(items_on_grid);
 
       GameObject target_tile = gridmanager.GetComponent<gridmanager>().Get_Tile(item.grid_pos);
 
