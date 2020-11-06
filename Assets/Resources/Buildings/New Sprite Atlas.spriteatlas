@@ -39,16 +39,16 @@ SpriteAtlas:
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
   - {fileID: 21300000, guid: d6e2c4e04f343f249ab69b866ed87038, type: 3}
-  - {fileID: 21300000, guid: 711ecac106b6f2a47960d82ba9ed224b, type: 3}
-  - {fileID: 21300000, guid: 5d171422101ffd1478d532cd5f7be42b, type: 3}
   - {fileID: 21300000, guid: a5550762eb0f0b4489b3b8206aa86cbe, type: 3}
   - {fileID: 21300000, guid: 462145826d75d6c4eab233896b3eb43f, type: 3}
   - {fileID: 21300000, guid: 5e27db962be07e345b63a2e556910a7d, type: 3}
-  - {fileID: 21300000, guid: 35d946685f913d14daf56a77f9d4cf3e, type: 3}
+  - {fileID: 21300000, guid: 8afeec1723bcf8d41bcf351a045d702e, type: 3}
+  - {fileID: 21300000, guid: 06bec4b8bf5c26b4f934b0072d733284, type: 3}
   - {fileID: 21300000, guid: 25fb0bb8a18243d4db52267d85221dee, type: 3}
   - {fileID: 21300000, guid: 4e6fa9995be463e49900f0e57030cc2f, type: 3}
   - {fileID: 21300000, guid: 8f81a8b9d38c68443ad583d62684e493, type: 3}
   - {fileID: 21300000, guid: 5d29fa3aca0b5884f9fa180e24db840b, type: 3}
+  - {fileID: 21300000, guid: 1314ee1d16c5ea5428806e85903679c4, type: 3}
   - {fileID: 21300000, guid: cb68916d374438d4885e49b1cd89df8e, type: 3}
   - {fileID: 21300000, guid: 4f56071e67160be4d85175774aa79167, type: 3}
   - {fileID: 21300000, guid: 837ae4de5e7f7104a90b615c1a405d09, type: 3}
@@ -58,16 +58,16 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 161132bf88a711d4cbd40c5b9e4b0289, type: 3}
   m_PackedSpriteNamesToIndex:
   - cardboardbox
-  - chest_closed
-  - cage
   - bed_earl
   - bed_person
   - tree_2
   - chest_open
+  - cage
   - tree_0
   - viny_plant_0
   - cardboardbox_overlay
   - some_plant
+  - chest_closed
   - tree_1
   - mirror_base
   - brick
