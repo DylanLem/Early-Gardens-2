@@ -12,7 +12,7 @@ public class LevelController : MonoBehaviour
     private GameObject Earlmanager;
     private GameObject Player;
     public GameObject Gridmanager;
-    public bool on_startup = true;
+    public bool on_startup;
 
     public Button button_quit;
 
@@ -21,12 +21,11 @@ public class LevelController : MonoBehaviour
       button_quit = GameObject.Find("Quit").GetComponent<Button>();
       button_quit.onClick.AddListener(Save_And_Quit);
 
-
       itemDatabase = new Itemdatabase();
 
         if (Instance == null)
         {
-
+            on_startup = true;
             DontDestroyOnLoad(gameObject);
 
             Instance = this;
