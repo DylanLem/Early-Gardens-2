@@ -46,7 +46,6 @@ public abstract class Building : Item
     for(int row = (int)grid_pos.y - 1; row <= grid_pos.y + 1; row++)
       for(int column = (int)grid_pos.x - 1; column <= grid_pos.x + 1;  column++)
       {
-        Debug.Log("Hey");
         //skips the tile the building is on
         if(new Vector3(column,row) == grid_pos) continue;
 

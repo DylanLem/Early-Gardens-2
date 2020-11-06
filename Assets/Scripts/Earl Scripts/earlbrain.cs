@@ -30,6 +30,7 @@ public partial class earlbrain : MonoBehaviour
       Dying
     }
 
+    private string home_grid;
     private float act_timer;
     private float speed;
     private Color color;
@@ -56,6 +57,8 @@ public partial class earlbrain : MonoBehaviour
       mood = Moods.Idle;
       act_timer = 0.0f;
       speed = 0.8f;
+
+      home_grid = Gridmanager.name;
 
     }
 
@@ -155,7 +158,8 @@ public partial class earlbrain : MonoBehaviour
         {"sprite", GetComponent<SpriteRenderer>().sprite.name},
         {"eyes", eyes.GetComponent<SpriteRenderer>().sprite.name},
         {"mouth", mouth.GetComponent<SpriteRenderer>().sprite.name},
-        {"color", new float[3]{(float)GetComponent<SpriteRenderer>().color.r,(float)GetComponent<SpriteRenderer>().color.g,(float)GetComponent<SpriteRenderer>().color.b}}
+        {"color", new float[3]{(float)GetComponent<SpriteRenderer>().color.r,(float)GetComponent<SpriteRenderer>().color.g,(float)GetComponent<SpriteRenderer>().color.b}},
+        {"home_grid", home_grid}
       };
 
       return earl_data;
@@ -172,6 +176,7 @@ public partial class earlbrain : MonoBehaviour
 
       satiety = earl_data["satiety"];
       health = earl_data["health"];
+      home_grid = earl_data["home_grid"];
     }
 
     public void Display_Earl_Data()

@@ -46,7 +46,7 @@ public class earlmanager : MonoBehaviour
 
       max_earls = 0;
 
-      Load_Earls();
+      Load_Earls(Gridmanager.name);
 
     }
 
@@ -124,7 +124,6 @@ public class earlmanager : MonoBehaviour
         continue;
       }
 
-      Debug.Log(new_name);
             //Attach the face
       new_earl.GetComponent<earlbrain>().eyes = Instantiate(Earl_Eyes,new_earl.transform);
       new_earl.GetComponent<earlbrain>().mouth = Instantiate(Earl_Mouth,new_earl.transform);
@@ -138,8 +137,10 @@ public class earlmanager : MonoBehaviour
       new_earl.GetComponent<earlbrain>().Set_Grid_Pos(birth_square.GetComponent<tilebehavior>().grid_pos);
       Gridmanager.GetComponent<gridmanager>().Update_Square(birth_square.GetComponent<tilebehavior>().Get_Grid_Pos(),"add", new_earl);
 
-      Debug.Log(new_earl.GetComponent<earlbrain>().mouth.GetComponent<SpriteRenderer>().sprite);
+
       earl_list.Add(new_earl);
+
+      Save_Earls();
     }
 
     private void Load_Earl(Dictionary<string,dynamic> earl_data)
@@ -178,9 +179,9 @@ public class earlmanager : MonoBehaviour
       }
     }
 
-    public void Load_Earls()
+    public void Load_Earls(string earl_grid)
     {
-      List<dynamic> earls_data = SaveSystem.Load_Earls();
+      List<dynamic> earls_data = SaveSystem.Load_Earls(earl_grid);
 
       foreach(Dictionary<string,dynamic> earl_data in earls_data)
       {

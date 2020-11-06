@@ -60,13 +60,36 @@ public static class SaveSystem
     stream.Close();
   }
 
-  public static List<dynamic> Load_Earls()
+
+  public static Dictionary<string,dynamic> Load_Earl(string earl_name)
+  {
+
+    string path = Application.persistentDataPath + earl_name + "_save.earl";
+
+    if (File.Exists(path))
+      {
+        BinaryFormatter formatter = new BinaryFormatter();
+
+        FileStream stream = new FileStream(path, FileMode.Open);
+
+        var data = formatter.Deserialize(stream) as Dictionary<string,dynamic>;
+
+        stream.Close();
+
+        return data;
+      }
+
+    return null;
+  }
+
+  public static List<dynamic> Load_Earls(string earl_grid)
   {
     DirectoryInfo savedir = new DirectoryInfo(Application.persistentDataPath + "/");
 
     FileInfo[] paths = savedir.GetFiles("*" + "_save.earl");
 
     List<dynamic> earls_data = new List<dynamic>();
+
 
 
 
@@ -84,7 +107,8 @@ public static class SaveSystem
 
           stream.Close();
 
-          earls_data.Add(data);
+          if(data["home_grid"] == earl_grid)
+            earls_data.Add(data);
 
         }
     }

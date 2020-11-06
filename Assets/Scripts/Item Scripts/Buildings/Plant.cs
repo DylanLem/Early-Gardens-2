@@ -64,7 +64,7 @@ public class Plant : Building
     if(neighbours == null)
     {
       Set_Neighbours();
-      //Set_Dirt_Tile();
+      Set_Dirt_Tile();
     }
 
     if (life_stage < growth_stages)
@@ -108,7 +108,7 @@ public class Plant : Building
   public void Set_Dirt_Tile()
   {
     var gridmanager = GameObject.FindWithTag("Grid");
-    gridmanager.GetComponent<gridmanager>().Get_Tile(grid_pos).GetComponent<tilebehavior>().Set_Sprite(Resources.Load<Sprite>("Environment/dirt_dark"));
+    gridmanager.GetComponent<gridmanager>().Get_Tile(grid_pos).GetComponent<tilebehavior>().Set_Sprite(Resources.Load<Sprite>("Environment/farmland"));
   }
 
   public override Dictionary<string,dynamic> Pack_Data()

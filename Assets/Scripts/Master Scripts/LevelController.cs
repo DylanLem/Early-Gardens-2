@@ -36,23 +36,26 @@ public class LevelController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-      if(Input.GetKeyDown(KeyCode.Alpha1) && SceneManager.GetActiveScene().name != "Gardens")
+      if(Input.GetKeyDown(KeyCode.S))
       {
         SaveSystem.Save_Level_Grid(Gridmanager);
         SaveSystem.Save_Player(Player);
         Earlmanager.GetComponent<earlmanager>().Save_Earls();
+      }
+
+      if(Input.GetKeyDown(KeyCode.Alpha1) && SceneManager.GetActiveScene().name != "Gardens")
+      {
+
         SceneManager.LoadScene("Gardens");
 
         SaveSystem.Load_Level_Grid(Gridmanager);
 
-        
+
       }
 
       if(Input.GetKeyDown(KeyCode.Alpha2) && SceneManager.GetActiveScene().name != "Marketplace")
       {
-        SaveSystem.Save_Level_Grid(Gridmanager);
-        SaveSystem.Save_Player(Player);
-        Earlmanager.GetComponent<earlmanager>().Save_Earls();
+
         SceneManager.LoadScene("Marketplace");
         SaveSystem.Load_Level_Grid(Gridmanager);
 
