@@ -152,4 +152,11 @@ public static class SaveSystem
 
   }
 
+  public static void Save_Game(GameObject grid, GameObject player, GameObject earl_manager)
+  {
+    SaveSystem.Save_Level_Grid(grid);
+    SaveSystem.Save_Player(player);
+    earl_manager.GetComponent<earlmanager>().Save_Earls();
+  }
+
 }

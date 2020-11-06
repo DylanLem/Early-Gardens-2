@@ -18,6 +18,7 @@ TagManager:
   - Wall
   - Level Controller
   - Earl Manager
+  - Title Screen
   layers:
   - Default
   - TransparentFX

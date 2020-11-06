@@ -21,13 +21,18 @@ public partial class playermanager : MonoBehaviour
   public bool Move_Player(string direction)
   {
     // The logic of whether or not the move timer is ready is handled outside of this function
-    // this method of indexing a dictionary is more complicated, but saves over 250 lines of code.
     move_timer = 0;
+
+
+    // this method of indexing a dictionary is more complicated, but saves many lines of code.
+
     //setting the move vector and finding our empty squares
     Vector3 move = direction_to_vector[direction];
     List<Vector3> empty_squares = Gridmanager.GetComponent<gridmanager>().Get_Empty_Squares();
 
 
+    if(Player.GetComponent<player>().is_sleeping)
+      Player.GetComponent<player>().Wake_Up();
 
     if(! empty_squares.Contains(grid_pos + move))
     {

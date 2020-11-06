@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class LevelController : MonoBehaviour
@@ -10,10 +11,17 @@ public class LevelController : MonoBehaviour
 
     private GameObject Earlmanager;
     private GameObject Player;
-    private GameObject Gridmanager;
+    public GameObject Gridmanager;
+    public bool on_startup = true;
+
+    public Button button_quit;
 
     void Awake()
     {
+      button_quit = GameObject.Find("Quit").GetComponent<Button>();
+      button_quit.onClick.AddListener(Save_And_Quit);
+
+
       itemDatabase = new Itemdatabase();
 
         if (Instance == null)
@@ -38,9 +46,7 @@ public class LevelController : MonoBehaviour
     {
       if(Input.GetKeyDown(KeyCode.S))
       {
-        SaveSystem.Save_Level_Grid(Gridmanager);
-        SaveSystem.Save_Player(Player);
-        Earlmanager.GetComponent<earlmanager>().Save_Earls();
+        Save_And_Quit();
       }
 
       if(Input.GetKeyDown(KeyCode.Alpha1) && SceneManager.GetActiveScene().name != "Gardens")
@@ -64,6 +70,17 @@ public class LevelController : MonoBehaviour
       }
     }
 
+    public void Save_Game()
+    {
+      SaveSystem.Save_Game(Gridmanager,Player,Earlmanager);
+    }
+
+    public void Save_And_Quit()
+    {
+      Save_Game();
+      Application.Quit();
+    }
+
     public void Set_Player(GameObject player)
     {
       Player = player;
@@ -78,4 +95,7 @@ public class LevelController : MonoBehaviour
     {
       Gridmanager = grid;
     }
+
+
+
 }

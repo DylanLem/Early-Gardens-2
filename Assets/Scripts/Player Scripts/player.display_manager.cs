@@ -22,4 +22,9 @@ public partial class player : MonoBehaviour
     carried_object.phys_rep.GetComponent<SpriteRenderer>().sortingOrder = 2;
   }
 
+  public void Toggle_Title_Display(bool on_off)
+  {
+    GameObject.FindWithTag("Title Screen").SetActive(on_off);
+  }
+
 }

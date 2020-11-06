@@ -35,6 +35,8 @@ public partial class earlbrain : MonoBehaviour
 
     if(! Determine_Moves().Contains(direction)) return false;
 
+    previous_move = grid_pos;
+
     Vector3 new_pos = grid_pos + direction_to_vector[direction];
 
 

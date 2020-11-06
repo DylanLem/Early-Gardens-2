@@ -38,6 +38,7 @@ public class gridmanager : MonoBehaviour
       Populate_Grid();
 
       GameObject.FindWithTag("Level Controller").GetComponent<LevelController>().Set_Grid(gameObject);
+  
       Itemmanager = GameObject.FindWithTag("Item Manager");
     }
       // Start is called before the first frame update

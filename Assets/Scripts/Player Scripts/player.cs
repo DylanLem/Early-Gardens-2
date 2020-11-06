@@ -15,6 +15,8 @@ public partial class player : MonoBehaviour
 
     public Vector3 held_index;
 
+    public bool is_sleeping;
+
     void Awake()
     {
       inventory = new Item[6,4];
@@ -32,6 +34,13 @@ public partial class player : MonoBehaviour
         Send_Inv_Data();
 
         SaveSystem.Load_Player(gameObject);
+
+
+        if(GameObject.FindWithTag("Level Controller").GetComponent<LevelController>().on_startup == true)
+        {
+          Sleep();
+          GameObject.FindWithTag("Level Controller").GetComponent<LevelController>().on_startup = false;
+        }
     }
 
     // Update is called once per frame
@@ -92,6 +101,28 @@ public partial class player : MonoBehaviour
     }
 
 
+    public void Sleep()
+    {
+      is_sleeping = true;
+      Toggle_Title_Display(true);
+      Set_Sprite(Resources.Load<Sprite>("Player_sleeping"));
+    }
+
+    public void Wake_Up()
+    {
+      is_sleeping = false;
+      Toggle_Title_Display(false);
+      Set_Sprite(Resources.Load<Sprite>("Player_new"));
+    }
+
+
+    public void Set_Sprite(Sprite sprite)
+    {
+      GetComponent<SpriteRenderer>().sprite = sprite;
+    }
+
+
+    //Save System shite
     public Dictionary<string,dynamic> Pack_Data()
     {
       Dictionary<string,dynamic> player_data = new Dictionary<string,dynamic>();
