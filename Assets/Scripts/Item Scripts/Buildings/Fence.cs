@@ -48,19 +48,27 @@ public class Fence : Building
 
     switch(sprite_decider)
     {
-      case 0:
+      /* Ones place = Up
+         Tens = Right
+         Hundreds = Down
+         Thousands = Left
+
+      */
+
+      case 0000:
+        //All cases 0 = no neighbours
         Update_Sprite(sprites[0]);
         break;
 
-      case 1:
+      case 0001:
         Update_Sprite(sprites[0]);
         break;
 
-      case 10:
+      case 0010:
         Update_Sprite(sprites[0]);
         break;
 
-      case 100:
+      case 0100:
         Update_Sprite(sprites[0]);
         break;
 
@@ -68,15 +76,19 @@ public class Fence : Building
         Update_Sprite(sprites[0]);
         break;
 
-      case 11:
-        Update_Sprite(sprites[0]);
-        break;
-
-      case 111:
-        Update_Sprite(sprites[0]);
-        break;
-
       case 1111:
+        Update_Sprite(sprites[0]);
+        break;
+
+      case 0111:
+        Update_Sprite(sprites[0]);
+        break;
+
+      case 1011:
+        Update_Sprite(sprites[0]);
+        break;
+
+      case 1101:
         Update_Sprite(sprites[0]);
         break;
 
@@ -88,12 +100,21 @@ public class Fence : Building
         Update_Sprite(sprites[0]);
         break;
 
-      case 1101:
+      case 1010:
         Update_Sprite(sprites[0]);
         break;
 
       case 1001:
         Update_Sprite(sprites[0]);
+        break;
+
+      case 0110:
+        break;
+
+      case 0011:
+        break;
+
+      case 0101:
         break;
 
     }

@@ -19,6 +19,7 @@ TagManager:
   - Level Controller
   - Earl Manager
   - Title Screen
+  - Help Screen
   layers:
   - Default
   - TransparentFX
