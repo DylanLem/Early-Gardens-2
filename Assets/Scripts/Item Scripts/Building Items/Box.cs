@@ -9,9 +9,8 @@ public class Box : Building_Item
 
   public Box()
   {
-    building_id = 6;
+    building_id = 7;
 
-    id = 5;
     name = "Box";
     description = "A cardboard box.";
     tag = "Building Item";
