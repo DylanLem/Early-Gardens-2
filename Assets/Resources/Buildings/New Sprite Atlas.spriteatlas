@@ -32,7 +32,11 @@ SpriteAtlas:
     packables:
     - {fileID: 2800000, guid: a5550762eb0f0b4489b3b8206aa86cbe, type: 3}
     - {fileID: 102900000, guid: c900428ad0e58764da5b0fd2f385d0f1, type: 3}
+<<<<<<< HEAD
     totalSpriteSurfaceArea: 49152
+=======
+    totalSpriteSurfaceArea: 52224
+>>>>>>> 2c25501ba40bfbc6945d1a8b6c2460f3b172aaf8
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
@@ -40,15 +44,26 @@ SpriteAtlas:
   m_PackedSprites:
   - {fileID: 21300000, guid: e2b92eb075074e14680f4b21b9becc9a, type: 3}
   - {fileID: 21300000, guid: d6e2c4e04f343f249ab69b866ed87038, type: 3}
+<<<<<<< HEAD
   - {fileID: 21300000, guid: 68d794a183459df4b814eb097d803b16, type: 3}
   - {fileID: 21300000, guid: 791ff012199add54288ee55ed9fa3bbf, type: 3}
+=======
+  - {fileID: 21300000, guid: 10a0eb01125326047827dd31b2391cdc, type: 3}
+  - {fileID: 21300000, guid: e71ddec1772cd8a45aafbdd9acc70cc5, type: 3}
+>>>>>>> 2c25501ba40bfbc6945d1a8b6c2460f3b172aaf8
   - {fileID: 21300000, guid: a5550762eb0f0b4489b3b8206aa86cbe, type: 3}
   - {fileID: 21300000, guid: c66e17724a48c7f4ca99393e13d2cbaf, type: 3}
   - {fileID: 21300000, guid: 462145826d75d6c4eab233896b3eb43f, type: 3}
+<<<<<<< HEAD
   - {fileID: 21300000, guid: 56e5e133f83415e419aeede33f02a041, type: 3}
   - {fileID: 21300000, guid: 569840f3c6633c4469a7c93787a0597a, type: 3}
+=======
+  - {fileID: 21300000, guid: d0688b0504589164fb6dbd651bae3158, type: 3}
+>>>>>>> 2c25501ba40bfbc6945d1a8b6c2460f3b172aaf8
   - {fileID: 21300000, guid: 5e27db962be07e345b63a2e556910a7d, type: 3}
+  - {fileID: 21300000, guid: 06d4c6e622dc0f14fa0d306f67d43199, type: 3}
   - {fileID: 21300000, guid: 8afeec1723bcf8d41bcf351a045d702e, type: 3}
+<<<<<<< HEAD
   - {fileID: 21300000, guid: 29621ca7d72f7a346a7a74c5169bffbf, type: 3}
   - {fileID: 21300000, guid: fa58cab7a53745e4eba8e8d234df3d7b, type: 3}
   - {fileID: 21300000, guid: 06bec4b8bf5c26b4f934b0072d733284, type: 3}
@@ -75,12 +90,32 @@ SpriteAtlas:
   - {fileID: 5533480178190981214, guid: e7e8c87bd9e22e84387d48c10e1a7f80, type: 3}
   - {fileID: 21300000, guid: 4802482c23435c94d86365f42714dd8a, type: 3}
   - {fileID: 21300000, guid: c74050ec8a7ccaf40816343b2c7d6f42, type: 3}
+=======
+  - {fileID: 21300000, guid: 4ecf26d78661aba4fb41cb45fa00eb71, type: 3}
+  - {fileID: 21300000, guid: 06bec4b8bf5c26b4f934b0072d733284, type: 3}
+  - {fileID: 21300000, guid: 25fb0bb8a18243d4db52267d85221dee, type: 3}
+  - {fileID: 21300000, guid: e75b75f893a7cd04ca48d5cec5bbe1d6, type: 3}
+  - {fileID: 21300000, guid: 485a9b6938460144dbdd21b0daf2dcdc, type: 3}
+  - {fileID: 21300000, guid: 8f81a8b9d38c68443ad583d62684e493, type: 3}
+  - {fileID: 21300000, guid: 5d29fa3aca0b5884f9fa180e24db840b, type: 3}
+  - {fileID: 21300000, guid: 0fd1f37ad895f76418181a7f552ebc77, type: 3}
+  - {fileID: 21300000, guid: b47107cb84601bf47a30d91b79517f4d, type: 3}
+  - {fileID: 21300000, guid: 49043b1d2db5b0a4a863530ea8e75f28, type: 3}
+>>>>>>> 2c25501ba40bfbc6945d1a8b6c2460f3b172aaf8
   - {fileID: 21300000, guid: 1314ee1d16c5ea5428806e85903679c4, type: 3}
+  - {fileID: 21300000, guid: f3b26f5dde754974ca1334af7a2fa229, type: 3}
   - {fileID: 21300000, guid: cb68916d374438d4885e49b1cd89df8e, type: 3}
+<<<<<<< HEAD
   - {fileID: 21300000, guid: 7334ab8dd46980b48969d3ad3d658ec1, type: 3}
+=======
+  - {fileID: 21300000, guid: 96357dfd9bbcec24c96ea1d674e7425e, type: 3}
+>>>>>>> 2c25501ba40bfbc6945d1a8b6c2460f3b172aaf8
   - {fileID: 21300000, guid: 4f56071e67160be4d85175774aa79167, type: 3}
   - {fileID: 21300000, guid: 9dfb7aaed4c91d0458625feffc7815c5, type: 3}
   - {fileID: 21300000, guid: 837ae4de5e7f7104a90b615c1a405d09, type: 3}
+  - {fileID: 21300000, guid: 476e69de1fc92b44a9ef1e3f28232e96, type: 3}
+  - {fileID: 21300000, guid: af6169fea37c4684098d1c89d37e4cd8, type: 3}
+  - {fileID: 21300000, guid: fdc88bfeecb653e469cc4cff80e48792, type: 3}
   - {fileID: 21300000, guid: f442aa0f5f5ca3245814f95323ec3842, type: 3}
   - {fileID: 21300000, guid: dae4165f3482b0c4faf33796f34ad46a, type: 3}
   - {fileID: 21300000, guid: a7c06b6fa0e19934ab8cf41449cf4e65, type: 3}
@@ -89,15 +124,26 @@ SpriteAtlas:
   m_PackedSpriteNamesToIndex:
   - fence_corner_top_right
   - cardboardbox
+<<<<<<< HEAD
   - fence_middle_left
   - cfruit_seed
+=======
+  - cfruit_plant_1
+  - fence_single_bottom
+>>>>>>> 2c25501ba40bfbc6945d1a8b6c2460f3b172aaf8
   - bed_earl
   - fence_gate_horizontal
   - bed_person
+<<<<<<< HEAD
   - cfruit_plant_3
   - fence_single_bottom
+=======
+  - viny_seed
+>>>>>>> 2c25501ba40bfbc6945d1a8b6c2460f3b172aaf8
   - tree_2
+  - cfruit_plant_3
   - chest_open
+<<<<<<< HEAD
   - fence_single_right
   - fence_single_top
   - cage
@@ -124,12 +170,32 @@ SpriteAtlas:
   - fence_post
   - fence_corner_bottom_right
   - cfruit_plant_1
-  - chest_closed
-  - tree_1
+=======
+  - fences
+  - cage
+  - tree_0
+  - cfruit_seed
+  - fence_middle_right
+  - cardboardbox_overlay
+  - some_plant
+  - fence_single_right
   - fence_post
+  - fence_single_left
+>>>>>>> 2c25501ba40bfbc6945d1a8b6c2460f3b172aaf8
+  - chest_closed
+  - fence_gate_horizontal
+  - tree_1
+<<<<<<< HEAD
+  - fence_post
+=======
+  - fence_corner_bottom_right
+>>>>>>> 2c25501ba40bfbc6945d1a8b6c2460f3b172aaf8
   - mirror_base
   - fence_middle_right
   - brick
+  - fence_single_top
+  - fence_corner_top_right
+  - fence_middle_left
   - mirror_overlay
   - viny_seed
   - dinnerplate
