@@ -8,8 +8,12 @@ using UnityEngine;
 public class Fence : Building
 {
 
+  public GameObject Itemmanager;
+
   public Fence()
   {
+
+
     id = 5;
 
     name = "Fence";
@@ -18,13 +22,17 @@ public class Fence : Building
 
     //This is pretty hardcoded right now...
     sprites = new Sprite[]
-    {Resources.Load<Sprite>("buildings/fences/fence_corner_top"), Resources.Load<Sprite>("buildings/fences/fence_corner_bottom"),
-     Resources.Load<Sprite>("buildings/fences/fence_horizontal"), Resources.Load<Sprite>("buildings/fences/fence_middle"),
-     Resources.Load<Sprite>("buildings/fences/fence_middle_bottom"), Resources.Load<Sprite>("buildings/fences/fence_middle_side"),
-     Resources.Load<Sprite>("buildings/fences/fence_middle_top"), Resources.Load<Sprite>("buildings/fences/fence_vert_post_bottom"),
-     Resources.Load<Sprite>("buildings/fences/fence_vert_post_top"), Resources.Load<Sprite>("buildings/fences/fence_vertical"),
-     Resources.Load<Sprite>("buildings/fences/fence_post")
+    {Resources.Load<Sprite>("buildings/fences/fence_U"), Resources.Load<Sprite>("buildings/fences/fence_R"),
+     Resources.Load<Sprite>("buildings/fences/fence_D"), Resources.Load<Sprite>("buildings/fences/fence_L"),
+     Resources.Load<Sprite>("buildings/fences/fence_UR"), Resources.Load<Sprite>("buildings/fences/fence_UD"),
+     Resources.Load<Sprite>("buildings/fences/fence_UL"), Resources.Load<Sprite>("buildings/fences/fence_vert_RD"),
+     Resources.Load<Sprite>("buildings/fences/fence_vert_RL"), Resources.Load<Sprite>("buildings/fences/fence_DL"),
+     Resources.Load<Sprite>("buildings/fences/fence_URD"), Resources.Load<Sprite>("buildings/fences/fence_URL"),
+     Resources.Load<Sprite>("buildings/fences/fence_UDL"), Resources.Load<Sprite>("buildings/fences/fence_RDL"),
+     Resources.Load<Sprite>("buildings/fences/fence_URDL"), Resources.Load<Sprite>("buildings/fences/fence_post")
      };
+
+    Itemmanager = GameObject.FindWithTag("Item Manager");
 
     Set_Phys_Rep();
   }
@@ -38,86 +46,30 @@ public class Fence : Building
   private void Determine_Sprite()
   {
 
-    int sprite_decider = 0;
-    //Assign an integer value to each neighbouring tile
+    string sprite_name = "buildings/fences/fence_";
+    //For each neighbour, we add a corresponding character and build a string that represents a sprite
     //if that tile contains a building, add the value to our total
-    if(neighbours["Top_Mid"].GetComponent<tilebehavior>().Is_Empty()) sprite_decider += 1;
-    if(neighbours["Mid_Right"].GetComponent<tilebehavior>().Is_Empty()) sprite_decider += 10;
-    if(neighbours["Bot_Mid"].GetComponent<tilebehavior>().Is_Empty()) sprite_decider += 100;
-    if(neighbours["Mid_Left"].GetComponent<tilebehavior>().Is_Empty()) sprite_decider += 1000;
+    if(Itemmanager.GetComponent<itemmanager>().items_on_grid[(int)neighbours["Top_Mid"].GetComponent<tilebehavior>().Get_Grid_Pos().x,
+                                                             (int)neighbours["Top_Mid"].GetComponent<tilebehavior>().Get_Grid_Pos().y].name == "Fence")
+      sprite_name += "U";
 
-    switch(sprite_decider)
-    {
-      /* Ones place = Up
-         Tens = Right
-         Hundreds = Down
-         Thousands = Left
+    if(Itemmanager.GetComponent<itemmanager>().items_on_grid[(int)neighbours["Mid_Right"].GetComponent<tilebehavior>().Get_Grid_Pos().x,
+                                                             (int)neighbours["Mid_Right"].GetComponent<tilebehavior>().Get_Grid_Pos().y].name == "Fence")
+     sprite_name += "R";
 
-      */
+    if(Itemmanager.GetComponent<itemmanager>().items_on_grid[(int)neighbours["Bot_Mid"].GetComponent<tilebehavior>().Get_Grid_Pos().x,
+                                                             (int)neighbours["Bot_Mid"].GetComponent<tilebehavior>().Get_Grid_Pos().y].name == "Fence")
+     sprite_name += "D";
 
-      case 0000:
-        //All cases 0 = no neighbours
-        Update_Sprite(sprites[0]);
-        break;
+    if(Itemmanager.GetComponent<itemmanager>().items_on_grid[(int)neighbours["Mid_Left"].GetComponent<tilebehavior>().Get_Grid_Pos().x,
+                                                             (int)neighbours["Mid_Left"].GetComponent<tilebehavior>().Get_Grid_Pos().y].name == "Fence")
+     sprite_name += "L";
 
-      case 0001:
-        Update_Sprite(sprites[0]);
-        break;
+    //0 neighbour case
+    if(sprite_name == "buildings/fences/fence_")
+      Update_Sprite(Resources.Load<Sprite>("buildings/fences/fence_post"));
 
-      case 0010:
-        Update_Sprite(sprites[0]);
-        break;
-
-      case 0100:
-        Update_Sprite(sprites[0]);
-        break;
-
-      case 1000:
-        Update_Sprite(sprites[0]);
-        break;
-
-      case 1111:
-        Update_Sprite(sprites[0]);
-        break;
-
-      case 0111:
-        Update_Sprite(sprites[0]);
-        break;
-
-      case 1011:
-        Update_Sprite(sprites[0]);
-        break;
-
-      case 1101:
-        Update_Sprite(sprites[0]);
-        break;
-
-      case 1110:
-        Update_Sprite(sprites[0]);
-        break;
-
-      case 1100:
-        Update_Sprite(sprites[0]);
-        break;
-
-      case 1010:
-        Update_Sprite(sprites[0]);
-        break;
-
-      case 1001:
-        Update_Sprite(sprites[0]);
-        break;
-
-      case 0110:
-        break;
-
-      case 0011:
-        break;
-
-      case 0101:
-        break;
-
-    }
-
+    else
+      Update_Sprite(Resources.Load<Sprite>(sprite_name));
   }
 }
