@@ -10,7 +10,6 @@ public class Wall : Building
 
   public Wall() : base()
   {
-    id = 6;
 
     name = "Wall";
     description = "It's bricks.";
