@@ -7,7 +7,7 @@ using System.Linq;
 
 public partial class earlbrain : MonoBehaviour
 {
-  Vector3 previous_pos = null;
+  
 
   public Item Find_Food()
   {
@@ -53,7 +53,7 @@ public partial class earlbrain : MonoBehaviour
     {
       float d = Vector3.Distance(grid_pos + direction_to_vector[move], target.grid_pos);
 
-      if(d < best_move && )
+      if(d < best_move)
        {
         selected_move = move;
         best_move = d;

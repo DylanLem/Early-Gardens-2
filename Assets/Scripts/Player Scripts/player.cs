@@ -16,6 +16,7 @@ public partial class player : MonoBehaviour
     public Vector3 held_index;
 
     public bool is_sleeping;
+    public bool has_action_icon;
 
     void Awake()
     {
@@ -41,6 +42,8 @@ public partial class player : MonoBehaviour
           Sleep();
           GameObject.FindWithTag("Level Controller").GetComponent<LevelController>().on_startup = false;
         }
+
+        Toggle_Title_Display(is_sleeping);
     }
 
     // Update is called once per frame
@@ -122,6 +125,7 @@ public partial class player : MonoBehaviour
     }
 
 
+
     //Save System shite
     public Dictionary<string,dynamic> Pack_Data()
     {
@@ -154,4 +158,6 @@ public partial class player : MonoBehaviour
       }
       Itemmanager.GetComponent<itemmanager>().Load_To_Inventory(player_data["carried_object"]);
     }
+
+
 }
