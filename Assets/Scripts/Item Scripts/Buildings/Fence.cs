@@ -14,7 +14,7 @@ public class Fence : Building
   {
 
 
-    id = 5;
+    id = 8;
 
     name = "Fence";
     description = "Out or in, these will do it.";
@@ -35,41 +35,39 @@ public class Fence : Building
     Itemmanager = GameObject.FindWithTag("Item Manager");
 
     Set_Phys_Rep();
+
+    Set_Neighbours();
   }
 
   public override void Update()
   {
-
+    Determine_Sprite();
   }
 
 
   private void Determine_Sprite()
   {
 
-    string sprite_name = "buildings/fences/fence_";
+    string sprite_name = "fence_";
     //For each neighbour, we add a corresponding character and build a string that represents a sprite
     //if that tile contains a building, add the value to our total
-    if(Itemmanager.GetComponent<itemmanager>().items_on_grid[(int)neighbours["Top_Mid"].GetComponent<tilebehavior>().Get_Grid_Pos().x,
-                                                             (int)neighbours["Top_Mid"].GetComponent<tilebehavior>().Get_Grid_Pos().y].name == "Fence")
+    if(neighbours["Top_Mid"] != null && Itemmanager.GetComponent<itemmanager>().items_on_grid[(int)grid_pos.x,(int)grid_pos.y + 1]?.name == "Fence")
       sprite_name += "U";
 
-    if(Itemmanager.GetComponent<itemmanager>().items_on_grid[(int)neighbours["Mid_Right"].GetComponent<tilebehavior>().Get_Grid_Pos().x,
-                                                             (int)neighbours["Mid_Right"].GetComponent<tilebehavior>().Get_Grid_Pos().y].name == "Fence")
+    if(neighbours["Mid_Right"] != null && Itemmanager.GetComponent<itemmanager>().items_on_grid[(int)grid_pos.x + 1,(int)grid_pos.y]?.name == "Fence")
      sprite_name += "R";
 
-    if(Itemmanager.GetComponent<itemmanager>().items_on_grid[(int)neighbours["Bot_Mid"].GetComponent<tilebehavior>().Get_Grid_Pos().x,
-                                                             (int)neighbours["Bot_Mid"].GetComponent<tilebehavior>().Get_Grid_Pos().y].name == "Fence")
+    if(neighbours["Bot_Mid"] != null && Itemmanager.GetComponent<itemmanager>().items_on_grid[(int)grid_pos.x,(int)grid_pos.y - 1]?.name == "Fence")
      sprite_name += "D";
 
-    if(Itemmanager.GetComponent<itemmanager>().items_on_grid[(int)neighbours["Mid_Left"].GetComponent<tilebehavior>().Get_Grid_Pos().x,
-                                                             (int)neighbours["Mid_Left"].GetComponent<tilebehavior>().Get_Grid_Pos().y].name == "Fence")
+    if(neighbours["Mid_Left"] != null && Itemmanager.GetComponent<itemmanager>().items_on_grid[(int)grid_pos.x + 1,(int)grid_pos.y]?.name == "Fence")
      sprite_name += "L";
 
     //0 neighbour case
-    if(sprite_name == "buildings/fences/fence_")
-      Update_Sprite(Resources.Load<Sprite>("buildings/fences/fence_post"));
+    if(sprite_name == "fence_")
+      Update_Sprite(SpriteManager.FindSpriteFromSheet(SpriteManager.FenceSprites,"fence_post"));
 
     else
-      Update_Sprite(Resources.Load<Sprite>(sprite_name));
+      Update_Sprite(SpriteManager.FindSpriteFromSheet(SpriteManager.FenceSprites,sprite_name));
   }
 }

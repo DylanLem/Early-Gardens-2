@@ -26,7 +26,9 @@ public class Itemdatabase
       typeof(Seeds),
       typeof(Plant),
       typeof(Bricks),
-      typeof(Wall)
+      typeof(Wall),
+      typeof(Stake),
+      typeof(Fence)
     };
   }
 

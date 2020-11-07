@@ -32,46 +32,106 @@ SpriteAtlas:
     packables:
     - {fileID: 2800000, guid: a5550762eb0f0b4489b3b8206aa86cbe, type: 3}
     - {fileID: 102900000, guid: c900428ad0e58764da5b0fd2f385d0f1, type: 3}
-    totalSpriteSurfaceArea: 18432
+    totalSpriteSurfaceArea: 49152
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
+  - {fileID: 21300000, guid: e2b92eb075074e14680f4b21b9becc9a, type: 3}
   - {fileID: 21300000, guid: d6e2c4e04f343f249ab69b866ed87038, type: 3}
+  - {fileID: 21300000, guid: 68d794a183459df4b814eb097d803b16, type: 3}
+  - {fileID: 21300000, guid: 791ff012199add54288ee55ed9fa3bbf, type: 3}
   - {fileID: 21300000, guid: a5550762eb0f0b4489b3b8206aa86cbe, type: 3}
+  - {fileID: 21300000, guid: c66e17724a48c7f4ca99393e13d2cbaf, type: 3}
   - {fileID: 21300000, guid: 462145826d75d6c4eab233896b3eb43f, type: 3}
+  - {fileID: 21300000, guid: 56e5e133f83415e419aeede33f02a041, type: 3}
+  - {fileID: 21300000, guid: 569840f3c6633c4469a7c93787a0597a, type: 3}
   - {fileID: 21300000, guid: 5e27db962be07e345b63a2e556910a7d, type: 3}
   - {fileID: 21300000, guid: 8afeec1723bcf8d41bcf351a045d702e, type: 3}
+  - {fileID: 21300000, guid: 29621ca7d72f7a346a7a74c5169bffbf, type: 3}
+  - {fileID: 21300000, guid: fa58cab7a53745e4eba8e8d234df3d7b, type: 3}
   - {fileID: 21300000, guid: 06bec4b8bf5c26b4f934b0072d733284, type: 3}
   - {fileID: 21300000, guid: 25fb0bb8a18243d4db52267d85221dee, type: 3}
-  - {fileID: 21300000, guid: 4e6fa9995be463e49900f0e57030cc2f, type: 3}
   - {fileID: 21300000, guid: 8f81a8b9d38c68443ad583d62684e493, type: 3}
   - {fileID: 21300000, guid: 5d29fa3aca0b5884f9fa180e24db840b, type: 3}
+  - {fileID: 21300000, guid: a2fb2f2b1a09b524e9d07e84cc091dbc, type: 3}
+  - {fileID: 6472751043741827724, guid: e7e8c87bd9e22e84387d48c10e1a7f80, type: 3}
+  - {fileID: -4269418390191355576, guid: e7e8c87bd9e22e84387d48c10e1a7f80, type: 3}
+  - {fileID: 8537910974691570887, guid: e7e8c87bd9e22e84387d48c10e1a7f80, type: 3}
+  - {fileID: 3912977635097222320, guid: e7e8c87bd9e22e84387d48c10e1a7f80, type: 3}
+  - {fileID: 6424551002540850544, guid: e7e8c87bd9e22e84387d48c10e1a7f80, type: 3}
+  - {fileID: -8266720329175738786, guid: e7e8c87bd9e22e84387d48c10e1a7f80, type: 3}
+  - {fileID: -6812914992284856009, guid: e7e8c87bd9e22e84387d48c10e1a7f80, type: 3}
+  - {fileID: 4738795252424879428, guid: e7e8c87bd9e22e84387d48c10e1a7f80, type: 3}
+  - {fileID: -5907879462205274251, guid: e7e8c87bd9e22e84387d48c10e1a7f80, type: 3}
+  - {fileID: -3334210904440195549, guid: e7e8c87bd9e22e84387d48c10e1a7f80, type: 3}
+  - {fileID: -6853517012478930382, guid: e7e8c87bd9e22e84387d48c10e1a7f80, type: 3}
+  - {fileID: -8878816110205237096, guid: e7e8c87bd9e22e84387d48c10e1a7f80, type: 3}
+  - {fileID: -8482145335750387182, guid: e7e8c87bd9e22e84387d48c10e1a7f80, type: 3}
+  - {fileID: 5701543201482576729, guid: e7e8c87bd9e22e84387d48c10e1a7f80, type: 3}
+  - {fileID: -6618504028374273924, guid: e7e8c87bd9e22e84387d48c10e1a7f80, type: 3}
+  - {fileID: 726259008610650635, guid: e7e8c87bd9e22e84387d48c10e1a7f80, type: 3}
+  - {fileID: 5533480178190981214, guid: e7e8c87bd9e22e84387d48c10e1a7f80, type: 3}
+  - {fileID: 21300000, guid: 4802482c23435c94d86365f42714dd8a, type: 3}
+  - {fileID: 21300000, guid: c74050ec8a7ccaf40816343b2c7d6f42, type: 3}
   - {fileID: 21300000, guid: 1314ee1d16c5ea5428806e85903679c4, type: 3}
   - {fileID: 21300000, guid: cb68916d374438d4885e49b1cd89df8e, type: 3}
+  - {fileID: 21300000, guid: 7334ab8dd46980b48969d3ad3d658ec1, type: 3}
   - {fileID: 21300000, guid: 4f56071e67160be4d85175774aa79167, type: 3}
+  - {fileID: 21300000, guid: 9dfb7aaed4c91d0458625feffc7815c5, type: 3}
   - {fileID: 21300000, guid: 837ae4de5e7f7104a90b615c1a405d09, type: 3}
   - {fileID: 21300000, guid: f442aa0f5f5ca3245814f95323ec3842, type: 3}
+  - {fileID: 21300000, guid: dae4165f3482b0c4faf33796f34ad46a, type: 3}
   - {fileID: 21300000, guid: a7c06b6fa0e19934ab8cf41449cf4e65, type: 3}
   - {fileID: 21300000, guid: 2fc79f9f3b887664f82a046963d49ef7, type: 3}
   - {fileID: 21300000, guid: 161132bf88a711d4cbd40c5b9e4b0289, type: 3}
   m_PackedSpriteNamesToIndex:
+  - fence_corner_top_right
   - cardboardbox
+  - fence_middle_left
+  - cfruit_seed
   - bed_earl
+  - fence_gate_horizontal
   - bed_person
+  - cfruit_plant_3
+  - fence_single_bottom
   - tree_2
   - chest_open
+  - fence_single_right
+  - fence_single_top
   - cage
   - tree_0
-  - viny_plant_0
   - cardboardbox_overlay
   - some_plant
+  - fence_single_left
+  - fence_gate
+  - fence_URL
+  - fence_RDL
+  - fence_URD
+  - fence_URDL
+  - fence_UR
+  - fence_UL
+  - fence_UDL
+  - fence_UD
+  - fence_L
+  - fence_D
+  - fence_R
+  - fence_U
+  - fence_DL
+  - fence_RL
+  - fence_RD
+  - fence_post
+  - fence_corner_bottom_right
+  - cfruit_plant_1
   - chest_closed
   - tree_1
+  - fence_post
   - mirror_base
+  - fence_middle_right
   - brick
   - mirror_overlay
+  - viny_seed
   - dinnerplate
   - viny_plant_1
   - shop
