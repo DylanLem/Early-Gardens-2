@@ -28,7 +28,9 @@ public class Itemdatabase
       {5, typeof(Bricks)},
       {6, typeof(Wall)},
       {7, typeof(Stake)},
-      {8, typeof(Fence)}
+      {8, typeof(Fence)},
+      {9, typeof(Box)},
+      {10, typeof(CardboardBox)}
     };
   }
 

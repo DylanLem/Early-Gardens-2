@@ -1,23 +1,25 @@
 using System;
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 
-public class Box : Building_Item
+public class CardboardBox : Building
 {
 
-  public Box()
+  public CardboardBox() : base()
   {
-    building_id = 10;
 
     name = "Box";
-    description = "A cardboard box.";
-    tag = "Building Item";
+    description = "It's a box.";
+    tag = "Wall";
+
+
     sprites = new Sprite[]
     {Resources.Load<Sprite>("Buildings/cardboardbox")};
-    initial_sprite = sprites[0];
 
     Set_Phys_Rep();
   }
+
 }

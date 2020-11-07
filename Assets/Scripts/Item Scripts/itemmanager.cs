@@ -40,16 +40,20 @@ public class itemmanager : MonoBehaviour
     {
       if(Input.GetKeyDown(KeyCode.P))
       {
-        Debug.Log(typeof(Earl_Egg));
-        Give_Item(3);
+        Give_Item(3); // seeds
       }
       if(Input.GetKeyDown(KeyCode.O))
       {
-        Give_Item(2);
+        Debug.Log(typeof(Earl_Egg));
+        Give_Item(2); // earl egg
       }
       if(Input.GetKeyDown(KeyCode.I))
       {
-        Give_Item(7);
+        Give_Item(7); // stake
+      }
+      if(Input.GetKeyDown(KeyCode.U))
+      {
+        Give_Item(9); // box
       }
 
       for(int i = 0; i < items_on_grid.GetLength(0); i++)
