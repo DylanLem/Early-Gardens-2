@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class Itemdatabase
 {
-  public List<Type> item_database;
+  public Dictionary<int,Type> item_database;
   public int name;
 
   public Itemdatabase()
@@ -18,17 +18,17 @@ public class Itemdatabase
 
   void Build_Database()
   {
-    item_database = new List<Type>()
+    item_database = new Dictionary<int,Type>()
     {
-      typeof(CFood),
-      typeof(Apple),
-      typeof(Earl_Egg),
-      typeof(Seeds),
-      typeof(Plant),
-      typeof(Bricks),
-      typeof(Wall),
-      typeof(Stake),
-      typeof(Fence)
+      {0, typeof(CFood)},
+      {1, typeof(Apple)},
+      {2, typeof(Earl_Egg)},
+      {3, typeof(Seeds)},
+      {4, typeof(Plant)},
+      {5, typeof(Bricks)},
+      {6, typeof(Wall)},
+      {7, typeof(Stake)},
+      {8, typeof(Fence)}
     };
   }
 
@@ -36,6 +36,7 @@ public class Itemdatabase
   {
     //Creating a copy of an item in our database. :)
     Item i = (Item)Activator.CreateInstance(item_database[_id]);
+    i.Set_Id(_id);
     return i;
   }
 

@@ -8,7 +8,6 @@ public class Apple: Food
 
   public Apple()
   {
-    id = 0;
     name = "Apple";
     description = "an apple for the little baby earl";
     tag = "Food";

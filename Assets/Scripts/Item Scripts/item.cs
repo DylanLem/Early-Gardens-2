@@ -53,7 +53,10 @@ public abstract class Item
   }
 
 
-
+  public void Set_Id(int i)
+  {
+    id = i;
+  }
 
   protected void Set_Phys_Rep()
   {

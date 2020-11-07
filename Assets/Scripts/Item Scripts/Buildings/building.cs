@@ -43,7 +43,7 @@ public abstract class Building : Item
     //increments along the entire loop.
     int dict_indexer = -1;
 
-    for(int row = (int)grid_pos.y - 1; row <= grid_pos.y + 1; row++)
+    for(int row = (int)grid_pos.y + 1; row >= grid_pos.y - 1; row--)
       for(int column = (int)grid_pos.x - 1; column <= grid_pos.x + 1;  column++)
       {
         //skips the tile the building is on
@@ -57,6 +57,11 @@ public abstract class Building : Item
         neighbours[neighbours.ElementAt(dict_indexer).Key] = gridmanager.GetComponent<gridmanager>().Get_Tile(new Vector3(column,row));
 
       }
+
+    Debug.Log(neighbours["Top-Mid"]);
+    Debug.Log(neighbours["Mid-Right"]);
+    Debug.Log(neighbours["Bot-Mid"]);
+    Debug.Log(neighbours["Mid-Left"]);
   }
 
 

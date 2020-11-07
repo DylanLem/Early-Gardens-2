@@ -40,6 +40,7 @@ public class itemmanager : MonoBehaviour
     {
       if(Input.GetKeyDown(KeyCode.P))
       {
+        Debug.Log(typeof(Earl_Egg));
         Give_Item(3);
       }
       if(Input.GetKeyDown(KeyCode.O))

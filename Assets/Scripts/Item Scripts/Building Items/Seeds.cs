@@ -11,7 +11,6 @@ public class Seeds: Building_Item
   {
     building_id = 4;
 
-    id = 3;
     name = "C-eed Packet";
     description = "Affordable. Renewable. Essential. The perfect start for an EARL Rancher.";
     tag = "Building Item";

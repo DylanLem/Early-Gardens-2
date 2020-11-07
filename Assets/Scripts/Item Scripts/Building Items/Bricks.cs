@@ -11,7 +11,6 @@ public class Bricks : Building_Item
   {
     building_id = 6;
 
-    id = 5;
     name = "Brix";
     description = "A deconstructed wall served with a caulk glaze.";
     tag = "Building Item";

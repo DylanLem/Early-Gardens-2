@@ -8,7 +8,6 @@ public class CFood: Food
 
   public CFood()
   {
-    id = 0;
     name = "CFood";
     description = "Every EARL loves C-Food";
     tag = "Food";
@@ -19,7 +18,7 @@ public class CFood: Food
      Resources.Load<Sprite>("items/cfruit_3")};
     initial_sprite = sprites[0];
 
-  
+
     Set_Phys_Rep();
   }
 }

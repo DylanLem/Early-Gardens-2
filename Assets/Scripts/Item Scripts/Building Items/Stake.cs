@@ -10,7 +10,7 @@ public class Stake: Building_Item
   public Stake()
   {
     building_id = 8;
-    id = 7;
+
 
     name = "Wooden Stake";
     description = "Mulitpurpose. But mainly fences. Vampyearls maybe sometimes";
