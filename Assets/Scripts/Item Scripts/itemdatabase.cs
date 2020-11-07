@@ -18,20 +18,21 @@ public class Itemdatabase
 
   void Build_Database()
   {
-    item_database = new Dictionary<int,Type>()
-    {
-      {0, typeof(CFood)},
-      {1, typeof(Apple)},
-      {2, typeof(Earl_Egg)},
-      {3, typeof(Seeds)},
-      {4, typeof(Plant)},
-      {5, typeof(Bricks)},
-      {6, typeof(Wall)},
-      {7, typeof(Stake)},
-      {8, typeof(Fence)},
-      {9, typeof(Box)},
-      {10, typeof(CardboardBox)}
-    };
+
+    item_database = new Dictionary<int,Type>();
+
+    item_database.Add(0, typeof(CFood));
+    item_database.Add(1, typeof(Apple));
+    item_database.Add(2, typeof(Earl_Egg));
+    item_database.Add(3, typeof(Seeds));
+    item_database.Add(4, typeof(Plant));
+    item_database.Add(5, typeof(Bricks));
+    item_database.Add(6, typeof(Wall));
+    item_database.Add(7, typeof(Stake));
+    item_database.Add(8, typeof(Fence));
+    item_database.Add(9, typeof(Box));
+    item_database.Add(10, typeof(CardboardBox));
+
   }
 
   public Item Get_Item(int _id)
