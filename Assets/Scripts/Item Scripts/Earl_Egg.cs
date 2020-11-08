@@ -18,6 +18,7 @@ public class Earl_Egg : Item
 
   public Earl_Egg()
   {
+    id = 2;
     name = "Egg?";
     description = "What the heck even is that?";
     tag = "Egg";
