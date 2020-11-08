@@ -18,6 +18,8 @@ public partial class player : MonoBehaviour
     public bool is_sleeping;
     public bool has_action_icon;
 
+    public int time_elapsed;
+
     void Awake()
     {
       inventory = new Item[6,4];
@@ -26,6 +28,7 @@ public partial class player : MonoBehaviour
     void Start()
     {
 
+        time_elapsed = 0;
 
         held_index = Vector3.zero;
         Itemmanager = GameObject.FindWithTag("Item Manager");
@@ -54,6 +57,10 @@ public partial class player : MonoBehaviour
       if(Input.GetKeyDown(KeyCode.Tab))
       {
         Cycle_Item();
+      }
+
+      if(is_sleeping){
+
       }
     }
 
