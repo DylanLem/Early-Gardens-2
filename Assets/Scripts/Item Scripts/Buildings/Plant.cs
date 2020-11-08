@@ -34,7 +34,6 @@ public class Plant : Building
 
   public Plant() : base()
   {
-    id = 4;
     age = 0f;
     fertility_cycle = 0f;
     life_stage = 1;
