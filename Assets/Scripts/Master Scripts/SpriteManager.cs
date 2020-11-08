@@ -6,7 +6,7 @@ public static class SpriteManager
 {
 
   public static Sprite[] FenceSprites = Resources.LoadAll<Sprite>("Buildings/Fences/fence");
-
+  public static Sprite[] EnvironmentSprites = Resources.LoadAll<Sprite>("Environment/environment");
 
   public static Sprite FindSpriteFromSheet(Sprite[] sheet, string sprite)
   {

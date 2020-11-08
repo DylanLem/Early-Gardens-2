@@ -107,7 +107,7 @@ public class Plant : Building
   public void Set_Dirt_Tile()
   {
     var gridmanager = GameObject.FindWithTag("Grid");
-    gridmanager.GetComponent<gridmanager>().Get_Tile(grid_pos).GetComponent<tilebehavior>().Set_Sprite(Resources.Load<Sprite>("Environment/farmland"));
+    gridmanager.GetComponent<gridmanager>().Get_Tile(grid_pos).GetComponent<tilebehavior>().Set_Sprite(SpriteManager.FindSpriteFromSheet(SpriteManager.EnvironmentSprites, "environment_farmland"));
   }
 
   public override Dictionary<string,dynamic> Pack_Data()
