@@ -32,6 +32,8 @@ public class Itemdatabase
     item_database.Add(8, typeof(Fence));
     item_database.Add(9, typeof(Box));
     item_database.Add(10, typeof(CardboardBox));
+    item_database.Add(11, typeof(Bed));
+    item_database.Add(12, typeof(Player_Bed));
 
   }
 
