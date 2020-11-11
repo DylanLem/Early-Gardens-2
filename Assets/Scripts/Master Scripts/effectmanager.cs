@@ -5,17 +5,19 @@ using UnityEngine;
 public static class EffectManager
 {
   // start the global effect timer at zero
-  public float time_elapsed = 0.0;
+  public static float time_elapsed = 0.0f;
 
   // add a database for effects
+  public static List<Effect> effects = new List<Effect>();
 
-  public void create_effect(GameObject target){ // gotta finish
+  public static void create_effect(GameObject target, int effect_id)
+  { // gotta finish
 
   }
 
-  public void Update(){
+  public static void Update(){
     // add 1.0 to time_elapsed every second
-    time_elapsed += time.deltaTime;
+    time_elapsed += Time.deltaTime;
 
     if(time_elapsed >= 1000){
       time_elapsed = 0;

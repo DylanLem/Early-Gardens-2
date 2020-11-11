@@ -7,8 +7,9 @@ public abstract class Effect
 
   public GameObject phys_rep;
   public Vector3 local_origin = Vector3.zero;
+  public Sprite sprite;
 
-  public Effect(Sprite sprite,GameObject parent = null)
+  public Effect(GameObject parent = null)
   {
     phys_rep = new GameObject();
     phys_rep.AddComponent<SpriteRenderer>();
@@ -31,9 +32,11 @@ public abstract class Effect
     phys_rep.transform.position = gobj.transform.position;
     local_origin = phys_rep.transform.position;
   }
-  public virtual void Animate()
-  {
 
-  }
+  public virtual void Update()
+  {}
+
+  public virtual void Animate()
+  {}
 
 }
