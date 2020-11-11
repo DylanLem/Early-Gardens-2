@@ -68,7 +68,7 @@ public partial class earlbrain : MonoBehaviour
       //EARL's have a fully functional metabolic system.
       //Fun Fact: if EARL's couldn't metabolise food, not only
       //would they starve, but they also wouldn't be able to LEVEL UP
-      if(satiety>0) satiety -= metabolism * Time.deltaTime;
+       satiety -= metabolism * Time.deltaTime;
 
       mood = Determine_Mood();
       Determine_Action();
@@ -135,14 +135,18 @@ public partial class earlbrain : MonoBehaviour
 
       Dictionary<string,int> gains = food_item.Become_Eaten();
 
-
-
+      Digest_Gains(gains);
     }
+
+    public void Digest_Gains(Dictionary<string,int> gains)
+    {
+      satiety += gains.ContainsKey("satiety") == true ? gains["satiety"] : 0;
+    }
+
+
 
     public Dictionary<string,dynamic> Pack_Earl_Data()
     {
-
-
       Dictionary<string,dynamic> earl_data = new Dictionary<string,dynamic>()
       {
         // We're just making a big dictionary of all earl's properties in case we need them.

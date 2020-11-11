@@ -16,7 +16,7 @@ public partial class playermanager : MonoBehaviour
     private Vector3 camera_offset;
     private Vector3 grid_pos;
 
-    private float move_timer;
+    public float move_timer;
 
     private KeyCode current_key;
 

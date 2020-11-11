@@ -113,6 +113,7 @@ public partial class player : MonoBehaviour
 
     public void Sleep()
     {
+      GameObject.FindWithTag("Player Manager").GetComponent<playermanager>().move_timer = -2.0f;
       is_sleeping = true;
       Toggle_Title_Display(true);
       Set_Sprite(Resources.Load<Sprite>("Player_sleeping"));

@@ -7,7 +7,7 @@ using System.Linq;
 
 public partial class earlbrain : MonoBehaviour
 {
-  
+
 
   public Item Find_Food()
   {
@@ -74,7 +74,7 @@ public partial class earlbrain : MonoBehaviour
     if (mood == Moods.Eating) return Moods.Eating;
 
     if (satiety<50 && Find_Food() != null) return Moods.Hungry;
-    if (satiety>100) return Moods.Starving;
+    if (satiety<=-100) return Moods.Starving;
     return Moods.Idle;
   }
 

@@ -18,6 +18,10 @@ public class CFood: Food
      Resources.Load<Sprite>("items/cfruit_3")};
     initial_sprite = sprites[0];
 
+    gains = new Dictionary<string,int>()
+    {
+      {"satiety", 15}
+    };
 
     Set_Phys_Rep();
   }
