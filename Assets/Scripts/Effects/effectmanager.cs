@@ -4,18 +4,28 @@ using UnityEngine;
 
 public static class EffectManager
 {
+  public static EffectDatabase ED = new EffectDatabase();
+
   // start the global effect timer at zero
   public static float time_elapsed = 0.0f;
 
   // add a database for effects
   public static List<Effect> effects = new List<Effect>();
+  public static List<Effect> culled_effects;
 
-  public static void create_effect(GameObject target, int effect_id)
-  { // gotta finish
+  public static void CreateEffect(GameObject target, int effect_id)
+  {
 
+    //effect buffer
+    if((time_elapsed % 1.5f) >= Time.deltaTime) return;
+
+    effects.Add(ED.Get_Effect(effect_id, target));
   }
 
   public static void Update(){
+
+    culled_effects = new List<Effect>();
+
     // add 1.0 to time_elapsed every second
     time_elapsed += Time.deltaTime;
 
@@ -23,8 +33,14 @@ public static class EffectManager
       time_elapsed = 0;
     }
 
-    if((time_elapsed % 2) == 0){
-      // create Zs when the player is sleeping
+    foreach(Effect e in effects)
+    {
+      e.Update();
+    }
+
+    foreach(Effect e in culled_effects)
+    {
+      effects.Remove(e);
     }
 
   }

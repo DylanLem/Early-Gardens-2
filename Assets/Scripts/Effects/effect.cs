@@ -14,13 +14,14 @@ public abstract class Effect
     phys_rep = new GameObject();
     phys_rep.AddComponent<SpriteRenderer>();
 
-    Set_Sprite(sprite);
-    Set_Parent(parent);
-    Animate();
+    phys_rep.GetComponent<SpriteRenderer>().sortingLayerName = "UI";
+    phys_rep.GetComponent<SpriteRenderer>().sortingOrder = -1;
+
   }
 
   public void Set_Sprite(Sprite sprite)
   {
+
     phys_rep.GetComponent<SpriteRenderer>().sprite = sprite;
   }
 
@@ -28,10 +29,12 @@ public abstract class Effect
   {
     if(gobj == null) return;
 
-    phys_rep.transform.parent = gobj.transform;
+    Debug.Log("HEY");
+    
     phys_rep.transform.position = gobj.transform.position;
     local_origin = phys_rep.transform.position;
   }
+
 
   public virtual void Update()
   {}

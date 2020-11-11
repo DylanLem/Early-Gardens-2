@@ -57,11 +57,6 @@ public abstract class Building : Item
         neighbours[neighbours.ElementAt(dict_indexer).Key] = gridmanager.GetComponent<gridmanager>().Get_Tile(new Vector3(column,row));
 
       }
-
-    Debug.Log(neighbours["Top-Mid"]);
-    Debug.Log(neighbours["Mid-Right"]);
-    Debug.Log(neighbours["Bot-Mid"]);
-    Debug.Log(neighbours["Mid-Left"]);
   }
 
 

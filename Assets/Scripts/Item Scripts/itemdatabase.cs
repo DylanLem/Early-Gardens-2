@@ -39,7 +39,7 @@ public class Itemdatabase
 
   public Item Get_Item(int _id)
   {
-    //Creating a copy of an item in our database. :)
+    //Creating an instance of an item in our database. :)
     Item i = (Item)Activator.CreateInstance(item_database[_id]);
     i.Set_Id(_id);
     return i;

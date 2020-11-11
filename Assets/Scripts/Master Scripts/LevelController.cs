@@ -43,6 +43,8 @@ public class LevelController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+      EffectManager.Update();
+
       if(Input.GetKeyDown(KeyCode.S))
       {
         Save_And_Quit();

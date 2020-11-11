@@ -60,7 +60,7 @@ public partial class player : MonoBehaviour
       }
 
       if(is_sleeping){
-
+        Send_Effect(gameObject, 0);
       }
     }
 

@@ -27,4 +27,9 @@ public partial class player : MonoBehaviour
     GameObject.FindWithTag("Title Screen").SetActive(on_off);
   }
 
+  public void Send_Effect(GameObject parent,int effect_id)
+  {
+    EffectManager.CreateEffect(parent, effect_id);
+  }
+
 }
