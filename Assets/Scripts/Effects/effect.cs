@@ -30,7 +30,7 @@ public abstract class Effect
     if(gobj == null) return;
 
     Debug.Log("HEY");
-    
+
     phys_rep.transform.position = gobj.transform.position;
     local_origin = phys_rep.transform.position;
   }

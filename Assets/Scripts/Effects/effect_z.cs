@@ -18,7 +18,6 @@ public class Effect_Z : Effect
     Set_Parent(parent);
 
     phys_rep.transform.localPosition += new Vector3(0.1f,0.2f,0);
-    Debug.Log("I EXIST :)");
   }
 
   public override void Update(){

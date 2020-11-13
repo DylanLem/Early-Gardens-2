@@ -16,14 +16,13 @@ public class itemmanager : MonoBehaviour
 
     void Awake()
     {
-        item_database = GameObject.FindWithTag("Level Controller").GetComponent<LevelController>().itemDatabase;
+
         gridmanager = GameObject.FindWithTag("Grid");
-
-
     }
 
     void Start()
     {
+      item_database = GameObject.FindWithTag("Level Controller").GetComponent<LevelController>().itemDatabase;
       gridmanager = GameObject.FindWithTag("Grid");
       //Setting the reference from here so we don't get a null reference error
       gridmanager.GetComponent<gridmanager>().item_grid = items_on_grid;
@@ -44,7 +43,6 @@ public class itemmanager : MonoBehaviour
       }
       if(Input.GetKeyDown(KeyCode.O))
       {
-        Debug.Log(typeof(Earl_Egg));
         Give_Item(2); // earl egg
       }
       if(Input.GetKeyDown(KeyCode.I))
@@ -77,6 +75,7 @@ public class itemmanager : MonoBehaviour
       if(Add_To_Inventory(item)) return;
       item.Delete();
     }
+
 
     public void Give_Item(List<int> ids)
     {

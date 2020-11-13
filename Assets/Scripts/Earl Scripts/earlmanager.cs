@@ -62,6 +62,8 @@ public class earlmanager : MonoBehaviour
     "'o", "bibi", "art", "vo", "lee", "pe", "iipi", "wert", "nem"
   };
 
+  private List<string> taken_names = new List<string>();
+
     // Update is called once per frame
     void Update()
     {
@@ -70,21 +72,29 @@ public class earlmanager : MonoBehaviour
         Update_Earl_Pos_List();
     }
 
-    public bool Set_Earl_Name(GameObject earl, string input_name)
+    public IEnumerator Set_Earl_Name(GameObject earl)
     {
-      foreach(GameObject e in earl_list)
-      {
-        if(e.GetComponent<earlbrain>().name == input_name)
-          return false;
-      }
+
+      string input_name = name_prefixes[UnityEngine.Random.Range(0,name_prefixes.Count)] +
+         name_suffixes[UnityEngine.Random.Range(0,name_suffixes.Count)];
+
+      //making sure the name isnt being used.
+        if(taken_names.Contains(input_name))
+        {
+            yield return Set_Earl_Name(earl);
+        }
 
       earl.GetComponent<earlbrain>().Update_Name(input_name);
 
-      return true;
+      taken_names.Add(input_name);
+
+
+      yield return null;
     }
 
     private void Check_Earl_Eggs()
     {
+      Earl_Egg hatched_egg = null;
 
       foreach(Earl_Egg egg in egg_list)
       {
@@ -93,11 +103,12 @@ public class earlmanager : MonoBehaviour
         if(egg.birth_ready)
         {
           Birth_Earl(egg, egg.color);
-
-          return;
+          hatched_egg = egg;
+          break;
         }
-
       }
+
+      egg_list.Remove(hatched_egg);
 
     }
 
@@ -108,22 +119,17 @@ public class earlmanager : MonoBehaviour
       GameObject birth_square = Gridmanager.GetComponent<gridmanager>().Get_Tile(egg.grid_pos);
       if (birth_square == null) return;
 
-      Destroy(egg.phys_rep);
-      egg_list.Remove(egg);
       egg.Delete();
 
       var new_earl = Instantiate(Earl, birth_square.transform.position, Quaternion.identity);
       new_earl.GetComponent<SpriteRenderer>().color = color;
 
 
-      string new_name = name_prefixes[UnityEngine.Random.Range(0,name_prefixes.Count)] +
-       name_suffixes[UnityEngine.Random.Range(0,name_suffixes.Count)];
+      //Needs a name on the birth certificate. for real. things will get messed up if an earl is improperly named.
 
-      while(! Set_Earl_Name(new_earl, new_name))
-      {
-        continue;
-      }
-
+      Debug.Log(Time.deltaTime);
+      Set_Earl_Name(new_earl);
+      Debug.Log(Time.deltaTime);
             //Attach the face
       new_earl.GetComponent<earlbrain>().eyes = Instantiate(Earl_Eyes,new_earl.transform);
       new_earl.GetComponent<earlbrain>().mouth = Instantiate(Earl_Mouth,new_earl.transform);
@@ -137,9 +143,9 @@ public class earlmanager : MonoBehaviour
       new_earl.GetComponent<earlbrain>().Set_Grid_Pos(birth_square.GetComponent<tilebehavior>().grid_pos);
       Gridmanager.GetComponent<gridmanager>().Update_Square(birth_square.GetComponent<tilebehavior>().Get_Grid_Pos(),"add", new_earl);
 
-
+      Debug.Log(Time.deltaTime);
       earl_list.Add(new_earl);
-
+Debug.Log("done");
       Save_Earls();
     }
 

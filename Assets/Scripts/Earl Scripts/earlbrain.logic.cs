@@ -90,6 +90,10 @@ public partial class earlbrain : MonoBehaviour
 
     //a list of directions earl may move
     var moves = Determine_Moves();
+
+    if(moves.Count() == 0) return;
+
+
     act_timer = 0;
 
 
@@ -98,45 +102,50 @@ public partial class earlbrain : MonoBehaviour
     {
       //he's just gonna walk in some random direction. stupid
       case Moods.Idle:
+      {
         Move(moves[UnityEngine.Random.Range(0,moves.Count - 1)]);
         break;
-
+      }
       //he's somehow fat AND starving always
       case Moods.Hungry:
-          target = Find_Food();
+      {
+        target = Find_Food();
 
-          //we need to do this because earls mood can change in that method.
-          if(mood == Moods.Hungry)
-            Move(Get_Target_Direction());
-          break;
+        //we need to do this because earls mood can change in that method.
+        if(mood == Moods.Hungry)
+          Move(Get_Target_Direction());
+        break;
+      }
 
       case Moods.Eating:
-        {
-          Find_Food();
+      {
+        Find_Food();
 
-          if(satiety >= 100f || target == null) mood = Moods.Idle;
-          else
-          {
-            Eat();
-          }
-          break;
+        if(satiety >= 100f || target == null) mood = Moods.Idle;
+        else
+        {
+          Eat();
         }
+        break;
+      }
 
       case Moods.Starving:
-        {
-          Take_Damage(10);
-          mood = Moods.Idle;
-          attitude = 0;
-          Determine_Action();
-          break;
-        }
+      {
+        Take_Damage(10);
+        mood = Moods.Idle;
+        attitude = 0;
+
+        break;
+      }
 
       case Moods.Carried:
-        {
-          Display_Earl_Data();
-          break;
-        }
-
+      {
+        Display_Earl_Data();
+        break;
+      }
     }
+
+    
   }
+
 }

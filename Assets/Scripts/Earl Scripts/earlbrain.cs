@@ -56,7 +56,7 @@ public partial class earlbrain : MonoBehaviour
 
       mood = Moods.Idle;
       act_timer = 0.0f;
-      speed = 0.8f;
+      speed = UnityEngine.Random.Range(0.7f,1.2f);
 
       home_grid = Gridmanager.name;
 
