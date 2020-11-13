@@ -17,9 +17,8 @@ public static class EffectManager
   {
 
     //effect buffer
-    if((time_elapsed % 1.5f) >= Time.deltaTime) return;
-
-    effects.Add(ED.Get_Effect(effect_id, target));
+    if(((int)(time_elapsed * 100 % 100)) == 0)
+      effects.Add(ED.Get_Effect(effect_id, target));
   }
 
   public static void Update(){
