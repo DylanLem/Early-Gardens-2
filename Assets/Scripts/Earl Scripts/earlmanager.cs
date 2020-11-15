@@ -38,6 +38,21 @@ public class earlmanager : MonoBehaviour
       "earl_fur_0","earl_fur_1","earl_fur_2","earl_fur_3",
       "earl_fur_4", "earl_fur_5", "earl_fur_6"
     };
+
+
+    private List<string> name_prefixes = new List<string>()
+    {
+      "stron", "umpl", "graan" , "anapa", "chiggi", "rondo", "groml",
+      "stans", "hibi", "wert", "stan", "gooog", "totot", "scrib", "nond"
+    };
+
+    private List<string> name_suffixes = new List<string>()
+    {
+      "esken", "arl", "stobby", "ly", "ooooooo", "ibum", "crek", "onk",
+      "'o", "bibi", "art", "vo", "lee", "pe", "iipi", "wert", "nem"
+    };
+
+    private List<string> taken_names = new List<string>();
     // Start is called before the first frame update
     void Start()
     {
@@ -50,20 +65,6 @@ public class earlmanager : MonoBehaviour
 
     }
 
-  private List<string> name_prefixes = new List<string>()
-  {
-    "stron", "umpl", "graan" , "anapa", "chiggi", "rondo", "groml",
-    "stans", "hibi", "wert", "stan", "gooog", "totot", "scrib", "nond"
-  };
-
-  private List<string> name_suffixes = new List<string>()
-  {
-    "esken", "arl", "stobby", "ly", "ooooooo", "ibum", "crek", "onk",
-    "'o", "bibi", "art", "vo", "lee", "pe", "iipi", "wert", "nem"
-  };
-
-  private List<string> taken_names = new List<string>();
-
     // Update is called once per frame
     void Update()
     {
@@ -71,6 +72,7 @@ public class earlmanager : MonoBehaviour
 
         Update_Earl_Pos_List();
     }
+
 
     public IEnumerator Set_Earl_Name(GameObject earl)
     {
@@ -127,9 +129,7 @@ public class earlmanager : MonoBehaviour
 
       //Needs a name on the birth certificate. for real. things will get messed up if an earl is improperly named.
 
-      Debug.Log(Time.deltaTime);
-      Set_Earl_Name(new_earl);
-      Debug.Log(Time.deltaTime);
+      StartCoroutine(Set_Earl_Name(new_earl));
             //Attach the face
       new_earl.GetComponent<earlbrain>().eyes = Instantiate(Earl_Eyes,new_earl.transform);
       new_earl.GetComponent<earlbrain>().mouth = Instantiate(Earl_Mouth,new_earl.transform);
@@ -143,9 +143,8 @@ public class earlmanager : MonoBehaviour
       new_earl.GetComponent<earlbrain>().Set_Grid_Pos(birth_square.GetComponent<tilebehavior>().grid_pos);
       Gridmanager.GetComponent<gridmanager>().Update_Square(birth_square.GetComponent<tilebehavior>().Get_Grid_Pos(),"add", new_earl);
 
-      Debug.Log(Time.deltaTime);
       earl_list.Add(new_earl);
-Debug.Log("done");
+
       Save_Earls();
     }
 

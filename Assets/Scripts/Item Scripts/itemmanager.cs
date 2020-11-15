@@ -112,7 +112,7 @@ public class itemmanager : MonoBehaviour
 
           //Inventory display will handle the item game objects now.
           inventory[j,i].count += 1;
-
+          Debug.Log(inventory[j,i].count);
           GameObject.FindWithTag("Player").GetComponent<player>().Send_Inv_Data();
           return true;
         }

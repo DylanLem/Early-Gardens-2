@@ -38,32 +38,28 @@ public partial class earlbrain : MonoBehaviour
     return target_food;
   }
 
-
-  public string Get_Target_Direction()
+  public List<Vector3> Find_Target_Path(Item item)
   {
-    //It ain't pretty but it works. Targets are always type Item
-    Vector3 t_pos = target.grid_pos;
-    Vector3 e_pos = grid_pos;
+    Vector3 target_pos = item.grid_pos;
 
+    List<Vector3> path = Pathfinder.FindPath(grid_pos,target_pos);
+
+    return path;
+  }
+
+
+  public Vector3 Get_Target_Direction()
+  {
     List<string> moves = Determine_Moves();
-    float best_move = 999f;
-    string selected_move = null;
 
-    foreach(string move in moves)
-    {
-      float d = Vector3.Distance(grid_pos + direction_to_vector[move], target.grid_pos);
+    List<Vector3> path = Find_Target_Path(target);
 
-      if(d < best_move)
-       {
-        selected_move = move;
-        best_move = d;
-        }
-    }
 
-    if(selected_move != null) return selected_move;
-    //if nothing is good, just move random, k?
-    return moves[UnityEngine.Random.Range(0,moves. Count() -1)];
+    if(path == null)
+        return grid_pos + direction_to_vector[moves[UnityEngine.Random.Range(0,moves.Count)]];
 
+    Debug.Log("HEY");
+    return path[0];
    }
 
 
@@ -113,7 +109,11 @@ public partial class earlbrain : MonoBehaviour
 
         //we need to do this because earls mood can change in that method.
         if(mood == Moods.Hungry)
-          Move(Get_Target_Direction());
+        {
+          Vector3 move = Get_Target_Direction();
+
+          Move(move);
+        }
         break;
       }
 
@@ -145,7 +145,7 @@ public partial class earlbrain : MonoBehaviour
       }
     }
 
-    
+
   }
 
 }

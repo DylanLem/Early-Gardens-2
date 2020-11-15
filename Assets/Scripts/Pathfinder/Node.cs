@@ -16,12 +16,13 @@ public class Node
 
   public Dictionary<string,Node> neighbours;
 
-  public Node(Vector3 _grid_pos, Node _destination, Node _parent)
+  public Node(Vector3 _grid_pos, Node _destination, Node _parent, GameObject gridmanager)
   {
 
     grid_pos = _grid_pos;
     destination = _destination;
     parent = _parent;
+    Gridmanager = gridmanager;
 
     Determine_G_Cost(parent);
     Determine_H_Cost();
@@ -29,17 +30,23 @@ public class Node
 
   }
 
-  public void Determine_G_Cost(Node parent)
+  public bool Determine_G_Cost(Node parent)
   {
-    if(parent == null) return;
+    if(parent == null) return false;
 
     if(Vector3.Distance(grid_pos,parent.grid_pos) + parent.g < g)
+    {
       g = Vector3.Distance(grid_pos,parent.grid_pos) + parent.g;
       this.parent = parent;
+      return true;
+    }
+
+    return false;
   }
 
   public void Determine_H_Cost()
   {
+    if(destination == null) return;
     h = Vector3.Distance(grid_pos,destination.grid_pos);
   }
 
@@ -92,7 +99,7 @@ public class Node
         if(neighbours[neighbours.ElementAt(dict_indexer).Key] == null)
           if(Gridmanager.GetComponent<gridmanager>().Get_Empty_Squares().Contains(new Vector3(column,row)))
           {
-            neighbours[neighbours.ElementAt(dict_indexer).Key] = new Node(new Vector3(column,row),destination,this);
+            neighbours[neighbours.ElementAt(dict_indexer).Key] = new Node(new Vector3(column,row),destination,this, Gridmanager);
             open_nodes.Add(neighbours[neighbours.ElementAt(dict_indexer).Key]);
           }
       }

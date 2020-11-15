@@ -18,6 +18,7 @@ public class Earl_Egg : Item
 
   public Earl_Egg()
   {
+    is_stackable = false;
     name = "Egg?";
     description = "What the heck even is that?";
     tag = "Egg";
