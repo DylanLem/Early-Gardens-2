@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 public partial class playermanager : MonoBehaviour
@@ -33,14 +34,8 @@ public partial class playermanager : MonoBehaviour
 
     };
 
+    public Button grab, build, destroy;
 
-    //pairing keys to actions
-    Dictionary<ContextActions,KeyCode> actions = new Dictionary<ContextActions,KeyCode>()
-    {
-        {ContextActions.Grab, KeyCode.G},
-        {ContextActions.Throw, KeyCode.T},
-        {ContextActions.Build, KeyCode.B}
-    };
 
 
     void Start()
@@ -54,8 +49,23 @@ public partial class playermanager : MonoBehaviour
       Snap_Camera();
       move_timer = 0;
       current_ContextAction = ContextActions.Grab;
-    }
 
+
+      grab = GameObject.Find("Grab").GetComponent<Button>();
+        grab.onClick.AddListener(delegate{
+          Set_Context_Action(ContextActions.Grab);
+          });
+
+      build = GameObject.Find("Build").GetComponent<Button>();
+        build.onClick.AddListener(delegate{
+           Set_Context_Action(ContextActions.Build);
+        });
+
+      destroy = GameObject.Find("Destroy").GetComponent<Button>();
+        destroy.onClick.AddListener(delegate{
+           Set_Context_Action(ContextActions.Destroy);
+         });
+    }
 
     // Update is called once per frame
     void Update()

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 public partial class playermanager : MonoBehaviour
@@ -11,13 +12,23 @@ public partial class playermanager : MonoBehaviour
 
 
   // make sure you add a reference to your new action here :)
-  private enum ContextActions
+  public enum ContextActions
   {
     None,
     Grab,
     Throw,
-    Build
+    Build,
+    Destroy
   }
+
+  //pairing keys to actions
+  Dictionary<ContextActions,KeyCode> actions = new Dictionary<ContextActions,KeyCode>()
+  {
+      {ContextActions.Grab, KeyCode.G},
+      {ContextActions.Throw, KeyCode.T},
+      {ContextActions.Build, KeyCode.B},
+      {ContextActions.Destroy, KeyCode.D}
+  };
 
   // defining the variable to check our currently toggled action
   private ContextActions current_ContextAction = ContextActions.None;
@@ -26,14 +37,13 @@ public partial class playermanager : MonoBehaviour
 
   private void Check_Action(List<KeyCode> keys_pressed)
   {
-    //Determines what we're gonna do, whether a move or contextaction
-    current_ContextAction = ContextActions.None;
+
 
     foreach(KeyValuePair<ContextActions,KeyCode> action in actions)
     {
       if(keys_pressed.Contains(action.Value))
       {
-        current_ContextAction = action.Key;
+        Set_Context_Action(action.Key);
       }
     }
 
@@ -45,12 +55,40 @@ public partial class playermanager : MonoBehaviour
       if(keys_pressed.Contains(control_variant))
       {
         if (move_timer < 0.18) return;
-        if (current_ContextAction != ContextActions.None) Do_Context_Action(current_ContextAction,direction.Key);
+        if (current_ContextAction != ContextActions.None && Input.GetKey(KeyCode.Space)) Do_Context_Action(current_ContextAction,direction.Key);
         if (move_timer < 0.18) return;
         Move_Player(direction.Key);
 
       }
     }
+  }
+
+  public void Set_Context_Action(ContextActions action)
+  {
+    Debug.Log("Im being called");
+
+    switch(action)
+    {
+      case(ContextActions.Grab):
+      {
+        grab.GetComponent<ActionButton>().Send_Select_To_Manager();
+        break;
+      }
+      case(ContextActions.Build):
+      {
+
+        build.GetComponent<ActionButton>().Send_Select_To_Manager();
+        break;
+      }
+      case(ContextActions.Destroy):
+      {
+
+        destroy.GetComponent<ActionButton>().Send_Select_To_Manager();
+        break;
+      }
+    }
+    Debug.Log("Setting context aacktion, " + action);
+    current_ContextAction = action;
   }
 
   private void Do_Context_Action(ContextActions action, string direction="none")
@@ -68,6 +106,9 @@ public partial class playermanager : MonoBehaviour
         break;
       case ContextActions.Build:
         Build_Object(direction);
+        break;
+      case ContextActions.Destroy:
+        Destroy_Object(direction);
         break;
     }
   }
@@ -207,6 +248,12 @@ public partial class playermanager : MonoBehaviour
     return false;
   }
 
+
+  public bool Destroy_Object(string direction)
+  {
+    Vector3 move = direction_to_vector[direction] + grid_pos;
+    return Itemmanager.GetComponent<itemmanager>().Delete_Item(Itemmanager.GetComponent<itemmanager>().items_on_grid[(int)move.x,(int)move.y]);
+  }
 
 
 }

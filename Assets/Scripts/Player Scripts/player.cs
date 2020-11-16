@@ -38,13 +38,13 @@ public partial class player : MonoBehaviour
         Send_Inv_Data();
 
         SaveSystem.Load_Player(gameObject);
-
-
         if(GameObject.FindWithTag("Level Controller").GetComponent<LevelController>().on_startup == true)
         {
           Sleep();
           GameObject.FindWithTag("Level Controller").GetComponent<LevelController>().on_startup = false;
         }
+
+
 
         Toggle_Title_Display(is_sleeping);
     }

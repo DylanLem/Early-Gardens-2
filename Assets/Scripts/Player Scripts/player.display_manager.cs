@@ -6,6 +6,7 @@ public partial class player : MonoBehaviour
 {
 
 
+
   public void Send_Inv_Data()
   {
     InventoryDisplay.GetComponent<inventory_display>().Display_Inventory(inventory);

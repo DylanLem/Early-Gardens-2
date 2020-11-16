@@ -58,7 +58,6 @@ public partial class earlbrain : MonoBehaviour
     if(path == null)
         return grid_pos + direction_to_vector[moves[UnityEngine.Random.Range(0,moves.Count)]];
 
-    Debug.Log("HEY");
     return path[0];
    }
 
