@@ -252,8 +252,17 @@ public partial class playermanager : MonoBehaviour
   public bool Destroy_Object(string direction)
   {
     Vector3 move = direction_to_vector[direction] + grid_pos;
-    return Itemmanager.GetComponent<itemmanager>().Delete_Item(Itemmanager.GetComponent<itemmanager>().items_on_grid[(int)move.x,(int)move.y]);
+    var item_grid = Itemmanager.GetComponent<itemmanager>().items_on_grid;
+
+
+
+    if(move.x < item_grid.GetLength(0) - 1 && move.x > 0 && move.y < item_grid.GetLength(1) && move.y > 0)
+      return Itemmanager.GetComponent<itemmanager>().Delete_Item(Itemmanager.GetComponent<itemmanager>().items_on_grid[(int)move.x,(int)move.y]);
+
+    return false;
   }
+
+
 
 
 }

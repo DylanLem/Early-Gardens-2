@@ -87,6 +87,11 @@ public partial class earlbrain : MonoBehaviour
       return grid_pos;
     }
 
+    public void Set_Home_Grid(string hg)
+    {
+      home_grid = hg;
+    }
+
 
     //If earl gets scooped by me
     public void Become_Carried()

@@ -145,6 +145,8 @@ public class earlmanager : MonoBehaviour
 
       earl_list.Add(new_earl);
 
+      new_earl.GetComponent<earlbrain>().Set_Home_Grid(Gridmanager.name);
+
       Save_Earls();
     }
 
