@@ -18,25 +18,28 @@ public class inventory_slot : MonoBehaviour
     void OnMouseEnter()
     {
 
-      GameObject.FindWithTag("Inventory Display").GetComponent<inventory_display>().Send_Slot_Pos(gameObject);
-      Highlight_Border();
+
+
     }
 
     void OnMouseExit()
     {
-      Un_Highlight_Border();
+
     }
 
     void OnMouseDown()
     {
+            GameObject.FindWithTag("Inventory Display").GetComponent<inventory_display>().Send_Slot_Pos(gameObject);
       GameObject.FindWithTag("Player").GetComponent<player>().Get_From_Inventory(inv_x,inv_y);
+      GameObject.FindWithTag("Inventory Display").GetComponent<inventory_display>().Clear_Borders();
+      Highlight_Border();
 
     }
 
     public void Add_To_Slot(Item item, GameObject phys_rep)
     {
       //used for adding an item to this slot
-
+      Debug.Log(item.name);
       phys_rep.transform.localScale = new Vector3(0.75f,0.75f);
       phys_rep.GetComponent<SpriteRenderer>().sortingLayerName = "UI";
       phys_rep.GetComponent<SpriteRenderer>().sortingOrder = 2;
@@ -48,6 +51,11 @@ public class inventory_slot : MonoBehaviour
 
 
       child_item = item;
+    }
+
+    public void Clear_Slot()
+    {
+      child_item = null;
     }
 
     public void Highlight_Border()

@@ -47,7 +47,7 @@ public static class Pathfinder
       selected_node.Set_Neighbours(open_nodes,closed_nodes);
     }
 
-    Debug.Log("i am null :0");
+
     return null;
   }
 

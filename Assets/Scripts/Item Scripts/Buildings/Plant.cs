@@ -38,7 +38,7 @@ public class Plant : Building
     fertility_cycle = 0f;
     life_stage = 1;
     growth_stages = 3;
-    fertility = 5f;
+    fertility = 12f;
     grow_time = 2f;
 
     fruit_id = 0;

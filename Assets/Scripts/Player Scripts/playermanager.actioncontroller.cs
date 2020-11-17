@@ -65,7 +65,6 @@ public partial class playermanager : MonoBehaviour
 
   public void Set_Context_Action(ContextActions action)
   {
-    Debug.Log("Im being called");
 
     switch(action)
     {
@@ -87,7 +86,6 @@ public partial class playermanager : MonoBehaviour
         break;
       }
     }
-    Debug.Log("Setting context aacktion, " + action);
     current_ContextAction = action;
   }
 
@@ -161,6 +159,8 @@ public partial class playermanager : MonoBehaviour
 
           else
           {
+            Debug.Log("should be remove");
+            Itemmanager.GetComponent<itemmanager>().Add_To_Inventory(items_on_grid[i,j]);
             Player.GetComponent<player>().carried_object = items_on_grid[i,j];
 
             Gridmanager.GetComponent<gridmanager>().grid[(int)items_on_grid[i,j].grid_pos.x,(int)items_on_grid[i,j].grid_pos.y].
@@ -193,8 +193,10 @@ public partial class playermanager : MonoBehaviour
        if(Player.GetComponent<player>().carried_object != null)
        {
          Itemmanager.GetComponent<itemmanager>().Spawn_On_Tile(Player.GetComponent<player>().carried_object, Gridmanager.GetComponent<gridmanager>().grid[(int)(grid_pos + move).x, (int)(grid_pos + move).y]);
+         Player.GetComponent<player>().Remove_From_Inventory((int)Player.GetComponent<player>().carried_object.inv_pos.x, (int)Player.GetComponent<player>().carried_object.inv_pos.y);
          Player.GetComponent<player>().carried_object.is_placed = true;
          Player.GetComponent<player>().carried_object = null;
+         Destroy(Player.GetComponent<player>().carried_physrep);
        }
        move_timer = 0;
        return true;
@@ -256,7 +258,7 @@ public partial class playermanager : MonoBehaviour
 
 
 
-    if(move.x < item_grid.GetLength(0) - 1 && move.x > 0 && move.y < item_grid.GetLength(1) && move.y > 0)
+    if(move.x < item_grid.GetLength(0) - 1 && move.x >= 0 && move.y < item_grid.GetLength(1) && move.y >= 0)
       return Itemmanager.GetComponent<itemmanager>().Delete_Item(Itemmanager.GetComponent<itemmanager>().items_on_grid[(int)move.x,(int)move.y]);
 
     return false;

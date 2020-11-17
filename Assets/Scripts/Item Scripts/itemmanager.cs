@@ -123,7 +123,9 @@ public class itemmanager : MonoBehaviour
       {
         if(inventory[j,i] == null)
         {
+          Debug.Log(item);
           inventory[j,i] = item;
+          item.inv_pos = new Vector3(j,i);
           if(item != null) inventory[j,i].count += 1;
           GameObject.FindWithTag("Player").GetComponent<player>().Send_Inv_Data();
           return true;

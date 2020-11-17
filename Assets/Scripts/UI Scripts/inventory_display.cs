@@ -52,19 +52,18 @@ public class inventory_display : MonoBehaviour
     public void Display_Inventory(Item[,] inventory)
     {
 
-      for(int i = 0; i < inventory.GetLength(0); i++)
-        for(int j = 0; j < inventory.GetLength(1); j++)
+      for(int j = 0; j < inventory.GetLength(1); j++)
+        for(int i = 0; i < inventory.GetLength(0); i++)
         {
 
           Item item = inventory[i,j];
 
-          if(inventory_slots[i,j].transform.Find("Slot Border(Clone)").gameObject.GetComponent<SpriteRenderer>().sprite == Resources.Load<Sprite>("UI/borderhighlight"))
-          {
-            inventory_slots[i,j].transform.Find("Slot Border(Clone)").gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("UI/bordernorm");
-          }
-
           //break out of this loop if the item is null
-          if(item == null) continue;
+          if(item == null)
+          {
+             inventory_slots[i,j].GetComponent<inventory_slot>().Clear_Slot();
+             continue;
+          }
 
 
           inventory_slots[i,j].GetComponent<inventory_slot>().Add_To_Slot(item,item.phys_rep);
@@ -84,6 +83,12 @@ public class inventory_display : MonoBehaviour
           }
 
         }
-        Display_Inventory(inventory);
+    }
+
+    public void Clear_Borders()
+    {
+      for(int j = 0; j < 4; j++)
+        for(int i = 0; i < 6; i++)
+          inventory_slots[i,j].GetComponent<inventory_slot>().Un_Highlight_Border();
     }
 }

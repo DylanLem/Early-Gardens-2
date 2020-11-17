@@ -17,7 +17,6 @@ public class ActionButton : MonoBehaviour
 
     public void Send_Select_To_Manager()
     {
-      Debug.Log("eheheh");
       UIActionManager.GetComponent<UIActionManager>().selected_button = gameObject.GetComponent<Button>();
     }
 

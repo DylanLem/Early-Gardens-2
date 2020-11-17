@@ -43,13 +43,15 @@ public class earlmanager : MonoBehaviour
     private List<string> name_prefixes = new List<string>()
     {
       "stron", "umpl", "graan" , "anapa", "chiggi", "rondo", "groml",
-      "stans", "hibi", "wert", "stan", "gooog", "totot", "scrib", "nond"
+      "stans", "hibi", "wert", "stan", "gooog", "totot", "scrib", "nond", "kar",
+      "stink", "bad", "kro", "b'" , "tras", "pop"
     };
 
     private List<string> name_suffixes = new List<string>()
     {
       "esken", "arl", "stobby", "ly", "ooooooo", "ibum", "crek", "onk",
-      "'o", "bibi", "art", "vo", "lee", "pe", "iipi", "wert", "nem"
+      "'o", "bibi", "art", "vo", "lee", "pe", "iipi", "wert", "nem", "erl",
+      "unkin", "kin", "ble"
     };
 
     private List<string> taken_names = new List<string>();
@@ -152,8 +154,9 @@ public class earlmanager : MonoBehaviour
 
     private void Load_Earl(Dictionary<string,dynamic> earl_data)
     {
+      Vector3 grid_pos =  new Vector3(earl_data["grid_pos"][0],earl_data["grid_pos"][1],earl_data["grid_pos"][2]);
 
-      GameObject target_square = Gridmanager.GetComponent<gridmanager>().Find_Empty_Square();
+      GameObject target_square = Gridmanager.GetComponent<gridmanager>().Get_Tile(grid_pos);
       if (target_square == null || ! target_square.GetComponent<tilebehavior>().Is_Empty()) return;
 
       earl_count += 1;

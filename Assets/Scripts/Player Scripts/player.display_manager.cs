@@ -14,13 +14,18 @@ public partial class player : MonoBehaviour
 
   public void Display_Carried_Item()
   {
+
+    Destroy(carried_physrep);
+
     if(carried_object == null) return;
 
-    carried_object.phys_rep.transform.localScale = new Vector3(0.5f,0.5f);
-    carried_object.phys_rep.transform.parent = transform;
-    carried_object.phys_rep.transform.position = transform.position;
-    carried_object.phys_rep.GetComponent<SpriteRenderer>().sortingLayerName = "Grid";
-    carried_object.phys_rep.GetComponent<SpriteRenderer>().sortingOrder = 2;
+    carried_physrep = Instantiate(carried_object.phys_rep);
+
+    carried_physrep.transform.localScale = new Vector3(0.5f,0.5f);
+    carried_physrep.transform.parent = transform;
+    carried_physrep.transform.position = transform.position;
+    carried_physrep.GetComponent<SpriteRenderer>().sortingLayerName = "Grid";
+    carried_physrep.GetComponent<SpriteRenderer>().sortingOrder = 2;
   }
 
   public void Toggle_Title_Display(bool on_off)

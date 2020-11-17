@@ -6,7 +6,11 @@ using UnityEngine;
 public partial class player : MonoBehaviour
 {
     public Item[,] inventory;
+
+
     public Item carried_object = null;
+    public GameObject carried_physrep;
+
     public GameObject carried_earl = null;
 
     public GameObject Itemmanager;
@@ -68,14 +72,7 @@ public partial class player : MonoBehaviour
     {
       //You can't cycle thru the inventory if you are holding an earl.
       if (carried_earl != null) return;
-      Item temp_item = (Item)inventory.GetValue((int)held_index.x,(int)held_index.y);
-      inventory[(int)held_index.x,(int)held_index.y] = null;
 
-
-      if(carried_object != null) Itemmanager.GetComponent<itemmanager>().Add_To_Inventory(carried_object);
-      carried_object = temp_item;
-      Display_Carried_Item();
-      Send_Inv_Data();
 
       InventoryDisplay.GetComponent<inventory_display>().inventory_slots[(int)held_index.x,(int)held_index.y].
       GetComponent<inventory_slot>().Un_Highlight_Border();
@@ -93,6 +90,10 @@ public partial class player : MonoBehaviour
       else
         held_index.x += 1;
 
+      carried_object = (Item)inventory[(int)held_index.x,(int)held_index.y];
+      Display_Carried_Item();
+      Send_Inv_Data();
+
       InventoryDisplay.GetComponent<inventory_display>().inventory_slots[(int)held_index.x,(int)held_index.y].
       GetComponent<inventory_slot>().Highlight_Border();
     }
@@ -101,13 +102,17 @@ public partial class player : MonoBehaviour
     {
       if(carried_earl != null) return false;
 
-      Item temp = carried_object;
       carried_object = inventory[x,y];
-      inventory[x,y] = temp;
+
       Display_Carried_Item();
       Send_Inv_Data();
 
       return true;
+    }
+
+    public void Remove_From_Inventory(int x, int y)
+    {
+      inventory[x,y] = null;
     }
 
 
