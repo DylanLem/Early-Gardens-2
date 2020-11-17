@@ -84,6 +84,8 @@ public partial class playermanager : MonoBehaviour
 
       grid_pos = spawn_square.GetComponent<tilebehavior>().Get_Grid_Pos();
 
+      Player.GetComponent<player>().grid_pos = grid_pos;
+
       Gridmanager.GetComponent<gridmanager>().Update_Square(grid_pos,"add",Player);
     }
 

@@ -139,7 +139,14 @@ public partial class playermanager : MonoBehaviour
     for(int i = 0; i < items_on_grid.GetLength(0); i++)
     for(int j = 0; j < items_on_grid.GetLength(1); j++)
     {
-      if(items_on_grid[i,j] != null && ! items_on_grid[i,j].is_building)
+
+      if(items_on_grid[i,j]?.is_building == true)
+      {
+        Interact_With_Object(direction);
+        return;
+      }
+
+      if(items_on_grid[i,j] != null)
       {
 
         if(items_on_grid[i,j].grid_pos == grid_pos + move)
@@ -246,6 +253,22 @@ public partial class playermanager : MonoBehaviour
       i.Build();
       return true;
     }
+
+    return false;
+  }
+
+  public bool Interact_With_Object(string direction)
+  {
+      Vector3 move = direction_to_vector[direction] + grid_pos;
+
+      if(items_on_grid[(int)move.x,(int)move.y]?.is_building == true)
+      {
+        Building b = (Building)items_on_grid[(int)move.x,(int)move.y];
+
+        b.Interact(Player);
+
+        return true;
+      }
 
     return false;
   }

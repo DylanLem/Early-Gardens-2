@@ -51,7 +51,7 @@ public class itemmanager : MonoBehaviour
       }
       if(Input.GetKeyDown(KeyCode.U))
       {
-        Give_Item(9); // box
+        Give_Item(11); // box
       }
 
       for(int i = 0; i < items_on_grid.GetLength(0); i++)

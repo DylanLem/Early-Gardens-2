@@ -29,6 +29,12 @@ public abstract class Building : Item
 
   }
 
+  //If the player may interact with the building, call this function!
+  public virtual void Interact(GameObject entity)
+  {
+
+  }
+
 
   protected void Set_Neighbours()
   {

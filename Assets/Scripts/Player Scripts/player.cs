@@ -16,7 +16,7 @@ public partial class player : MonoBehaviour
     public GameObject Itemmanager;
     public GameObject InventoryDisplay;
 
-
+    public Vector3 grid_pos;
     public Vector3 held_index;
 
     public bool is_sleeping;

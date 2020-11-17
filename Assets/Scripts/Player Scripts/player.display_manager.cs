@@ -30,7 +30,7 @@ public partial class player : MonoBehaviour
 
   public void Toggle_Title_Display(bool on_off)
   {
-    GameObject.FindWithTag("Title Screen").SetActive(on_off);
+    GameObject.FindWithTag("Title Screen").GetComponent<TitleManager>().Toggle_Title_Display(on_off);
   }
 
   public void Send_Effect(GameObject parent,int effect_id)

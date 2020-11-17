@@ -81,6 +81,8 @@ public partial class playermanager : MonoBehaviour
       if(camera_offset.y + move.y > -2 && camera_offset.y + move.y < 4) camera_offset.y += move.y;
       else Align_Camera(new Vector3(0,move.y));
 
+
+      Player.GetComponent<player>().grid_pos = grid_pos;
       return true;
   }
 
