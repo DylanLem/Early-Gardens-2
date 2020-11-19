@@ -14,9 +14,10 @@ public partial class player : MonoBehaviour
     public GameObject carried_earl = null;
 
     public GameObject Itemmanager;
+    public GameObject playermanager;
     public GameObject InventoryDisplay;
 
-    public Vector3 grid_pos;
+    public Vector3 grid_pos = Vector3.back;
     public Vector3 held_index;
 
     public bool is_sleeping;
@@ -32,21 +33,26 @@ public partial class player : MonoBehaviour
     void Start()
     {
 
+
         time_elapsed = 0;
 
         held_index = Vector3.zero;
         Itemmanager = GameObject.FindWithTag("Item Manager");
 
+
         InventoryDisplay = GameObject.FindWithTag("Inventory Display");
         InventoryDisplay.GetComponent<inventory_display>().inventory = inventory;
-        Send_Inv_Data();
 
         SaveSystem.Load_Player(gameObject);
+        
+        Send_Inv_Data();
+
         if(GameObject.FindWithTag("Level Controller").GetComponent<LevelController>().on_startup == true)
         {
           Sleep();
           GameObject.FindWithTag("Level Controller").GetComponent<LevelController>().on_startup = false;
         }
+
 
 
 
@@ -118,10 +124,11 @@ public partial class player : MonoBehaviour
 
     public void Sleep()
     {
-      GameObject.FindWithTag("Player Manager").GetComponent<playermanager>().move_timer = -2.0f;
+      playermanager.GetComponent<playermanager>().move_timer = -2.0f;
       is_sleeping = true;
       Toggle_Title_Display(true);
       Set_Sprite(Resources.Load<Sprite>("Player_sleeping"));
+      playermanager.GetComponent<playermanager>().Snap_Camera();
     }
 
     public void Wake_Up()
@@ -144,6 +151,11 @@ public partial class player : MonoBehaviour
     {
       Dictionary<string,dynamic> player_data = new Dictionary<string,dynamic>();
 
+
+      Vector3 gp = GameObject.FindWithTag("Player Manager").GetComponent<playermanager>().grid_pos;
+
+      player_data["grid_pos"] = new int[3]{(int)grid_pos.x,(int)grid_pos.y,(int)grid_pos.z};
+
       List<dynamic> inv_data = new List<dynamic>();
 
       for(int i = 0; i < inventory.GetLength(0); i++)
@@ -163,14 +175,32 @@ public partial class player : MonoBehaviour
       return player_data;
     }
 
+
+
     public void Load_Data(Dictionary<string,dynamic> player_data)
     {
+
+
+      grid_pos = new Vector3(player_data["grid_pos"][0],player_data["grid_pos"][1],player_data["grid_pos"][2]);
+
+        GameObject.FindWithTag("Grid").GetComponent<gridmanager>().Update_Square(grid_pos,"remove");
+
       foreach(Dictionary<string,dynamic> item_data in player_data["inv_data"])
       {
         Itemmanager.GetComponent<itemmanager>().Load_To_Inventory(item_data);
       }
       Itemmanager.GetComponent<itemmanager>().Load_To_Inventory(player_data["carried_object"]);
+
+
+      GameObject.FindWithTag("Grid").GetComponent<gridmanager>().Update_Square(grid_pos,"add",gameObject);
+
+      playermanager.GetComponent<playermanager>().GetComponent<playermanager>().grid_pos = grid_pos;
+
+      playermanager.GetComponent<playermanager>().GetComponent<playermanager>().Snap_Camera();
+
     }
+
+
 
 
 }

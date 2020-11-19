@@ -7,7 +7,6 @@ using UnityEngine.SceneManagement;
 public class LevelController : MonoBehaviour
 {
     public static LevelController Instance;
-    public Itemdatabase itemDatabase;
 
     private GameObject Earlmanager;
     private GameObject Player;
@@ -21,7 +20,7 @@ public class LevelController : MonoBehaviour
       button_quit = GameObject.Find("Quit").GetComponent<Button>();
       button_quit.onClick.AddListener(Save_And_Quit);
 
-      itemDatabase = new Itemdatabase();
+
 
         if (Instance == null)
         {

@@ -8,7 +8,6 @@ public class itemmanager : MonoBehaviour
 {
     public GameObject Player;
     public GameObject playermanager;
-    public Itemdatabase item_database;
     private GameObject[,] grid;
     private GameObject gridmanager;
     public Item[,] items_on_grid;
@@ -22,7 +21,7 @@ public class itemmanager : MonoBehaviour
 
     void Start()
     {
-      item_database = GameObject.FindWithTag("Level Controller").GetComponent<LevelController>().itemDatabase;
+
       gridmanager = GameObject.FindWithTag("Grid");
       //Setting the reference from here so we don't get a null reference error
       gridmanager.GetComponent<gridmanager>().item_grid = items_on_grid;
@@ -71,7 +70,7 @@ public class itemmanager : MonoBehaviour
 
     public void Give_Item(int id)
     {
-      var item = item_database.Get_Item(id);
+      var item = Itemdatabase.Get_Item(id);
       if(Add_To_Inventory(item)) return;
       item.Delete();
     }
@@ -81,7 +80,7 @@ public class itemmanager : MonoBehaviour
     {
       foreach(int id in ids)
       {
-        var item = item_database.Get_Item(id);
+        var item = Itemdatabase.Get_Item(id);
         if(Add_To_Inventory(item)) return;
       }
     }
@@ -144,7 +143,7 @@ public class itemmanager : MonoBehaviour
 
      if(tile == null || ! tile.GetComponent<tilebehavior>().is_empty == true) return false;
 
-     Item item = item_database.Get_Item(id);
+     Item item = Itemdatabase.Get_Item(id);
 
 
       item.grid_pos = tile.GetComponent<tilebehavior>().grid_pos;
@@ -178,7 +177,7 @@ public class itemmanager : MonoBehaviour
     {
 
 
-      Item item = item_database.Get_Item(item_data["id"]);
+      Item item = Itemdatabase.Get_Item(item_data["id"]);
 
       item.Load_Data(item_data);
 
@@ -194,7 +193,7 @@ public class itemmanager : MonoBehaviour
     {
       if(item_data == null) return false;
 
-      Item item = item_database.Get_Item(item_data["id"]);
+      Item item = Itemdatabase.Get_Item(item_data["id"]);
 
       item.Load_Data(item_data);
       Add_To_Inventory(item);

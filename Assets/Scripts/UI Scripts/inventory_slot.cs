@@ -39,7 +39,6 @@ public class inventory_slot : MonoBehaviour
     public void Add_To_Slot(Item item, GameObject phys_rep)
     {
       //used for adding an item to this slot
-      Debug.Log(item.name);
       phys_rep.transform.localScale = new Vector3(0.75f,0.75f);
       phys_rep.GetComponent<SpriteRenderer>().sortingLayerName = "UI";
       phys_rep.GetComponent<SpriteRenderer>().sortingOrder = 2;

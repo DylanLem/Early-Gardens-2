@@ -30,19 +30,20 @@ public class Player_Bed : Building
 
   private void Sleep_Player(GameObject player)
   {
-    player.GetComponent<player>().Sleep();
 
-    Debug.Log(player.GetComponent<player>().grid_pos);
-    GameObject.FindWithTag("Grid").GetComponent<gridmanager>().Update_Square(player.GetComponent<player>().grid_pos,"remove");
+
+
+    GameObject.FindWithTag("Grid").GetComponent<gridmanager>().Update_Square(player.GetComponent<player>().playermanager.GetComponent<playermanager>().grid_pos,"remove");
 
     player.GetComponent<player>().grid_pos = grid_pos;
+    player.GetComponent<player>().playermanager.GetComponent<playermanager>().grid_pos = grid_pos;
 
-
-
-    Debug.Log(player.GetComponent<player>().grid_pos);
 
     player.transform.position = phys_rep.transform.position;
+    player.transform.parent = phys_rep.transform;
 
+
+    player.GetComponent<player>().Sleep();
 
     GameObject grid = GameObject.FindWithTag("Grid");
     GameObject earl_manager = GameObject.FindWithTag("Earl Manager");

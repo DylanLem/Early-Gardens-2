@@ -65,7 +65,8 @@ public class inventory_display : MonoBehaviour
              continue;
           }
 
-
+          Debug.Log(item);
+          Debug.Log(inventory_slots.GetLength(0));
           inventory_slots[i,j].GetComponent<inventory_slot>().Add_To_Slot(item,item.phys_rep);
 
           inventory[i,j].phys_rep.transform.parent = inventory_slots[i,j].transform;

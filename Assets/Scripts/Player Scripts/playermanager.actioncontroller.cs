@@ -38,7 +38,6 @@ public partial class playermanager : MonoBehaviour
   private void Check_Action(List<KeyCode> keys_pressed)
   {
 
-
     foreach(KeyValuePair<ContextActions,KeyCode> action in actions)
     {
       if(keys_pressed.Contains(action.Value))
@@ -92,7 +91,7 @@ public partial class playermanager : MonoBehaviour
   private void Do_Context_Action(ContextActions action, string direction="none")
   {
     //If we are holding space, this will call the desired action function.
-
+    move_timer = 0;
 
     switch(action)
     {
@@ -113,74 +112,98 @@ public partial class playermanager : MonoBehaviour
 
   public void Grab_Object(string direction)
   {
-    //if we are carrying an earl
+
+    //This is a horrible function and it needs to be burned
+    //or refactored.
+
+    //so many bugs came from this its a little bug hive
+
+    Vector3 move = direction_to_vector[direction];
+
+    if( (grid_pos + move).x < 0 || (grid_pos + move).y < 0
+    || (grid_pos + move).x > Gridmanager.GetComponent<gridmanager>().grid.GetLength(0)
+    || (grid_pos + move).y > Gridmanager.GetComponent<gridmanager>().grid.GetLength(0) )
+    {
+      return;
+    }
+
+    //if we are carrying an thing
     if(Player.GetComponent<player>().carried_object != null || Player.GetComponent<player>().carried_earl != null)
     {
       Place_Object(direction);
       return;
     }
 
-    Vector3 move = direction_to_vector[direction];
+
 
     //checking for earls on grid
-    foreach(GameObject earl in Earlmanager.GetComponent<earlmanager>().Get_Earl_List())
+
+    Debug.Log(Earlmanager.GetComponent<earlmanager>().Get_Earl_Grid());
+    if(Earlmanager.GetComponent<earlmanager>().Get_Earl_Grid()[(int)(move + grid_pos).x,(int)(move + grid_pos).y] != null)
     {
+      GameObject earl = Earlmanager.GetComponent<earlmanager>().Get_Earl_Grid()[(int)(move + grid_pos).x,(int)(move + grid_pos).y];
 
       if(earl.GetComponent<earlbrain>().Get_Grid_Pos() == grid_pos + move)
        {
          Player.GetComponent<player>().carried_earl = earl;
          earl.GetComponent<earlbrain>().Become_Carried();
+
+         return;
        }
     }
 
     //checking for items on grid
     items_on_grid = Itemmanager.GetComponent<itemmanager>().items_on_grid;
 
-    for(int i = 0; i < items_on_grid.GetLength(0); i++)
-    for(int j = 0; j < items_on_grid.GetLength(1); j++)
+    Item item = items_on_grid[(int)(grid_pos + move).x ,(int)(grid_pos + move).y ];
+
+    if(item == null) return;
+
+      //if it's a building try and do a thing with it !
+    if(item.is_building == true)
+    {
+      Interact_With_Object(direction);
+      return;
+    }
+
+
+
+    //If we're holding something, fug it try and pick it up if she stacks.
+    if(Player.GetComponent<player>().carried_object != null)
     {
 
-      if(items_on_grid[i,j]?.is_building == true)
+      if(Itemmanager.GetComponent<itemmanager>().Add_To_Inventory(item))
       {
-        Interact_With_Object(direction);
+        Gridmanager.GetComponent<gridmanager>().grid[(int)item.grid_pos.x,(int)item.grid_pos.y].
+          GetComponent<tilebehavior>().Remove_From_Tile();
+        item.is_placed = false;
+        items_on_grid[(int)(move + grid_pos).x,(int)(move + grid_pos).y] = null;
+
         return;
       }
 
-      if(items_on_grid[i,j] != null)
-      {
-
-        if(items_on_grid[i,j].grid_pos == grid_pos + move)
-        {
-
-          if(Player.GetComponent<player>().carried_object != null)
-          {
-
-            if(Itemmanager.GetComponent<itemmanager>().Add_To_Inventory(items_on_grid[i,j]))
-            {
-              Gridmanager.GetComponent<gridmanager>().grid[(int)items_on_grid[i,j].grid_pos.x,(int)items_on_grid[i,j].grid_pos.y].
-                GetComponent<tilebehavior>().Remove_From_Tile();
-              items_on_grid[i,j].is_placed = false;
-              items_on_grid[i,j] = null;
-            }
-          }
-
-          else
-          {
-            Debug.Log("should be remove");
-            Itemmanager.GetComponent<itemmanager>().Add_To_Inventory(items_on_grid[i,j]);
-            Player.GetComponent<player>().carried_object = items_on_grid[i,j];
-
-            Gridmanager.GetComponent<gridmanager>().grid[(int)items_on_grid[i,j].grid_pos.x,(int)items_on_grid[i,j].grid_pos.y].
-              GetComponent<tilebehavior>().Remove_From_Tile();
-            items_on_grid[i,j].is_placed = false;
-            items_on_grid[i,j] = null;
-
-            Player.GetComponent<player>().Display_Carried_Item();
-          }
-        }
-      }
     }
-  }
+
+    //If we're not holding something, pick it up
+    else
+    {
+
+      Itemmanager.GetComponent<itemmanager>().Add_To_Inventory(item);
+      Player.GetComponent<player>().carried_object = item;
+
+      Gridmanager.GetComponent<gridmanager>().grid[(int)item.grid_pos.x,(int)item.grid_pos.y].
+        GetComponent<tilebehavior>().Remove_From_Tile();
+      item.is_placed = false;
+      items_on_grid[(int)(move + grid_pos).x,(int)(move + grid_pos).y] = null;
+
+      Player.GetComponent<player>().Display_Carried_Item();
+
+
+      return;
+    }
+
+
+    }
 
   public bool Place_Object(string direction)
   {
@@ -205,7 +228,7 @@ public partial class playermanager : MonoBehaviour
          Player.GetComponent<player>().carried_object = null;
          Destroy(Player.GetComponent<player>().carried_physrep);
        }
-       move_timer = 0;
+
        return true;
      }
     return false;
@@ -246,7 +269,7 @@ public partial class playermanager : MonoBehaviour
 
     var i = (Building_Item)Player.GetComponent<player>().carried_object;
 
-    move_timer = 0;
+
 
     if(Place_Object(direction))
     {

@@ -15,7 +15,7 @@ public partial class playermanager : MonoBehaviour
     private Item[,] items_on_grid;
 
     private Vector3 camera_offset;
-    private Vector3 grid_pos;
+    public Vector3 grid_pos;
 
     public float move_timer;
 
@@ -77,16 +77,22 @@ public partial class playermanager : MonoBehaviour
 
     public void Spawn_Player()
     {
-      GameObject spawn_square = GameObject.FindWithTag("Grid").GetComponent<gridmanager>().Find_Empty_Square();
-      Player = Instantiate(Player, spawn_square.transform.position, Quaternion.identity);
+
+      Player = Instantiate(Player);
+      Player.GetComponent<player>().playermanager = gameObject;
+
 
       GameObject.FindWithTag("Level Controller").GetComponent<LevelController>().Set_Player(Player);
 
-      grid_pos = spawn_square.GetComponent<tilebehavior>().Get_Grid_Pos();
 
-      Player.GetComponent<player>().grid_pos = grid_pos;
+
+        GameObject spawn_square = GameObject.FindWithTag("Grid").GetComponent<gridmanager>().Find_Empty_Square();
+
+        grid_pos = spawn_square.GetComponent<tilebehavior>().Get_Grid_Pos();
+
 
       Gridmanager.GetComponent<gridmanager>().Update_Square(grid_pos,"add",Player);
+
     }
 
 
@@ -102,7 +108,7 @@ public partial class playermanager : MonoBehaviour
 
       //adding all action inputs into keys_pressed
       foreach(KeyCode vkey in actions.Values)
-      if(Input.GetKey(vkey)) keys.Add(vkey);
+      if(Input.GetKeyDown(vkey)) keys.Add(vkey);
 
       return keys;
     }
@@ -114,9 +120,10 @@ public partial class playermanager : MonoBehaviour
       Camera.main.transform.position += direction;
     }
 
-    private void Snap_Camera()
+    public void Snap_Camera()
     {
       Camera.main.transform.position = Player.transform.position + Vector3.back;
+      camera_offset = Vector3.zero;
     }
 
 }

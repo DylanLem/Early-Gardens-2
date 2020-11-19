@@ -10,7 +10,7 @@ public class Fence : Building
 
   public GameObject Itemmanager;
 
-  public Fence()
+  public Fence() : base()
   {
 
 

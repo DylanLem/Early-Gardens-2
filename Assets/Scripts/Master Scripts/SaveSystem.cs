@@ -25,6 +25,7 @@ public static class SaveSystem
 
   public static Dictionary<string,dynamic> Load_Player(GameObject player_target)
   {
+
     string path = Application.persistentDataPath + "/save.player";
 
     if (File.Exists(path))

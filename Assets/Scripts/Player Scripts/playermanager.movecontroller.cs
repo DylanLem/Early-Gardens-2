@@ -64,7 +64,8 @@ public partial class playermanager : MonoBehaviour
       //if no push, then we clearly cant move!
       return false;
     }
-
+    Debug.Log("gridpos: " + grid_pos);
+    Debug.Log("Intended move: " + (grid_pos + move));
     ContinueMove:
 
       Gridmanager.GetComponent<gridmanager>().Update_Square(grid_pos,"remove");

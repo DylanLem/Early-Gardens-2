@@ -7,6 +7,8 @@ public class earlmanager : MonoBehaviour
   public GameObject Gridmanager;
   public GameObject Earl;
 
+  public GameObject[,] earl_grid;
+
   [SerializeField]
   public GameObject Earl_Eyes;
   [SerializeField]
@@ -61,9 +63,12 @@ public class earlmanager : MonoBehaviour
       Gridmanager = GameObject.FindWithTag("Grid");
       GameObject.FindWithTag("Level Controller").GetComponent<LevelController>().Set_Earlmanager(gameObject);
 
+      earl_grid = new GameObject[Gridmanager.GetComponent<gridmanager>().grid.GetLength(0),Gridmanager.GetComponent<gridmanager>().grid.GetLength(1)];
+
       max_earls = 0;
 
       Load_Earls(Gridmanager.name);
+
 
     }
 
@@ -72,7 +77,7 @@ public class earlmanager : MonoBehaviour
     {
       Check_Earl_Eggs();
 
-        Update_Earl_Pos_List();
+      Update_Earl_Pos_List();
     }
 
 
@@ -205,12 +210,33 @@ public class earlmanager : MonoBehaviour
       foreach(GameObject earl in earl_list)
       {
         earl_pos_list.Add(earl.GetComponent<earlbrain>().Get_Grid_Pos());
+        Update_Earl_Grid();
       }
     }
 
     public List<Vector3> Get_Earl_Positions()
     {
       return earl_pos_list;
+    }
+
+    private void Update_Earl_Grid()
+    {
+      earl_grid = new GameObject[Gridmanager.GetComponent<gridmanager>().grid.GetLength(0),Gridmanager.GetComponent<gridmanager>().grid.GetLength(1)];
+
+      for(int i = 0; i < Get_Earl_Positions().Count; i++)
+      {
+        int x = (int)Get_Earl_Positions()[i].x;
+        int y = (int)Get_Earl_Positions()[i].y;
+
+        earl_grid[x,y] = Get_Earl_List()[i];
+      }
+
+    }
+
+
+    public GameObject[,] Get_Earl_Grid()
+    {
+      return earl_grid;
     }
 
     public List<GameObject> Get_Earl_List()

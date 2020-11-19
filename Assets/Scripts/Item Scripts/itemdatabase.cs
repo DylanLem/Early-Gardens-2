@@ -4,19 +4,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class Itemdatabase
+public static class Itemdatabase
 {
-  public Dictionary<int,Type> item_database;
-  public int name;
-
-  public Itemdatabase()
-  {
-    Build_Database();
-    name = UnityEngine.Random.Range(0,10);
-  }
+  public static Dictionary<int,Type> item_database;
 
 
-  void Build_Database()
+
+  static void Build_Database()
   {
 
     item_database = new Dictionary<int,Type>();
@@ -37,8 +31,9 @@ public class Itemdatabase
 
   }
 
-  public Item Get_Item(int _id)
+  public static Item Get_Item(int _id)
   {
+    if(item_database == null) Build_Database();
     //Creating an instance of an item in our database. :)
     Item i = (Item)Activator.CreateInstance(item_database[_id]);
     i.Set_Id(_id);
