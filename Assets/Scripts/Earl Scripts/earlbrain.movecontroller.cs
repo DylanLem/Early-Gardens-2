@@ -50,7 +50,7 @@ public partial class earlbrain : MonoBehaviour
   public bool Move(Vector3 new_pos)
   {
 
-    if(Gridmanager.GetComponent<gridmanager>().Get_Tile(new_pos).GetComponent<tilebehavior>().Is_Empty() != true) return false;
+    if(Gridmanager.GetComponent<gridmanager>().Get_Tile(new_pos)?.GetComponent<tilebehavior>().Is_Empty() != true) return false;
 
     Gridmanager.GetComponent<gridmanager>().Update_Square(grid_pos,"remove");
 

@@ -26,10 +26,30 @@ public partial class earlbrain : MonoBehaviour
       food_distances[i] = Vector3.Distance(grid_pos,found_food[i].grid_pos);
     }
 
-    Item target_food = found_food[Array.IndexOf(food_distances,food_distances.Min())];
+    //Setting up our food find algo. Using the distances to sort the food in ascending order.
+    // We'll check each food in order of absolute distance.
+    Item[] food_array = found_food.ToArray();
+
+    Array.Sort(food_distances, food_array);
+
+    Item target_food = null;
+
+
+    foreach(Item food in food_array)
+    {
+      if(Get_Target_Direction(food) != Vector3.positiveInfinity)
+      {
+        target_food = food;
+        break;
+      }
+    }
+
+    if(target_food == null)
+      return null;
+
 
     //if it's within sqrt(2) distance units, we can feast
-    if (Vector3.Distance(grid_pos,target_food.grid_pos) <= 1.45f)
+    if(Vector3.Distance(grid_pos,target_food.grid_pos) <= 1.45f)
     {
       mood = Moods.Eating;
       return target_food;
@@ -40,6 +60,8 @@ public partial class earlbrain : MonoBehaviour
 
   public List<Vector3> Find_Target_Path(Item item)
   {
+    if(item == null) return null;
+
     Vector3 target_pos = item.grid_pos;
 
     List<Vector3> path = Pathfinder.FindPath(grid_pos,target_pos);
@@ -48,15 +70,17 @@ public partial class earlbrain : MonoBehaviour
   }
 
 
-  public Vector3 Get_Target_Direction()
+  public Vector3 Get_Target_Direction(Item item)
   {
+
+
     List<string> moves = Determine_Moves();
 
-    List<Vector3> path = Find_Target_Path(target);
+    List<Vector3> path = Find_Target_Path(item);
 
 
-    if(path == null)
-        return grid_pos + direction_to_vector[moves[UnityEngine.Random.Range(0,moves.Count)]];
+    if(path == null || path.Count == 0)
+        return Vector3.positiveInfinity;
 
     return path[0];
    }
@@ -68,8 +92,8 @@ public partial class earlbrain : MonoBehaviour
 
     if (mood == Moods.Eating) return Moods.Eating;
 
-    if (satiety<50 && Find_Food() != null) return Moods.Hungry;
-    if (satiety<=-100) return Moods.Starving;
+    if (satiety<50) return Moods.Hungry;
+    if (satiety<=-100 && Find_Food() == null) return Moods.Starving;
     return Moods.Idle;
   }
 
@@ -101,15 +125,29 @@ public partial class earlbrain : MonoBehaviour
         Move(moves[UnityEngine.Random.Range(0,moves.Count - 1)]);
         break;
       }
+
       //he's somehow fat AND starving always
       case Moods.Hungry:
       {
+
+        if(target != null && Vector3.Distance(grid_pos,target.grid_pos) <= 1.45f)
+        {
+          mood = Moods.Eating;
+          break;
+        }
+
         target = Find_Food();
+
+        if(target == null)
+        {
+          Move(moves[UnityEngine.Random.Range(0,moves.Count - 1)]);
+          break;
+        }
 
         //we need to do this because earls mood can change in that method.
         if(mood == Moods.Hungry)
         {
-          Vector3 move = Get_Target_Direction();
+          Vector3 move = Get_Target_Direction(target);
 
           Move(move);
         }
@@ -118,7 +156,6 @@ public partial class earlbrain : MonoBehaviour
 
       case Moods.Eating:
       {
-        Find_Food();
 
         if(satiety >= 100f || target == null) mood = Moods.Idle;
         else
