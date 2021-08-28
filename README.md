@@ -1,6 +1,6 @@
 # Early-Gardens-2
 
-[](Early-Gardens-2/Assets/Resources/UI/TItlescreen/title.png)
+[](https://github.com/DylanLem/Early-Gardens-2/blob/main/Assets/Resources/UI/TItlescreen/title.png?raw=true)
 
 <b>Simulator game prototype by Dylan Lemcke and Luke Swanson</b>
 
