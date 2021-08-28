@@ -10,3 +10,15 @@ Well, maybe not quite. The certification is prohibitively expensive for a transi
 
 Either way, you've made your first step toward your dream of joining the elite supertrillionaire exclusive VIP EARLClub.
 
+
+
+
+![oh my!](https://github.com/DylanLem/Early-Gardens-2/blob/main/Assets/Resources/Earls/Special%20Earls/earl_skeleton.png?raw=true)
+![](https://github.com/DylanLem/Early-Gardens-2/blob/main/Assets/Resources/Earls/Special%20Earls/earl_skeleton.png?raw=true)
+![](https://github.com/DylanLem/Early-Gardens-2/blob/main/Assets/Resources/Earls/Special%20Earls/earl_skeleton.png?raw=true)
+![oh my!](https://github.com/DylanLem/Early-Gardens-2/blob/main/Assets/Resources/Earls/Special%20Earls/earl_angelic.png?raw=true)
+![](https://github.com/DylanLem/Early-Gardens-2/blob/main/Assets/Resources/Earls/Special%20Earls/earl_angelic.png?raw=true)
+![](https://github.com/DylanLem/Early-Gardens-2/blob/main/Assets/Resources/Earls/Special%20Earls/earl_angelic.png?raw=true)
+![oh my!](https://github.com/DylanLem/Early-Gardens-2/blob/main/Assets/Resources/Earls/Special%20Earls/earl_demonic.png?raw=true)
+![](https://github.com/DylanLem/Early-Gardens-2/blob/main/Assets/Resources/Earls/Special%20Earls/earl_demonic.png?raw=true)
+![](https://github.com/DylanLem/Early-Gardens-2/blob/main/Assets/Resources/Earls/Special%20Earls/earl_demonic.png?raw=true)
